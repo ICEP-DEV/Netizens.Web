@@ -1,6 +1,6 @@
 import React from "react";
-import TUTIocn1 from "./TUT-iocn-1.jpeg";
-import "./style.css";
+import TUTIocn1 from "../../assets/TUTIocn1.jpeg"
+import "./loginPage.css";
 
 export const LoginPage = () => {
   return (
