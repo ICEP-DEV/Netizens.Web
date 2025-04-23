@@ -33,7 +33,7 @@ export const ResetPage = () => {
       formIsValid = false;
     }
 
-    // Check if passwords match
+    
     if (newPassword && confirmPassword && newPassword !== confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match.";
       formIsValid = false;
