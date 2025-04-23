@@ -1,8 +1,8 @@
 import React from 'react';
-import Sidebar from './component/sidebar';
+import Sidebar from '../../../component/sidebar';
 import './dashboard.css';
 
-const Dashboard = () => {
+const DashboardPage = () => {
   return (
     <div className="dashboard">
       <Sidebar />
@@ -37,4 +37,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default DashboardPage;
