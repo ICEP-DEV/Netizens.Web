@@ -1,0 +1,44 @@
+
+
+.sidebar {
+    width: 200px;
+    background-color: #e7e4e4;
+    color: black;
+    height: 30vh;
+    padding: 10px;
+    margin-top: 100px;
+    border-radius: 15px;
+    margin-top: 14vh;
+  }
+  
+  .sidebar ul {
+    
+    list-style: none;
+    padding: 2px;
+    
+  }
+  
+  .sidebar li {
+   
+    text-align: start;
+    font-weight: bold ;
+    border-radius: 10px;
+    padding: 10px;
+    background: rgb(185, 183, 183) ;
+    margin: 10px 0;
+    cursor: pointer;
+  }
+  
+  .sidebar button{
+
+    width: 20vh;
+    background-color: rgb(163, 160, 160);
+    border-inline: none;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 10px;
+    padding: 10px ;
+    margin-top: 12vh;
+    border: none;
+    
+  }
