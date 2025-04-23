@@ -8,7 +8,7 @@ const DashboardPage = () => {
       <Sidebar />
 
       <div className="main-content">
-        {/* The details section is now above the "Welcome" paragraph */}
+        
         <div className="main-header">
           <div className="details">
             <p>Username</p>
@@ -24,12 +24,18 @@ const DashboardPage = () => {
            <button>New Report</button>
            </div>
 
-            <div className="item">Submission</div>
-            <div className="item">Item 3</div>
+            <div className="item">
+              <h2>Submission Status</h2>
+              <p>All reports are up to date</p>
+            </div>
+            <div className="item">
+              <h1>Upcoming in:</h1>
+              
+            </div>
           </div>
 
           <div className="table-section">
-            {/* table goes here */}
+            
           </div>
         </div>
       </div>

@@ -70,22 +70,27 @@
     border: solid black;
     box-sizing: border-box;
     margin-left: 2vh;
+    text-align: start;
     
   }
   
   .weekly-report {
+    
     font-size: large;
     flex: 2 1 300px; 
     border: none;
     margin: 0;
     text-align: start;
     
+    
   }
   .weekly-report h2{
-    
+    text-align: start;
+     
   }
   
   .item button {
+    font-size: medium;
     border: none;
     font-weight: bolder;
     background-color: rgb(146, 143, 143);
@@ -94,7 +99,7 @@
     border-radius: 5px;
     color: black;
     margin-top: 6vh;
-    width: 18vh;
+    width: 15vh;
   }
   
   .table-section {
