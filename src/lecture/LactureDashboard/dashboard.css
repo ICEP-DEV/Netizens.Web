@@ -1,0 +1,122 @@
+.dashboard {
+    display: flex;
+    background-color: rgb(146, 143, 143);
+    min-height: 100vh;
+    flex-wrap: wrap;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .main-body {
+    background-color: white;
+    padding: 20px;
+    margin-top: 2vh;
+    border-radius: 8px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .welcome {
+    margin: 0 0 10px 2vh;
+    font-size: larger;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .main-header {
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    color: white;
+    width: 100%;
+  }
+  
+  .details {
+    align-self: flex-end;
+    padding: 5px 10px;
+    font-weight: 200;
+    font-size: medium;
+    color: white;
+    text-align: right;
+  }
+  
+  .main-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .vertical-items {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .item {
+    background-color: #ddd4d4;
+    padding: 20px;
+    border-radius: 8px;
+    flex: 1 1 180px;   
+    min-width: 50px; 
+    box-sizing: border-box;
+    text-align: center;
+    height: 40vh;
+    border: solid black;
+    box-sizing: border-box;
+    margin-left: 2vh;
+  }
+  
+  .weekly-report {
+    font-size: large;
+    flex: 2 1 300px; 
+    border: none;
+    margin: 0;
+    text-align: start;
+  }
+  
+  .item button {
+    border: none;
+    font-weight: bolder;
+    background-color: rgb(146, 143, 143);
+    padding: 9px;
+    text-align: center;
+    border-radius: 5px;
+    color: white;
+    margin-top: 10vh;
+  }
+  
+  .table-section {
+    width: 100%;
+    overflow-x: auto;
+    margin-top: 20px;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    min-width: 300px;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: center;
+  }
+  
+  /* Optional: Make sure the entire layout is responsive */
+  @media (max-width: 768px) {
+    .item {
+      flex: 1 1 100%;
+    }
+  
+    .weekly-report {
+      flex: 1 1 100%;
+    }
+  }
+  
