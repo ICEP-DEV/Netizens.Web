@@ -67,7 +67,7 @@
     box-sizing: border-box;
     text-align: center;
     height: 30vh;
-    border: solid black;
+    border: 2px solid black;
     box-sizing: border-box;
     margin-left: 2vh;
     text-align: start;
@@ -97,7 +97,7 @@
     text-align: center;
     border-radius: 5px;
     color: black;
-    margin-top: 6vh;
+    margin-top: 3vh;
     width: 15vh;
   }
   
