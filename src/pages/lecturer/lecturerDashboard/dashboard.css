@@ -84,9 +84,8 @@
     
     
   }
-  .weekly-report h2{
-    text-align: start;
-     
+  .item p{
+     font-size: 3vh;
   }
   
   .item button {
@@ -102,23 +101,7 @@
     width: 15vh;
   }
   
-  .table-section {
-    width: 100%;
-    overflow-x: auto;
-    margin-top: 20px;
-  }
   
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 300px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
   
   /* Optional: Make sure the entire layout is responsive */
   @media (max-width: 768px) {
@@ -130,4 +113,39 @@
       flex: 1 1 100%;
     }
   }
+  .table-section {
+    width: 100%;
+    background-color: rgb(146, 143, 143);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .table-heading {
+     font-size: xx-large;
+     font-weight: black;
+     margin-bottom: 15px;
+     color: black;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    
+   
+  }
+  
+  th, td {
+    text-align: start;
+    padding: 12px 8px;
+    border-bottom: 1px solid #ccc; /* horizontal lines only */
+  }
+  
+  th {
+    
+    font-weight: bold;
+  }
+  
   
