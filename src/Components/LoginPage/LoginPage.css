@@ -1,0 +1,86 @@
+.login-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #f3f4f6;
+  }
+  .login-logo {
+    display: block;
+    margin: 0 auto 1rem auto;
+    max-width: 100px;
+    height: auto;
+  }
+  
+  .login-box {
+    background-color: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 400px;
+  }
+  
+  .login-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #070707ef;
+    margin-bottom: 1.5rem;
+  }
+  
+  .login-error {
+    background-color: #fee2e2;
+    color: #b91c1c;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+  }
+  
+  .login-form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  
+  .form-group label {
+    font-weight: 500;
+    margin-bottom: 0.25rem;
+  }
+  
+  .form-group input {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #d1d5db;
+    border-radius: 8px;
+  }
+  
+  .submit-btn {
+    background-color: #0f0f10e9;
+    color: white;
+    padding: 0.6rem;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+  }
+  
+  .submit-btn:hover {
+    background-color: #1d4ed8;
+  }
+  
+  .forgot-link {
+    margin-top: 1rem;
+    text-align: center;
+    font-size: 0.9rem;
+  }
+  
+  .forgot-link a {
+    color: #2563eb;
+    text-decoration: none;
+  }
+  
+  .forgot-link a:hover {
+    text-decoration: underline;
+  }
+  

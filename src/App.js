@@ -6,8 +6,9 @@ import ResetPage from "./pages/auth/resetPage";
 import OtpPage from "./pages/auth/verifyOtp";
 import SetPassword from "./pages/auth/SetPassword";
 
-
 function App() {
+
+
   return (
     <>
     <Routes>
@@ -16,12 +17,14 @@ function App() {
       <Route path="/reset" element={<ResetPage />} />
       <Route path="/verify" element={<OtpPage />} />
       <Route path="/setpassword" element={<SetPassword/>} />
-      
-
+  
     </Routes>
 
     </>
+
   );
 }
 
 export default App;
+
+
