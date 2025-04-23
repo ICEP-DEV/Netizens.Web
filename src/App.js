@@ -4,6 +4,8 @@ import { LoginPage } from "./pages/auth/loginPage";
 import DashboardPage from "./pages/lecturer/lecturerDashboard/dashboard";
 import ResetPage from "./pages/auth/resetPage";
 import OtpPage from "./pages/auth/verifyOtp";
+import SetPassword from "./pages/auth/SetPassword";
+
 
 function App() {
   return (
@@ -13,6 +15,9 @@ function App() {
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/reset" element={<ResetPage />} />
       <Route path="/verify" element={<OtpPage />} />
+      <Route path="/setpassword" element={<SetPassword/>} />
+      
+
     </Routes>
 
     </>
