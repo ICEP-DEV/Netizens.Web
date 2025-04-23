@@ -1,21 +1,17 @@
 
-import { Routes, Route } from "react-router-dom";
-import './App.css';
-import Login from './login';
-import Sidebar from './lecture/LactureDashboard/component/sidebar';
+import { Route, Routes } from "react-router-dom";
+import { LoginPage } from "./pages/auth/loginPage";
 import Dashboard from './lecture/LactureDashboard/dashboard';
-
 
 function App() {
   return (
-    
-      <Routes>
-      <Route path="/" element={<Login />} />
-      
+    <>
+    <Routes>
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/dashboard" element={<Dashboard />} />
+    </Routes>
       
-      </Routes>
-    
+    </>
   );
 }
 
