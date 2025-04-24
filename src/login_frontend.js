@@ -1,6 +1,6 @@
 import React from "react";
-import TUTIocn1 from "./TUT-iocn-1.jpeg";
-import "./style.css";
+import TUTIocn1 from "./TUTiocn1.jpeg";
+import "./login_front_style.css";
 
 export const LoginPage = () => {
   return (
@@ -12,12 +12,17 @@ export const LoginPage = () => {
               <div className="input-and-button">
                 <input
                   className="field"
-                  placeholder="email address"
+                  placeholder="Email address"
                   type="email"
                 />
 
                 <div className="label-wrapper">
                   <div className="label">Password</div>
+                  <input
+                    className="field"
+                    placeholder="Password"
+                    type="email"
+                  />
                 </div>
 
                 <button className="button">
@@ -25,7 +30,7 @@ export const LoginPage = () => {
                 </button>
               </div>
 
-              <div className="text-wrapper-2">forgot password?</div>
+              <div className="text-wrapper-2">Forgot password?</div>
             </div>
 
             <div className="text-wrapper-3">Login</div>
@@ -39,3 +44,4 @@ export const LoginPage = () => {
     </div>
   );
 };
+export default LoginPage;
