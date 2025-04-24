@@ -116,3 +116,21 @@
     color: white;
     cursor: pointer;
 }
+
+.close-btn {
+    position: absolute;
+    top: -30px;
+    right: -245px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-size: 24px;
+    color: hwb(0 6% 94%);
+    padding: 0px;
+    font-family: "Inter-Bold", Helvetica;
+    font-weight: bold;
+  }
+  
+  .close-btn:hover {
+    color: hsl(0, 91%, 50%);
+  }

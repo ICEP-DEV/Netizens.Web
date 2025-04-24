@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import "./resetPage.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
+import { faTimes } from '@fortawesome/free-solid-svg-icons'; 
 
 export const ResetPage = () => {
   const [newPassword, setNewPassword] = useState("");
@@ -12,7 +14,6 @@ export const ResetPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    
     setErrors({
       newPassword: "",
       confirmPassword: "",
@@ -21,19 +22,16 @@ export const ResetPage = () => {
     let formIsValid = true;
     const newErrors = { ...errors };
 
-    
     if (!newPassword) {
       newErrors.newPassword = "New password is required.";
       formIsValid = false;
     }
 
-    
     if (!confirmPassword) {
       newErrors.confirmPassword = "Confirm password is required.";
       formIsValid = false;
     }
 
-    // Check if passwords match
     if (newPassword && confirmPassword && newPassword !== confirmPassword) {
       newErrors.confirmPassword = "Passwords do not match.";
       formIsValid = false;
@@ -48,10 +46,21 @@ export const ResetPage = () => {
     }
   };
 
+  
+  const handleClose = () => {
+    window.close(); 
+  };
+
   return (
     <div className="reset">
       <div className="div">
-        <div className="text-wrapper-2">Reset</div>
+        <div className="text-wrapper-2">
+          Reset
+          
+          <button className="close-btn" onClick={handleClose}>
+            <FontAwesomeIcon icon={faTimes} /> 
+          </button>
+        </div>
 
         <form onSubmit={handleSubmit}>
           <div className="frame-2">

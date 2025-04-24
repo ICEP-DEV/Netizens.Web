@@ -2,6 +2,12 @@
 import { Route, Routes } from "react-router-dom";
 import LoginPage from "./pages/auth/logIn/login_frontend";
 import DashboardPage from "./pages/lecturer/lecturerDashboard/dashboard";
+
+import ResetPage from "./pages/auth/resetPage";
+
+import SetPassword from "./pages/auth/SetPassword";
+
+
 import ResetPage from "./pages/auth/resetingPages/resetPage";
 import VerifyLogInOTPPage from "./pages/auth/verifyLogInOTP/verifyLogInOTP";
 
@@ -30,10 +36,8 @@ function App() {
     </Routes>
 
     </>
-
   );
 }
 
+
 export default App;
-
-

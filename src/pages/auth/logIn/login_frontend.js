@@ -1,8 +1,8 @@
 
+
 import React from 'react';
 import Icon from "../../../assets/TUTicon1.jpeg";
 import './login_front_style.css';
-
 
 
 export const LoginPage = () => {
