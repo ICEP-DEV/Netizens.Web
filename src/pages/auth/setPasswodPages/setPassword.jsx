@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 
-import './SetPassword.css';
+import './setPassword.css';
 
 const SetPassword = () => {
     const [password, setPassword] = useState('');
