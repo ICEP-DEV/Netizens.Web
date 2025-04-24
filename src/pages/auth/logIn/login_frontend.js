@@ -1,5 +1,5 @@
 import React from "react";
-import TUTIocn1 from "./TUTiocn1.jpeg";
+import TUTIocn1 from "../../../assets/TUTIocn1.jpeg";
 import "./login_front_style.css";
 
 export const LoginPage = () => {

@@ -1,14 +1,14 @@
 
 import { Route, Routes } from "react-router-dom";
-import { LoginPage } from "./pages/auth/loginPage";
+import LoginPage from "./pages/auth/logIn/login_frontend";
 import DashboardPage from "./pages/lecturer/lecturerDashboard/dashboard";
-import ResetPage from "./pages/auth/resetPage";
-import OtpPage from "./pages/auth/verifyOtp";
+import ResetPage from "./pages/auth/resetingPages/resetPage";
+import VerifyLogInOTPPage from "./pages/auth/verifyLogInOTP/verifyLogInOTP";
 
-import VerifyOtpPage from "./pages/auth/verifyOtpPage/VerifyOtpPage";
+import VerifyPasswordResetOTPPage from "./pages/auth/verifyPasswordResetOtpPage/verifyPasswordResetOTP";
 
-import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage/ForgotPasswordPage";
-import SetPassword from "./pages/auth/SetPassword";
+
+import SetPassword from "./pages/auth/setPasswodPages/SetPassword";
 
 
 
@@ -22,11 +22,8 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/reset" element={<ResetPage />} />
-      <Route path="/verify" element={<OtpPage />} />
-
-      <Route path="/otp" element={<VerifyOtpPage />} />
-      <Route path="/forgotpassword" element={<ForgotPasswordPage />} />
-
+      <Route path="/verify/login" element={<VerifyLogInOTPPage />} />
+      <Route path="/verify/password/reset" element={<VerifyPasswordResetOTPPage />} />
       <Route path="/setpassword" element={<SetPassword/>} />
   
 
