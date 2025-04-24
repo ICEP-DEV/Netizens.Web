@@ -10,8 +10,6 @@ import VerifyOtpPage from "./pages/auth/verifyOtpPage/VerifyOtpPage";
 import ForgotPasswordPage from "./pages/auth/ForgotPasswordPage/ForgotPasswordPage";
 import SetPassword from "./pages/auth/SetPassword";
 
-function App() {
-
 
 
 function App() {
@@ -38,7 +36,7 @@ function App() {
 
   );
 }
-}
+
 export default App;
 
 
