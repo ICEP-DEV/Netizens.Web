@@ -62,30 +62,34 @@
     background-color: #ddd4d4;
     padding: 20px;
     border-radius: 8px;
-    flex: 1 1 180px;   
+    flex: 1 1 180px;  
     min-width: 50px; 
     box-sizing: border-box;
     text-align: center;
     height: 30vh;
-    border: solid black;
+    border: 2px solid black;
     box-sizing: border-box;
     margin-left: 2vh;
+    text-align: start;
     
   }
   
   .weekly-report {
+    
     font-size: large;
     flex: 2 1 300px; 
     border: none;
     margin: 0;
     text-align: start;
     
-  }
-  .weekly-report h2{
     
+  }
+  .item p{
+    font-size: 3vh;
   }
   
   .item button {
+    font-size: medium;
     border: none;
     font-weight: bolder;
     background-color: rgb(146, 143, 143);
@@ -93,27 +97,11 @@
     text-align: center;
     border-radius: 5px;
     color: black;
-    margin-top: 6vh;
-    width: 18vh;
+    margin-top: 2vh;
+    width: 15vh;
   }
   
-  .table-section {
-    width: 100%;
-    overflow-x: auto;
-    margin-top: 20px;
-  }
   
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    min-width: 300px;
-  }
-  
-  th, td {
-    border: 1px solid #ddd;
-    padding: 8px;
-    text-align: center;
-  }
   
   /* Optional: Make sure the entire layout is responsive */
   @media (max-width: 768px) {
@@ -125,4 +113,42 @@
       flex: 1 1 100%;
     }
   }
+  .table-section {
+    width: 100%;
+    background-color: rgb(146, 143, 143);
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 8px;
+    box-sizing: border-box;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  }
+  
+  .table-heading {
+    font-size: xx-large;
+    font-weight: black;
+    margin-bottom: 1px;
+    color: black;
+    border-bottom:3px solid black;
+    
+  }
+  
+  table {
+    
+    width: 100%;
+    border-collapse: collapse;
+    
+  
+  }
+  
+  th, td {
+    text-align: start;
+    padding: 12px 8px;
+    border-bottom: 1px solid black; /* horizontal lines only */
+  }
+  
+  th {
+    
+    font-weight: bold;
+  }
+  
   

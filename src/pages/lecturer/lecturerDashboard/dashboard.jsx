@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '../../../component/sidebar';
+import Sidebar from '../../../components/sidebar';
 import './dashboard.css';
 
 const DashboardPage = () => {
@@ -8,7 +8,7 @@ const DashboardPage = () => {
       <Sidebar />
 
       <div className="main-content">
-        {/* The details section is now above the "Welcome" paragraph */}
+        
         <div className="main-header">
           <div className="details">
             <p>Username</p>
@@ -24,13 +24,41 @@ const DashboardPage = () => {
            <button>New Report</button>
            </div>
 
-            <div className="item">Submission</div>
-            <div className="item">Item 3</div>
+            <div className="item">
+              <h2>Submission <br /> Status</h2>
+              <p>All reports <br/>are up to date</p>
+            </div>
+            <div className="item">
+              <h1>Upcoming <br /> in:</h1>
+              
+            </div>
           </div>
 
+          
           <div className="table-section">
-            {/* table goes here */}
-          </div>
+  <h2 className="table-heading">Recent Submissions Status</h2>
+  <table>
+    <thead>
+      <tr>
+        
+        <th>Submission Date:</th>
+        <th>Review Status:</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        
+        <td>2025-04-20</td>
+        <td>Reviewed</td>
+      </tr>
+      <tr>
+        
+        <td>2025-04-27</td>
+        <td>Pending</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
         </div>
       </div>
     </div>
