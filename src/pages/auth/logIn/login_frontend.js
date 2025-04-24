@@ -26,7 +26,14 @@ export const LoginPage = () => {
                   type="password"
               
                 />
-                
+                <div className="label-wrapper">
+                  <div className="label">Password</div>
+                  <input
+                    className="field"
+                    placeholder="Password"
+                    type="Password"
+                  />
+                </div>
 
                 <button className="button">
 
