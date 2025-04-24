@@ -20,12 +20,7 @@ export const LoginPage = () => {
                   type="email"
                   
                 />
-                <input
-                  className="field"
-                  placeholder="Password"
-                  type="password"
-              
-                />
+                
                 <div className="label-wrapper">
                   <div className="label">Password</div>
                   <input

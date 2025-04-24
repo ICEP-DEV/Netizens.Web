@@ -1,5 +1,6 @@
 
 import React, { useState } from 'react';
+
 import './SetPassword.css';
 
 const SetPassword = () => {
@@ -9,60 +10,59 @@ const SetPassword = () => {
     const [success, setSuccess] = useState('');
 
     const validatePassword = (pwd) => {
-    
-    const regex = /[^a-zA-Z0-9\s]/g;
-    return regex.test(pwd);
-};
-const handleSubmit = (e) => {
-    e.preventDefault();
-    setError('');
-    setSuccess('');
+        const regex = /[^a-zA-Z0-9\s]/g;
+        return pwd.length >= 8 && /\d/.test(pwd) && regex.test(pwd);
+    };
 
-    if (!validatePassword(password)) {
-        setError('Password must be at least 8 characters long and include a number and a Special Character(@,^,_,e.t.c).');
-        return;
-    }
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        setError('');
+        setSuccess('');
 
-    if (password !== confirmPassword) {
-        setError('Passwords do not match.');
-        return;
-    }
+        if (!validatePassword(password)) {
+            setError('Password must be at least 8 characters long and include a number and a special character.');
+            return;
+        }
 
-    
-    setSuccess('Password has been successfully set!');
-};
+        if (password !== confirmPassword) {
+            setError('Passwords do not match.');
+            return;
+        }
 
-return (
-<div style={{ maxWidth: '400px', margin: 'auto' }}>
+        setSuccess('Password has been successfully set!');
+    };
 
-    <h2>Set Password</h2>
-    <form onSubmit={handleSubmit}>
-        <div>
-        <label>Password:</label><br />
-        <input
-        type="password"
-        value={password}
-        onChange={(e) => setPassword(e.target.value)}
-        required
-        />
-        
+    return (
+        <div className="set-password">
+            <div className="container">
+                <h1>Set Password</h1>
+                <form onSubmit={handleSubmit}>
+                    <label className="label">Password:</label>
+                    <input
+                        type="password"
+                        className="input"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                    />
+
+                    <label className="label">Confirm Password:</label>
+                    <input
+                        type="password"
+                        className="input"
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        required
+                    />
+
+                    <button type="submit" className="button">Set Password</button>
+
+                    {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+                    {success && <p style={{ color: 'green', marginTop: '10px' }}>{success}</p>}
+                </form>
+            </div>
         </div>
-        <div style={{ marginTop: '10px' }}>
-        <label>Confirm Password:</label><br />
-        <input
-        type="password"
-        value={confirmPassword}
-        onChange={(e) => setConfirmPassword(e.target.value)}
-        required
-        />
-        </div>
-        <button type="submit" style={{ marginTop: '15px' }}>Set Password</button>
-        {error && <p style={{ color: 'red' }}>{error}</p>}
-        {success && <p style={{ color: 'green' }}>{success}</p>}
-        </form>
-    </div>
     );
-
 };
 
 export default SetPassword;
