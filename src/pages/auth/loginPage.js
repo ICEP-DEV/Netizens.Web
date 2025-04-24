@@ -1,6 +1,7 @@
 import React from "react";
 import TUTIocn1 from "../../assets/TUTIocn1.jpeg"
 import "./loginPage.css";
+import "./resetPage.css";
 
 export const LoginPage = () => {
   return (
