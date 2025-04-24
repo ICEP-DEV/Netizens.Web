@@ -62,7 +62,7 @@
     background-color: #ddd4d4;
     padding: 20px;
     border-radius: 8px;
-    flex: 1 1 180px;   
+    flex: 1 1 180px;  
     min-width: 50px; 
     box-sizing: border-box;
     text-align: center;
@@ -85,7 +85,7 @@
     
   }
   .item p{
-     font-size: 3vh;
+    font-size: 3vh;
   }
   
   .item button {
@@ -124,11 +124,11 @@
   }
   
   .table-heading {
-     font-size: xx-large;
-     font-weight: black;
-     margin-bottom: 1px;
-     color: black;
-     border-bottom:3px solid black;
+    font-size: xx-large;
+    font-weight: black;
+    margin-bottom: 1px;
+    color: black;
+    border-bottom:3px solid black;
     
   }
   
@@ -137,7 +137,7 @@
     width: 100%;
     border-collapse: collapse;
     
-   
+  
   }
   
   th, td {

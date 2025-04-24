@@ -1,6 +1,8 @@
+
 import React from 'react';
 import TUTIocn1 from "../../assets/TUTIocn1.jpeg";
 import './loginPage.css';
+
 
 
 export const LoginPage = () => {
@@ -24,13 +26,15 @@ export const LoginPage = () => {
                   type="password"
                  
                 />
+                
 
-                <button className="button" >
+                <button className="button">
+
                   <div className="text-wrapper">Log in</div>
                 </button>
               </div>
 
-              <div className="text-wrapper-2">forgot password?</div>
+              <div className="text-wrapper-2">Forgot password?</div>
             </div>
 
             <div className="text-wrapper-3">Login</div>
@@ -44,3 +48,6 @@ export const LoginPage = () => {
     </div>
   );
 };
+
+
+export default LoginPage;
