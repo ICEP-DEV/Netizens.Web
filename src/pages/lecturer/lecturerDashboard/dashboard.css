@@ -36,7 +36,7 @@
     padding: 5px 10px;
     font-weight: 200;
     font-size: medium;
-    color: white;
+    color: black;
     text-align: right;
   }
   
@@ -115,7 +115,7 @@
   }
   .table-section {
     width: 100%;
-    background-color: rgb(146, 143, 143);
+    background-color:  #ddd4d4;
     padding: 20px;
     margin-top: 20px;
     border-radius: 8px;

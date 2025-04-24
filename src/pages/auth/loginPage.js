@@ -1,8 +1,10 @@
-import React from "react";
-import TUTIocn1 from "../../assets/TUTIocn1.jpeg"
-import "./loginPage.css";
+import React from 'react';
+import TUTIocn1 from "../../assets/TUTIocn1.jpeg";
+import './loginPage.css';
+
 
 export const LoginPage = () => {
+
   return (
     <div className="login-page">
       <div className="div">
@@ -12,15 +14,18 @@ export const LoginPage = () => {
               <div className="input-and-button">
                 <input
                   className="field"
-                  placeholder="email address"
+                  placeholder="Email address"
                   type="email"
+                  
+                />
+                <input
+                  className="field"
+                  placeholder="Password"
+                  type="password"
+                 
                 />
 
-                <div className="label-wrapper">
-                  <div className="label">Password</div>
-                </div>
-
-                <button className="button">
+                <button className="button" >
                   <div className="text-wrapper">Log in</div>
                 </button>
               </div>
