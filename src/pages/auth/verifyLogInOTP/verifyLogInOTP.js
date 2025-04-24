@@ -2,17 +2,17 @@ import React, { useState } from "react";
 import "./verifyLogInOTP.css";
 
 const VerifyLogInOTPPage = () => {
-  // const [otp, setOtp] = useState("");
+const [otp, setOtp] = useState("");
 
-  // const handleVerify = (e) => {
-  //   e.preventDefault();
-  //   alert(`OTP entered: ${otp}`);
-  // };
+const handleVerify = (e) => {
+e.preventDefault();
+alert(`OTP entered: ${otp}`);
+};
 
   return (
     <div className="otp-container">
       <div className="otp-card">
-        {/* <p>Enter OTP</p>
+        <p>Enter OTP</p>
         <form onSubmit={handleVerify}>
             <div className="otp-field">
               <label htmlFor="otp" className="otp-label">OTP:</label>
@@ -27,9 +27,7 @@ const VerifyLogInOTPPage = () => {
               />
             </div>
             <button type="submit" className="otp-button">Verify</button>
-        </form> */}
-        verify login
-
+        </form>
       </div>
     </div>
   );

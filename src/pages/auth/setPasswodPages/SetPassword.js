@@ -1,69 +1,174 @@
 
-import React, { useState } from 'react';
-
-import './SetPassword.css';
+import React, { useState } from "react";
+import "./SetPassword.css";
 
 const SetPassword = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-    const [error, setError] = useState('');
+    const [error, setError] = useState({
+        lengthError: '',
+        numberError: '',
+        letterError: '', // New error state for letter check
+        specialCharError: '',
+        matchError: '',
+    });
     const [success, setSuccess] = useState('');
+    const [passwordVisible, setPasswordVisible] = useState(false);
+    const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
 
-    const validatePassword = (pwd) => {
+    const validatePasswordLength = (pwd) => {
+        return pwd.length >= 8;
+    };
+
+    const validatePasswordNumber = (pwd) => {
+        return /\d/.test(pwd);
+    };
+
+    const validatePasswordLetter = (pwd) => {
+        // Check if the password contains at least one letter (a-z, A-Z)
+        return /[a-zA-Z]/.test(pwd);
+    };
+
+    const validatePasswordSpecialChar = (pwd) => {
+        // Check if the password contains at least one special character
         const regex = /[^a-zA-Z0-9\s]/g;
-        return pwd.length >= 8 && /\d/.test(pwd) && regex.test(pwd);
+        return regex.test(pwd);
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        setError('');
+        setError({
+            lengthError: '',
+            numberError: '',
+            letterError: '', // Reset the letter error
+            specialCharError: '',
+            matchError: '',
+        });
         setSuccess('');
 
-        if (!validatePassword(password)) {
-            setError('Password must be at least 8 characters long and include a number and a special character.');
-            return;
+        // Validate password rules
+        let isValid = true;
+
+        if (!validatePasswordLength(password)) {
+            setError((prevError) => ({
+                ...prevError,
+                lengthError: 'Password must be at least 8 characters long.',
+            }));
+            isValid = false;
         }
 
+        if (!validatePasswordNumber(password)) {
+            setError((prevError) => ({
+                ...prevError,
+                numberError: 'Password must contain at least one number.',
+            }));
+            isValid = false;
+        }
+
+        if (!validatePasswordLetter(password)) {
+            setError((prevError) => ({
+                ...prevError,
+                letterError: 'Password must contain at least one letter (a-z or A-Z).',
+            }));
+            isValid = false;
+        }
+
+        if (!validatePasswordSpecialChar(password)) {
+            setError((prevError) => ({
+                ...prevError,
+                specialCharError: 'Password must contain at least one special character (e.g., @, #, &).',
+            }));
+            isValid = false;
+        }
+
+        // Check if passwords match
         if (password !== confirmPassword) {
-            setError('Passwords do not match.');
-            return;
+            setError((prevError) => ({
+                ...prevError,
+                matchError: 'Passwords do not match.',
+            }));
+            isValid = false;
         }
 
-        setSuccess('Password has been successfully set!');
+        // If everything is valid, set success message
+        if (isValid) {
+            setSuccess('Password has been successfully set!');
+        }
+    };
+
+    // Toggle password visibility
+    const togglePasswordVisibility = () => {
+        setPasswordVisible(!passwordVisible);
+    };
+
+    // Toggle confirm password visibility
+    const toggleConfirmPasswordVisibility = () => {
+        setConfirmPasswordVisible(!confirmPasswordVisible);
     };
 
     return (
         <div className="set-password">
             <div className="container">
-                <h1>Set Password</h1>
+                <h1>Create Password</h1> {/* Changed the title */}
                 <form onSubmit={handleSubmit}>
-                    <label className="label">Password:</label>
-                    <input
-                        type="password"
-                        className="input"
-                        value={password}
-                        onChange={(e) => setPassword(e.target.value)}
-                        required
-                    />
+                    <div className="password-input-container">
+                        <input
+                            type={passwordVisible ? 'text' : 'password'} // Toggle between text and password input type
+                            placeholder='Password'
+                            className="input"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            required
+                        />
+                        <button
+                            type="button"
+                            className="toggle-visibility"
+                            onClick={togglePasswordVisibility}
+                        >
+                            {passwordVisible ? 'Hide' : 'Show'}
+                        </button>
+                    </div>
 
-                    <label className="label">Confirm Password:</label>
-                    <input
-                        type="password"
-                        className="input"
-                        value={confirmPassword}
-                        onChange={(e) => setConfirmPassword(e.target.value)}
-                        required
-                    />
+                    <div className="password-input-container">
+                        <input
+                            type={confirmPasswordVisible ? 'text' : 'password'} // Toggle between text and password input type
+                            placeholder='Confirm Password'
+                            className="input"
+                            value={confirmPassword}
+                            onChange={(e) => setConfirmPassword(e.target.value)}
+                            required
+                        />
+                        <button
+                            type="button"
+                            className="toggle-visibility"
+                            onClick={toggleConfirmPasswordVisibility}
+                        >
+                            {confirmPasswordVisible ? 'Hide' : 'Show'}
+                        </button>
+                    </div>
 
-                    <button type="submit" className="button">Set Password</button>
+                    <button type="submit" className="button" style={{ fontWeight: 'bold' }}>Submit</button> {/* Made the button bold */}
 
-                    {error && <p style={{ color: 'red', marginTop: '10px' }}>{error}</p>}
+                    {/* Display specific error messages based on the validation results */}
+                    {error.lengthError && <p style={{ color: 'red', marginTop: '10px' }}>{error.lengthError}</p>}
+                    {error.numberError && <p style={{ color: 'red', marginTop: '10px' }}>{error.numberError}</p>}
+                    {error.letterError && <p style={{ color: 'red', marginTop: '10px' }}>{error.letterError}</p>} {/* Error for letters */}
+                    {error.specialCharError && <p style={{ color: 'red', marginTop: '10px' }}>{error.specialCharError}</p>}
+                    {error.matchError && <p style={{ color: 'red', marginTop: '10px' }}>{error.matchError}</p>}
+
                     {success && <p style={{ color: 'green', marginTop: '10px' }}>{success}</p>}
                 </form>
+
+                {/* Password Rules Section */}
+                <div className="password-rules">
+                    <h3>Password Requirements:</h3>
+                    <ul>
+                        <li>Password must be 8 characters or more.</li>
+                        <li>Password must contain both numbers and letters.</li>
+                        <li>Password must contain at least one special character (e.g., @, #, &).</li>
+                    </ul>
+                </div>
             </div>
         </div>
     );
-};
-
-export default SetPassword;
-
+};export default SetPassword;
