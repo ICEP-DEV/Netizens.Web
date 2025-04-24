@@ -1,7 +1,7 @@
 
 import React from 'react';
-import TUTIocn1 from "../../assets/TUTIocn1.jpeg";
-import './loginPage.css';
+import Icon from "../../../assets/TUTicon1.jpeg";
+import './login_front_style.css';
 
 
 
@@ -24,7 +24,7 @@ export const LoginPage = () => {
                   className="field"
                   placeholder="Password"
                   type="password"
-                 
+              
                 />
                 
 
@@ -41,7 +41,7 @@ export const LoginPage = () => {
           </div>
         </div>
 
-        <img className="TUT-iocn" alt="Tut iocn" src={TUTIocn1} />
+        <img className="TUT-iocn" alt="Tut iocn" src={Icon} />
 
         <div className="text-wrapper-4">We empower people.</div>
       </div>
