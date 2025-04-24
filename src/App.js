@@ -14,12 +14,16 @@ function App() {
       <Route path="/login" element={<LoginPage />} />
       <Route path="/dashboard" element={<DashboardPage />} />
       <Route path="/reset" element={<ResetPage />} />
-      <Route path="/verify/login" element={<VerifyLogInOTPPage />} />
+      <Route path="/verifylogin" element={<VerifyLogInOTPPage />} />
       <Route path="/verify/password/reset" element={<VerifyPasswordResetOTPPage />} />
+
       <Route path="/setpassword" element={<SetPassword/>} />
     </Routes>
     </>
+
   );
 }
 
 export default App;
+
+
