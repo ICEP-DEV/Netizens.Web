@@ -1,12 +1,13 @@
 
 import React, { useState } from 'react';
+import './SetPassword.css';
 
 const SetPassword = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    
+
     const validatePassword = (pwd) => {
     
     const regex = /[^a-zA-Z0-9\s]/g;
@@ -61,6 +62,7 @@ return (
         </form>
     </div>
     );
+
 };
 
 export default SetPassword;

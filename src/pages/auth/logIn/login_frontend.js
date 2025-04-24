@@ -1,9 +1,12 @@
-import React from "react";
-import TUTIocn1 from "../../assets/TUTIocn1.jpeg"
-import "./loginPage.css";
-import "./resetPage.css";
+
+
+import React from 'react';
+import Icon from "../../../assets/TUTicon1.jpeg";
+import './login_front_style.css';
+
 
 export const LoginPage = () => {
+
   return (
     <div className="login-page">
       <div className="div">
@@ -13,30 +16,38 @@ export const LoginPage = () => {
               <div className="input-and-button">
                 <input
                   className="field"
-                  placeholder="email address"
+                  placeholder="Email address"
                   type="email"
+                  
                 />
-
-                <div className="label-wrapper">
-                  <div className="label">Password</div>
-                </div>
+                <input
+                  className="field"
+                  placeholder="Password"
+                  type="password"
+              
+                />
+                
 
                 <button className="button">
+
                   <div className="text-wrapper">Log in</div>
                 </button>
               </div>
 
-              <div className="text-wrapper-2">forgot password?</div>
+              <div className="text-wrapper-2">Forgot password?</div>
             </div>
 
             <div className="text-wrapper-3">Login</div>
           </div>
         </div>
 
-        <img className="TUT-iocn" alt="Tut iocn" src={TUTIocn1} />
+        <img className="TUT-iocn" alt="Tut iocn" src={Icon} />
 
         <div className="text-wrapper-4">We empower people.</div>
       </div>
     </div>
   );
 };
+
+
+export default LoginPage;
