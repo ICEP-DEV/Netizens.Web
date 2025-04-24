@@ -1,5 +1,5 @@
 import React from 'react';
-import Sidebar from '../../../component/sidebar';
+import Sidebar from '../../../components/sidebar';
 import './dashboard.css';
 
 const DashboardPage = () => {
