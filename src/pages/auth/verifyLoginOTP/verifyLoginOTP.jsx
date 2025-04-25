@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
-import "./verifyLogInOTP.css";
+import "./verifyLoginOTP.css";
 
 const VerifyLogInOTPPage = () => {
 const [otp, setOtp] = useState("");
