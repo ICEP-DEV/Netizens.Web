@@ -31,7 +31,7 @@ export const LoginPage = () => {
   };
 
   const forgotPassword =async () =>{
-      navigate("/forgotPassword")
+      navigate("/forgot-password")
 
   }
   return (
