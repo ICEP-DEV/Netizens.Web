@@ -1,0 +1,129 @@
+.login-page {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(180deg, #fff 0%, #999 100%);
+}
+
+
+.branding {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem;
+  gap: 1rem;
+  height: 100vh;
+  background: none;
+  box-sizing: border-box;
+  justify-content: flex-start; 
+}
+
+.logo {
+  width: 100%;
+  max-width: 500px;
+  height: auto;
+  mix-blend-mode: multiply;
+  filter: brightness(2);
+  margin-top: 2rem; 
+}
+
+.tagline {
+  margin: 0;
+  font-family: "Inter-Italic", Helvetica;
+  font-size: 2rem;
+  font-style: italic;
+  text-align: center;
+}
+
+
+.login-card {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.login-card > .login-form,
+.login-card > .login-heading {
+ 
+}
+
+.login-heading {
+  font-family: "Inter-Black", Helvetica;
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  transform: rotate(-0.59deg);
+  text-align: center;
+  font-weight: 900;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: center;
+  background: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.25);
+  width: 70vh;
+  height: 40vh;
+}
+
+.input {
+  height: 40px;
+  padding: 8px 16px;
+  border: 1px solid #dfdfdf;
+  border-radius: 8px;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.25);
+  font: var(--body-text);
+  text-align: center;
+  color: #828282;
+  width: 80%;
+}
+
+.login-button {
+  height: 40px;
+  border: none;
+  border-radius: 8px;
+  width: 20vh;
+  background: #000;
+  color: #fff;
+  font-family: "Inter-ExtraBold", Helvetica;
+  font-size: 1.25rem;
+  cursor: pointer;
+  box-shadow: 0 4px 4px rgba(0,0,0,0.5);
+}
+
+.forgot-password {
+  background: none;
+  border: none;
+  color: #2c49db;
+  font: var(--m3-title-medium);
+  cursor: pointer;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+
+@media (max-width: 900px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .branding {
+    height: auto;
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  .login-form {
+    width: 90vw;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .login-button {
+    width: 40vw;
+  }
+}
