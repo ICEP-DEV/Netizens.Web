@@ -15,16 +15,15 @@ const handleVerifyLoginOTP = async () => {
     });
 
     if (response.data.status) {
-      toast.success(response?.data.message || "Login successful");
+      toast.success(response?.data.message);
       navigate(response?.data?.url); 
     } else {
-      toast.error(response?.data?.message || "Invalid OTP.");
+      toast.error(response?.data?.message);
     }
   } catch (error) {
-    toast.error((error.response?.data?.message || error.message));
+    toast.error(error.response?.data?.message);
   }
 };
-
 
   return (
     <div className="otp-container">

@@ -2,6 +2,9 @@
 
 import React, { useState } from 'react';
 import './setPassword.css';
+import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
+import toast, {Toaster} from 'react-hot-toast';
 
 const SetPassword = () => {
     const [password, setPassword] = useState('');
@@ -16,7 +19,7 @@ const SetPassword = () => {
     const [success, setSuccess] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
-
+    const navigate =useNavigate();
     const validatePasswordLength = (pwd) => {
         return pwd.length >= 8;
     };
@@ -36,7 +39,7 @@ const SetPassword = () => {
         return regex.test(pwd);
     };
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async(e) => {
         e.preventDefault();
         setError({
             lengthError: '',
@@ -95,6 +98,22 @@ const SetPassword = () => {
         if (isValid) {
             setSuccess('Password has been successfully set!');
         }
+        try {
+            const response = await axios.post("http://localhost:5041/api/Auth/SetPassword", {
+              password,
+              confirmPassword
+            });
+        
+            if (response.data.status) {
+              toast.success(response.data.message);
+              navigate(response?.data?.url);
+            } else {
+              toast.error(response.data.message);
+            }
+          } catch (error) {
+            toast.error((error.response?.data?.message));
+          }
+
     };
 
     // Toggle password visibility
@@ -109,8 +128,9 @@ const SetPassword = () => {
 
     return (
         <div className="set-password">
-            <div className="container">
-                <h1>Create Password</h1> {/* Changed the title */}
+             <Toaster/>
+             <div className="container">
+               <h1>Create Password</h1> {/* Changed the title */}
                 <form onSubmit={handleSubmit}>
                     <div className="password-input-container">
                         <input
