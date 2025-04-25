@@ -7,6 +7,7 @@ import VerifyLoginOTPPage from "./pages/auth/verifyLoginOTP/verifyLoginOTP";
 import VerifyPasswordResetOTPPage from "./pages/auth/verifyPasswordResetOtpPage/verifyPasswordResetOTP";
 import SetPassword from "./pages/auth/setPasswodPages/setPassword";
 import ForgotPasswordPage from "./pages/auth/forgotPasswordPage/forgotPasswordPage";
+import AdminDashboard from "./pages/AdminDashboard/AdminDashboard";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
       <Route path="/verify/password/reset" element={<VerifyPasswordResetOTPPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
       <Route path="/setpassword" element={<SetPassword/>} />
+      <Route path="/dashboard/admin" element={<AdminDashboard/>} />
     </Routes>
     </>
 

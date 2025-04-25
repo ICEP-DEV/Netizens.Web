@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import './AdminDashboard.css'; // Your custom stylesheet
-import logo from "../../assets/TUT-logo97.png";
+// import logo from "../../assets/TUT-logo97.png";
 
 const AdminDashboard = () => {
   const [newUserEmail, setNewUserEmail] = useState('');
@@ -46,7 +46,7 @@ const AdminDashboard = () => {
         {/* Navbar */}
         <nav className="navbar">
           <h1 className="title">Admin Dashboard</h1>
-          <img src={logo} alt="TUT Logo" className="logo" />
+          {/* <img src={logo} alt="TUT Logo" className="logo" /> */}
         </nav>
 
         {/* Dashboard Content */}
