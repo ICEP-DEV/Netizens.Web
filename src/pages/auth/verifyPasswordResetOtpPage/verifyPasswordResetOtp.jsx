@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./verifyPasswordResetOTP.css";
+import "./verifyPasswordResetOtp.css";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 

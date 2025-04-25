@@ -1,7 +1,7 @@
 
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import './AdminDashboard.css'; // Your custom stylesheet
+import './adminDashboard.css'; // Your custom stylesheet
 // import logo from "../../assets/TUT-logo97.png";
 
 const AdminDashboard = () => {
