@@ -1,98 +1,73 @@
 import React, { useState } from "react";
 import "./resetPage.css";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'; 
-import { faTimes } from '@fortawesome/free-solid-svg-icons'; 
+import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast'; 
+import { useNavigate } from 'react-router-dom';
 
 export const ResetPage = () => {
-  const [newPassword, setNewPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState({
-    newPassword: "",
-    confirmPassword: "",
-  });
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-
-    setErrors({
-      newPassword: "",
-      confirmPassword: "",
-    });
-
-    let formIsValid = true;
-    const newErrors = { ...errors };
-
-    if (!newPassword) {
-      newErrors.newPassword = "New password is required.";
-      formIsValid = false;
-    }
-
-    if (!confirmPassword) {
-      newErrors.confirmPassword = "Confirm password is required.";
-      formIsValid = false;
-    }
-
-    if (newPassword && confirmPassword && newPassword !== confirmPassword) {
-      newErrors.confirmPassword = "Passwords do not match.";
-      formIsValid = false;
-    }
-
-    setErrors(newErrors);
-
-    if (formIsValid) {
-      console.log("Password reset to:", newPassword);
-      setNewPassword("");
-      setConfirmPassword("");
-    }
-  };
-
   
-  const handleClose = () => {
-    window.close(); 
+  const [newPassword, setPassword] = useState("");
+  const [confirmPassword, setConfirmPassword] = useState("");
+  const navigate = useNavigate();
+
+  const handleSubmit = async (e) => {
+    e.preventDefault(); 
+
+    if (newPassword !== confirmPassword) {
+      toast.error("Passwords do not match.");
+      return;
+    }
+
+    try {
+      const response = await axios.post("http://localhost:5041/api/Auth/ResetPassword", {
+        NewPassword: newPassword, 
+        ConfirmPassword: confirmPassword,
+      });
+  
+      if (response?.data.status) {
+        toast.success(response?.data.message);
+        navigate("/"); 
+      } else {
+        toast.error(response?.data.message || "Reset failed.");
+      }
+    } catch (error) {
+      toast.error((error.response?.data?.message || "An error occurred"));
+    }
   };
 
   return (
     <div className="reset">
+      <Toaster />
       <div className="div">
         <div className="text-wrapper-2">
-          Reset
-          
-          <button className="close-btn" onClick={handleClose}>
-            <FontAwesomeIcon icon={faTimes} /> 
-          </button>
+          Reset Password
         </div>
 
         <form onSubmit={handleSubmit}>
           <div className="frame-2">
-            <div className="text-wrapper-3">Enter New Password:</div>
+            <div className="text-wrapper-3">Password:</div>
             <input
               type="password"
-              className={`rectangle ${errors.newPassword ? "input-error" : ""}`}
+              className="rectangle"
               value={newPassword}
-              onChange={(e) => setNewPassword(e.target.value)}
+              onChange={(e) => setPassword(e.target.value)}
               required
             />
-            {errors.newPassword && (
-              <div className="error-message">{errors.newPassword}</div>
-            )}
           </div>
 
           <div className="frame-3">
             <div className="text-wrapper-3">Confirm Password:</div>
             <input
               type="password"
-              className={`rectangle-2 ${errors.confirmPassword ? "input-error" : ""}`}
-              value={confirmPassword}
-              onChange={(e) => setConfirmPassword(e.target.value)}
+              className="rectangle-2"
+              value={confirmPassword} 
+              onChange={(e) => setConfirmPassword(e.target.value)} 
               required
             />
-            {errors.confirmPassword && (
-              <div className="error-message">{errors.confirmPassword}</div>
-            )}
           </div>
 
           <div className="frame">
-            <button className="text-wrapper">Confirm</button>
+            <button type="submit" className="text-wrapper">Reset</button> 
           </div>
         </form>
       </div>
