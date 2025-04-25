@@ -6,21 +6,26 @@
   background: linear-gradient(180deg, #fff 0%, #999 100%);
 }
 
-/* Left‑side branding */
+
 .branding {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 2rem;
   gap: 1rem;
+  height: 100vh;
   background: none;
+  box-sizing: border-box;
+  justify-content: flex-start; 
 }
 
 .logo {
-  width: 500px;  /* larger icon */
+  width: 100%;
+  max-width: 500px;
   height: auto;
   mix-blend-mode: multiply;
   filter: brightness(2);
+  margin-top: 2rem; 
 }
 
 .tagline {
@@ -31,7 +36,7 @@
   text-align: center;
 }
 
-/* Right column: restore original form behavior */
+
 .login-card {
   display: flex;
   justify-content: center;
@@ -40,7 +45,7 @@
 
 .login-card > .login-form,
 .login-card > .login-heading {
-  /* no changes here—kept your original styling */
+ 
 }
 
 .login-heading {
@@ -98,4 +103,27 @@
   cursor: pointer;
   text-decoration: none;
   font-weight: bold;
+}
+
+
+@media (max-width: 900px) {
+  .login-page {
+    grid-template-columns: 1fr;
+  }
+
+  .branding {
+    height: auto;
+    padding: 1rem;
+    justify-content: center;
+  }
+
+  .login-form {
+    width: 90vw;
+    height: auto;
+    padding: 1.5rem;
+  }
+
+  .login-button {
+    width: 40vw;
+  }
 }
