@@ -18,7 +18,7 @@ function App() {
       <Route path="/verifylogin" element={<VerifyLoginOTPPage />} />
       <Route path="/verify/password/reset" element={<VerifyPasswordResetOTPPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
-      <Route path="/setpassword" element={<SetPassword/>} />
+      <Route path="/set-password" element={<SetPassword/>} />
     </Routes>
     </>
 
