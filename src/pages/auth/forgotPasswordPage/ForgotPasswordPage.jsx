@@ -1,22 +1,42 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
-import './ForgotPasswordPage.css';
+import React, { useState } from "react";
+import { Link } from "react-router-dom";
+import "./forgotPasswordPage.css";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import { useNavigate } from "react-router-dom";
 
 function ForgotPasswordPage() {
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+  const [email, setEmail] = useState("");
+  const navigate = useNavigate();
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage('Password reset link has been sent to your email (mocked).');
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5041/api/Auth/RecoverAccount",
+        {
+          email,
+        }
+      );
+
+      if (response.data.message?.includes("Forgot Password OTP sent")) {
+        toast.success(response.data.message);
+        console.log(response);
+        navigate("/verify/password/reset");
+      } else {
+        toast.error(response.data.message);
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message);
+    }
   };
 
   return (
     <div className="forgot-password-container">
+      <Toaster />
       <div className="forgot-password-box">
         <h1 className="title">Forgot Password</h1>
-
-        {message && <div className="success-message">{message}</div>}
 
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
@@ -31,7 +51,7 @@ function ForgotPasswordPage() {
           </div>
 
           <button type="submit" className="submit-btn">
-            Send Reset Link
+            Submit
           </button>
         </form>
 

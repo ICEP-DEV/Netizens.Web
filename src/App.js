@@ -6,7 +6,7 @@ import ResetPage from "./pages/auth/resettingPages/resetPage";
 import VerifyLoginOTPPage from "./pages/auth/verifyLoginOTP/verifyLoginOTP";
 import VerifyPasswordResetOTPPage from "./pages/auth/verifyPasswordResetOtpPage/verifyPasswordResetOTP";
 import SetPassword from "./pages/auth/setPasswodPages/setPassword";
-import ForgotPasswordPage from "./pages/auth/forgotPasswordPage/ForgotPasswordPage";
+import ForgotPasswordPage from "./pages/auth/forgotPasswordPage/forgotPasswordPage";
 
 function App() {
   return (

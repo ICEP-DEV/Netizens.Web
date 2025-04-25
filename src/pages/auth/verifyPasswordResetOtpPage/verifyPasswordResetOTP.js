@@ -1,41 +1,41 @@
-import React, { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import './verifyPasswordResetOTP.css';
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./verifyPasswordResetOTP.css";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 function VerifyPasswordResetOTPPage() {
-  const [otp, setOtp] = useState('');
-  const [message, setMessage] = useState('');
-  const email = localStorage.getItem('emailForOtp');
+  const [otp, setOtp] = useState("");
   const navigate = useNavigate();
 
   const handleVerify = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await fetch('http://localhost:3000/api/verify-otp', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, otp }),
-      });
+      const response = await axios.post(
+        "http://localhost:5041/api/Auth/VerifyResetPasswordOtp",
+        {
+          otp,
+        }
+      );
 
-      const data = await res.json();
-      if (res.ok) {
-        setMessage('OTP verified!');
-        setTimeout(() => navigate('/reset-password'), 2000);
+      if (response.data.status) {
+        toast.success(response.data.message);
+        console.log(response);
+        navigate("/reset");
       } else {
-        setMessage(data.error || 'Invalid OTP');
+        toast.error(response.data.message);
       }
-    } catch (err) {
-      console.error(err);
-      setMessage('Server error');
+    } catch (error) {
+      toast.error(error.response?.data?.message);
     }
   };
   return (
+
     <div className="otp-container">
+      <Toaster/>
       <div className="otp-box">
         <h1 className="title">Enter OTP</h1>
-
-        {message && <div className="success-message">{message}</div>}
 
         <form onSubmit={handleVerify} className="form">
           <div className="form-group">
@@ -47,7 +47,9 @@ function VerifyPasswordResetOTPPage() {
               required
             />
           </div>
-          <button type="submit" className="submit-btn">Verify OTP</button>
+          <button type="submit" className="submit-btn">
+            Verify OTP
+          </button>
         </form>
       </div>
     </div>
