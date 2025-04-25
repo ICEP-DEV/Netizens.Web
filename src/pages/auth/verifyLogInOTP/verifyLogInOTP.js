@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
 import "./verifyLogInOTP.css";
 
@@ -13,21 +14,21 @@ const handleVerifyLoginOTP = async () => {
       otp
     });
 
-    if (response.data.success) {
-      alert("Login successful!");
+    if (response.data.status) {
+      toast.success(response?.data.message || "Login successful");
       navigate(response?.data?.url); 
     } else {
-      alert(response?.data?.message || "Invalid OTP.");
+      toast.error(response?.data?.message || "Invalid OTP.");
     }
   } catch (error) {
-    console.error("Login error:", error);
-    alert("Login error: " + (error.response?.data?.message || error.message));
+    toast.error((error.response?.data?.message || error.message));
   }
 };
 
 
   return (
     <div className="otp-container">
+      <Toaster/>
       <div className="otp-card">
         <p>Enter OTP</p>
         <form onSubmit={(e) => {

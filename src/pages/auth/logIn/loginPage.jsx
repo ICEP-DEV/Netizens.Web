@@ -4,6 +4,7 @@ import "./loginPage.css";
 import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
+import toast, { Toaster } from 'react-hot-toast';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,15 +19,14 @@ export const LoginPage = () => {
       });
   
       if (response.data.message?.includes("OTP sent")) {
-        alert(response.data.message);
-        console.log(response)
+        toast.success(response.data.message);
+        console.log(response);
         navigate("/verifylogin");
       } else {
-        alert("Login failed.");
+        toast.error(response.data.message || "Login failed.");
       }
     } catch (error) {
-      console.error("Login error:", error);
-      alert("Login error: " + (error.response?.data || error.message));
+      toast.error((error.response?.data?.message || "Login failed"));
     }
   };
 
@@ -37,6 +37,7 @@ export const LoginPage = () => {
   return (
 
   <div className="login-page">
+    <Toaster />
     <div className="branding">
       <img className="logo" alt="TUT icon" src={Icon} />
       <p className="tagline">We empower people.</p>
