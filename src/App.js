@@ -7,7 +7,7 @@ import VerifyLoginOTPPage from "./pages/auth/verifyLoginOTP/verifyLoginOTP";
 import VerifyPasswordResetOTPPage from "./pages/auth/verifyPasswordResetOtpPage/verifyPasswordResetOTP";
 import SetPassword from "./pages/auth/setPasswodPages/setPassword";
 import ForgotPasswordPage from "./pages/auth/forgotPasswordPage/forgotPasswordPage";
-import AdminDashboard from "./pages/adminDashboard/AdminDashboard";
+import AdminDashboard from "./pages/adminDashboard/adminDashboard";
 
 function App() {
   return (
