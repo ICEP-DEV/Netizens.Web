@@ -8,6 +8,7 @@ import VerifyPasswordResetOTPPage from './pages/auth/verifyPasswordResetOtpPage/
 import SetPasswordPage from './pages/auth/setPasswodPages/setPassword';
 import ForgotPasswordPage from './pages/auth/forgotPasswordPage/forgotPasswordPage';
 import AdminDashboard from './pages/admin/adminDashboard/adminDashboard';
+import HodDashboardPage from './pages/departmentHead/hodDashboard/hodDashboard';
 
 function App() {
   return (
@@ -29,6 +30,9 @@ function App() {
       
       {/*Admin Routes */}
       <Route path="/dashboard/admin" element={<AdminDashboard/>} />
+
+      {/* Department Head Routes */}
+      <Route path="/dashboard/hod" element={<HodDashboardPage />} />
       
 
     </Routes>
