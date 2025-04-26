@@ -85,24 +85,27 @@ export const ResetPasswordPage = () => {
 
 
     if (newPassword !== confirmPassword) {
-      
+      toast.error("passwords do not match");
     }
-
-    try {
-      const response = await axios.post("http://localhost:5041/api/Auth/ResetPassword", {
-        NewPassword: newPassword, 
-        ConfirmPassword: confirmPassword,
-      });
-  
-      if (response?.data.status) {
-        toast.success(response?.data.message);
-        navigate("/"); 
-      } else {
-        toast.error(response?.data.message || "Reset failed.");
+    
+    if(isValid){
+      try {
+        const response = await axios.post("http://localhost:5041/api/Auth/ResetPassword", {
+          NewPassword: newPassword, 
+          ConfirmPassword: confirmPassword,
+        });
+    
+        if (response?.data.status) {
+          toast.success(response?.data.message);
+          navigate("/"); 
+        } else {
+          toast.error(response?.data.message || "Reset failed.");
+        }
+      } catch (error) {
+        toast.error((error.response?.data?.message || "An error occurred"));
       }
-    } catch (error) {
-      toast.error((error.response?.data?.message || "An error occurred"));
     }
+    
   };
 
   // Toggle password visibility
@@ -131,7 +134,7 @@ export const ResetPasswordPage = () => {
                         type={passwordVisible ? 'text' : 'password'}
                         value={newPassword}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="password-input"
+                        className={`password-input ${error.lengthError || error.numberError || error.letterError || error.specialCharError ? 'input-error' : ''}`}
                         required
                     />
                     <button
@@ -142,6 +145,10 @@ export const ResetPasswordPage = () => {
                         {passwordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" /> }
                     </button> 
                 </div>
+                {/* {error.lengthError && <p className="error-message">{error.lengthError}</p>}
+                {error.numberError && <p className="error-message">{error.numberError}</p>}
+                {error.letterError && <p className="error-message">{error.letterError}</p>}
+                {error.specialCharError && <p className="error-message">{error.specialCharError}</p>} */}
                  
 
                 <label htmlFor="email">Confirm password: </label>
@@ -151,7 +158,7 @@ export const ResetPasswordPage = () => {
                         type={confirmPasswordVisible ? 'text' : 'password'}
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="confirm-password-input"
+                        className={`confirm-password-input ${newPassword !== confirmPassword && confirmPassword ? 'input-error' : ''}`}
                         required
                     />
                     <button

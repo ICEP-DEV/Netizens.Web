@@ -85,26 +85,28 @@ const SetPasswordPage = () => {
 
         // Check if passwords match
         if (password !== confirmPassword) {
-            
+            toast.error("passwords do not match");
         }
 
         // If everything is valid, set success message
-
-        try {
-            const response = await axios.post("http://localhost:5041/api/Auth/SetPassword", {
-              password,
-              confirmPassword
-            });
+        if(isValid){
+            try {
+                const response = await axios.post("http://localhost:5041/api/Auth/SetPassword", {
+                  password,
+                  confirmPassword
+                });
+            
+                if (response.data.status) {
+                  toast.success(response.data.message);
+                  navigate(response?.data?.url);
+                } else {
+                  toast.error(response?.data?.message);
+                }
+              } catch (error) {
+                toast.error((error.response?.data?.message || "An error occurred"));
+              }
+        }
         
-            if (response.data.status) {
-              toast.success(response.data.message);
-              navigate(response?.data?.url);
-            } else {
-              toast.error(response?.data?.message);
-            }
-          } catch (error) {
-            toast.error((error.response?.data?.message || "An error occurred"));
-          }
 
     };
     // Toggle password visibility
@@ -135,7 +137,7 @@ const SetPasswordPage = () => {
                         type={passwordVisible ? 'text' : 'password'}
                         value={password}
                         onChange={(e) => setPassword(e.target.value)}
-                        className="password-input"
+                        className={`password-input ${error.lengthError || error.numberError || error.letterError || error.specialCharError ? 'input-error' : ''}`}
                         required
                     />
                     <button
@@ -146,6 +148,10 @@ const SetPasswordPage = () => {
                         {passwordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" /> }
                     </button> 
                 </div>
+                {/* {error.lengthError && <p className="error-message">{error.lengthError}</p>}
+                {error.numberError && <p className="error-message">{error.numberError}</p>}
+                {error.letterError && <p className="error-message">{error.letterError}</p>}
+                {error.specialCharError && <p className="error-message">{error.specialCharError}</p>} */}
                  
 
                 <label htmlFor="email">Confirm password: </label>
@@ -155,7 +161,7 @@ const SetPasswordPage = () => {
                         type={confirmPasswordVisible ? 'text' : 'password'}
                         value={confirmPassword}
                         onChange={(e) => setConfirmPassword(e.target.value)}
-                        className="confirm-password-input"
+                        className={`confirm-password-input ${password !== confirmPassword && confirmPassword ? 'input-error' : ''}`}
                         required
                     />
                     <button
