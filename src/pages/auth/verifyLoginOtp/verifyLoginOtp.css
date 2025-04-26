@@ -1,108 +1,82 @@
-/* index.css updated: paragraph moved to top; card box color changed to #8b9999 */
-
-/* Global reset & background */
-html,
-body {
-  margin: 0;
-  padding: 0;
-  height: 100%;
-  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background: white;
-}
-
-/* Container centers the card */
 .otp-container {
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px;
+  min-height: 100vh;
+  background-color: #eff1ef;
 }
 
-/* Card styling */
-.otp-card {
-  background: #8b9999; /* updated to new box color */
-  padding: 0px;
-  border-radius: 12px;
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+.otp-box {
+  background-color: rgb(255, 255, 255);
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
   width: 100%;
-  max-width: 750px; /* increased box width */
-  height: 50vh;
-  text-align:center;
+}
+
+.title {
+  text-align: center;
+  font-size: 1.8rem;
+  color: #000000f2;
+  margin-bottom: 1.5rem;
+}
+
+/* .success-message {
+  background-color: #d1fae5;
+  color: #065f46;
+  padding: 0.5rem;
+  margin-bottom: 1rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+} */
+
+.form {
   display: flex;
   flex-direction: column;
-  align-items: center;
+  gap: 1rem;
 }
 
-/* Subtitle (paragraph): moved to top */
-.otp-card p {
-  order: -1;               /* place paragraph before other items */
-  font-size: 35px;
-  margin-bottom: 40px;
-  color: #000000;
-  font-weight: bold;
-}
-
-/* OTP field wrapper: label and input close together */
-.otp-field {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 40px;
-  margin-top: 50px;
-  width: 100%;
-}
-
-/* OTP Label */
-.otp-label {
-  font-size: 27px;
-  color: #000000;
-  font-weight: bold;
-  margin: 0;
-  white-space: nowrap;
-}
-
-/* OTP input field: larger height */
-.otp-input {
-  flex: 1;
-  height: 56px;
-  padding: 0 15px;
-  font-size: 18px;
-  border: 1px solid #dddddd;
-  border-radius: 8px;
-  transition: border-color 0.3s, box-shadow 0.3s;
-}
-
-.otp-input:focus {
-  outline: none;
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.2);
-}
-
-/* Verify button: pill shaped, taller, shorter width, centered */
-.otp-button {
+.form-group label {
   display: block;
-  margin: auto;
-  width: 300px;
-  height: 70px;
-  line-height: 70px;
-  font-size: 25px;
-  background-color: #143be8;
-  color: #ffffff;
+  font-weight: 500;
+  margin-bottom: 0.25rem;
+}
+
+.form-group input {
+  width: 100%;
+  margin-top: 5px;
+  padding: 0.5rem;
+  border: 1px solid #000000;
+  border-radius: 8px;
+}
+
+.submit-btn {
+  background-color: #000000;
+  color: white;
+  padding: 0.6rem;
   border: none;
-  border-radius: 9999px;
+  border-radius: 8px;
   cursor: pointer;
-  font-weight: bold;
-  transition: background-color 0.3s, transform 0.1s;
-  margin-top: 70px;
-  margin-bottom: 40px;
+  font-weight: 600;
 }
 
-.otp-button:hover {
-  background-color: #5a67d8;
-  transform: translateY(-2px);
+.submit-btn:hover {
+  background-color: #10105a;
 }
 
-.otp-button:active {
-  transform: translateY(1px);
+.back-link {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.back-link a {
+  color: #020d24;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+  color: #10105a
 }

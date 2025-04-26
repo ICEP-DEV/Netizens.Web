@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./verifyPasswordResetOtp.css";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -27,32 +28,36 @@ function VerifyPasswordResetOTPPage() {
         toast.error(response.data.message);
       }
     } catch (error) {
-      toast.error(error.response?.data?.message);
+      toast.error(error.response?.data?.message || "An error occurred");
     }
   };
   return (
-
     <div className="otp-container">
-      <Toaster/>
-      <div className="otp-box">
-        <h1 className="title">Enter OTP</h1>
-
-        <form onSubmit={handleVerify} className="form">
-          <div className="form-group">
-            <label>Enter OTP sent to your email</label>
-            <input
-              type="text"
-              value={otp}
-              onChange={(e) => setOtp(e.target.value)}
-              required
-            />
+          <Toaster />
+          <div className="otp-box">
+            <h1 className="title">Verify Reset Password OTP</h1>
+    
+            <form onSubmit={handleVerify} className="form">
+              <div className="form-group">
+                <label htmlFor="email">Enter OTP sent to your email: </label>
+                <input
+                  type="text"
+                  value={otp}
+                  onChange={(e) => setOtp(e.target.value)}
+                  required
+                />
+              </div>
+    
+              <button type="submit" className="submit-btn">
+                Verify OTP
+              </button>
+            </form>
+    
+            <div className="back-link">
+              <Link >Resend OTP</Link>
+            </div>
           </div>
-          <button type="submit" className="submit-btn">
-            Verify OTP
-          </button>
-        </form>
-      </div>
-    </div>
+        </div>
   );
 }
 

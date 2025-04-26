@@ -1,10 +1,10 @@
 
-
 import React, { useState } from 'react';
 import './setPassword.css';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast, {Toaster} from 'react-hot-toast';
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/16/solid';
 
 const SetPasswordPage = () => {
     const [password, setPassword] = useState('');
@@ -12,11 +12,10 @@ const SetPasswordPage = () => {
     const [error, setError] = useState({
         lengthError: '',
         numberError: '',
-        letterError: '', // New error state for letter check
+        letterError: '', 
         specialCharError: '',
         matchError: '',
     });
-    const [success, setSuccess] = useState('');
     const [passwordVisible, setPasswordVisible] = useState(false);
     const [confirmPasswordVisible, setConfirmPasswordVisible] = useState(false);
     const navigate =useNavigate();
@@ -44,11 +43,10 @@ const SetPasswordPage = () => {
         setError({
             lengthError: '',
             numberError: '',
-            letterError: '', // Reset the letter error
+            letterError: '', 
             specialCharError: '',
             matchError: '',
         });
-        setSuccess('');
 
         // Validate password rules
         let isValid = true;
@@ -87,17 +85,11 @@ const SetPasswordPage = () => {
 
         // Check if passwords match
         if (password !== confirmPassword) {
-            setError((prevError) => ({
-                ...prevError,
-                matchError: 'Passwords do not match.',
-            }));
-            isValid = false;
+            
         }
 
         // If everything is valid, set success message
-        if (isValid) {
-            setSuccess('Password has been successfully set!');
-        }
+
         try {
             const response = await axios.post("http://localhost:5041/api/Auth/SetPassword", {
               password,
@@ -108,14 +100,13 @@ const SetPasswordPage = () => {
               toast.success(response.data.message);
               navigate(response?.data?.url);
             } else {
-              toast.error(response.data.message);
+              toast.error(response?.data?.message);
             }
           } catch (error) {
-            toast.error((error.response?.data?.message));
+            toast.error((error.response?.data?.message || "An error occurred"));
           }
 
     };
-
     // Toggle password visibility
     const togglePasswordVisibility = () => {
         setPasswordVisible(!passwordVisible);
@@ -126,62 +117,63 @@ const SetPasswordPage = () => {
         setConfirmPasswordVisible(!confirmPasswordVisible);
     };
 
+
+
     return (
-        <div className="set-password">
-             <Toaster/>
-             <div className="container">
-               <h1>Create Password</h1> {/* Changed the title */}
-                <form onSubmit={handleSubmit}>
-                    <div className="password-input-container">
-                        <input
-                            type={passwordVisible ? 'text' : 'password'} // Toggle between text and password input type
-                            placeholder='Password'
-                            className="input"
-                            value={password}
-                            onChange={(e) => setPassword(e.target.value)}
-                            required
-                        />
-                        <button
-                            type="button"
-                            className="toggle-visibility"
-                            onClick={togglePasswordVisibility}
-                        >
-                            {passwordVisible ? 'Hide' : 'Show'}
-                        </button>
-                    </div>
+        <div className="set-password-container">
+          <Toaster />
+          <div className="set-password-box">
+            <h1 className="title">Set Password</h1>
+    
+            <form onSubmit={
+                  handleSubmit} className="form">
+              <div className="form-group">
+                <label htmlFor="email">Enter password: </label>
+                <div className='form-input-container'>
+                    <input
+                        id="password"
+                        type={passwordVisible ? 'text' : 'password'}
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        className="password-input"
+                        required
+                    />
+                    <button
+                        type="button"
+                        className="toggle-visibility"
+                        onClick={togglePasswordVisibility}
+                    >
+                        {passwordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" /> }
+                    </button> 
+                </div>
+                 
 
-                    <div className="password-input-container">
-                        <input
-                            type={confirmPasswordVisible ? 'text' : 'password'} // Toggle between text and password input type
-                            placeholder='Confirm Password'
-                            className="input"
-                            value={confirmPassword}
-                            onChange={(e) => setConfirmPassword(e.target.value)}
-                            required
-                        />
-                        <button
-                            type="button"
-                            className="toggle-visibility"
-                            onClick={toggleConfirmPasswordVisibility}
-                        >
-                            {confirmPasswordVisible ? 'Hide' : 'Show'}
-                        </button>
-                    </div>
-
-                    <button type="submit" className="button" style={{ fontWeight: 'bold' }}>Submit</button> {/* Made the button bold */}
-
-                    {/* Display specific error messages based on the validation results */}
-                    {error.lengthError && <p style={{ color: 'red', marginTop: '10px' }}>{error.lengthError}</p>}
-                    {error.numberError && <p style={{ color: 'red', marginTop: '10px' }}>{error.numberError}</p>}
-                    {error.letterError && <p style={{ color: 'red', marginTop: '10px' }}>{error.letterError}</p>} {/* Error for letters */}
-                    {error.specialCharError && <p style={{ color: 'red', marginTop: '10px' }}>{error.specialCharError}</p>}
-                    {error.matchError && <p style={{ color: 'red', marginTop: '10px' }}>{error.matchError}</p>}
-
-                    {success && <p style={{ color: 'green', marginTop: '10px' }}>{success}</p>}
-                </form>
-
-                {/* Password Rules Section */}
-                <div className="password-rules">
+                <label htmlFor="email">Confirm password: </label>
+                <div className='form-input-container'>
+                    <input
+                        id="confirmPassword"
+                        type={confirmPasswordVisible ? 'text' : 'password'}
+                        value={confirmPassword}
+                        onChange={(e) => setConfirmPassword(e.target.value)}
+                        className="confirm-password-input"
+                        required
+                    />
+                    <button
+                        type="button"
+                        className="toggle-visibility"
+                        onClick={toggleConfirmPasswordVisibility}
+                    >
+                        {confirmPasswordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" />}
+                    </button>
+                </div>
+              </div>
+    
+              <button type="submit" className="submit-btn">
+                Set Password
+              </button>
+            </form>
+    
+            <div className="password-rules">
                     <h3>Password Requirements:</h3>
                     <ul>
                         <li>Password must be 8 characters or more.</li>
@@ -189,7 +181,7 @@ const SetPasswordPage = () => {
                         <li>Password must contain at least one special character (e.g., @, #, &).</li>
                     </ul>
                 </div>
-            </div>
+          </div>
         </div>
     );
 };export default SetPasswordPage;

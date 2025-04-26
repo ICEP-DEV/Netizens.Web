@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from 'react-router-dom';
+import { Link } from "react-router-dom";
 import toast, { Toaster } from 'react-hot-toast';
 import axios from "axios";
 import "./verifyLoginOtp.css";
@@ -21,35 +22,44 @@ const handleVerifyLoginOTP = async () => {
       toast.error(response?.data?.message);
     }
   } catch (error) {
-    toast.error(error.response?.data?.message);
+    toast.error(error.response?.data?.message || "An error occurred");
   }
 };
 
   return (
     <div className="otp-container">
-      <Toaster/>
-      <div className="otp-card">
-        <p>Enter OTP</p>
-        <form onSubmit={(e) => {
-       e.preventDefault();
-       handleVerifyLoginOTP();
-     }}>
-            <div className="otp-field">
-              <label htmlFor="otp" className="otp-label">OTP:</label>
-              <input
-                id="otp"
-                type="text"
-                maxLength="6"
-                value={otp}
-                onChange={(e) => setOtp(e.target.value)}
-                className="otp-input"
-                required
-              />
+          <Toaster />
+          <div className="otp-box">
+            <h1 className="title">Verify Login OTP</h1>
+    
+            <form onSubmit={(e) => {
+                  e.preventDefault();
+                  handleVerifyLoginOTP();
+                }} className="form">
+              <div className="form-group">
+                <label htmlFor="email">Enter OTP sent to your email: </label>
+                <input
+                    id="otp"
+                    type="text"
+                    maxLength="6"
+                    value={otp}
+                    onChange={(e) => setOtp(e.target.value)}
+                    className="otp-input"
+                    required
+                  />
+
+              </div>
+    
+              <button type="submit" className="submit-btn">
+                Verify OTP
+              </button>
+            </form>
+    
+            <div className="back-link">
+              <Link >Resend OTP</Link>
             </div>
-            <button type="submit" className="otp-button">Verify</button>
-        </form>
-      </div>
-    </div>
+          </div>
+        </div>
   );
 };
 

@@ -28,7 +28,7 @@ function ForgotPasswordPage() {
         toast.error(response.data.message);
       }
     } catch (error) {
-      toast.error(error.response?.data?.message);
+      toast.error(error.response?.data?.message || "An error occurred");
     }
   };
 
@@ -40,7 +40,7 @@ function ForgotPasswordPage() {
 
         <form onSubmit={handleSubmit} className="form">
           <div className="form-group">
-            <label htmlFor="email">Enter your email</label>
+            <label htmlFor="email">Enter your email:</label>
             <input
               id="email"
               type="email"

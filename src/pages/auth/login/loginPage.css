@@ -95,14 +95,30 @@
   box-shadow: 0 4px 4px rgba(0,0,0,0.5);
 }
 
-.forgot-password {
+/* .forgot-password {
   background: none;
   border: none;
-  color: #2c49db;
+  color: #000000;
   font: var(--m3-title-medium);
   cursor: pointer;
   text-decoration: none;
   font-weight: bold;
+} */
+
+.back-link {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.back-link a {
+  color: #020d24;
+  text-decoration: none;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+  color: #10105a
 }
 
 

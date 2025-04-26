@@ -5,6 +5,7 @@ import { useState } from "react";
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
+import { Link } from "react-router-dom";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -26,14 +27,14 @@ export const LoginPage = () => {
         toast.error(response.data.message || "Login failed.");
       }
     } catch (error) {
-      toast.error((error.response?.data?.message || "Login failed"));
+      toast.error((error.response?.data?.message || "An error occurred"));
     }
   };
 
-  const forgotPassword =async () =>{
-      navigate("/forgot-password")
+  // const forgotPassword =async () =>{
+  //     navigate("/forgot-password")
 
-  }
+  // }
   return (
 
   <div className="login-page">
@@ -74,12 +75,15 @@ export const LoginPage = () => {
           Log in
         </button>
 
-        <button type="button" className="forgot-password" 
+        {/* <button type="button" className="forgot-password" 
         onClick={forgotPassword}
         >
           forgot password?
 
-        </button>
+        </button> */}
+        <div className="back-link">
+          <Link to="/forgot-password">Forgot password?</Link>
+        </div>
       </form>
     </div>
   </div>
