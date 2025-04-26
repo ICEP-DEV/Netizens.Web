@@ -22,7 +22,7 @@ function VerifyPasswordResetOTPPage() {
       if (response.data.status) {
         toast.success(response.data.message);
         console.log(response);
-        navigate("/reset");
+        navigate("/reset-password");
       } else {
         toast.error(response.data.message);
       }

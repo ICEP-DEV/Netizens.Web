@@ -2,7 +2,7 @@ import React from 'react';
 import Sidebar from '../../../components/sidebar';
 import './dashboard.css';
 
-const DashboardPage = () => {
+const LecturerDashboardPage = () => {
   return (
     <div className="dashboard">
       <Sidebar />
@@ -65,4 +65,4 @@ const DashboardPage = () => {
   );
 };
 
-export default DashboardPage;
+export default LecturerDashboardPage;

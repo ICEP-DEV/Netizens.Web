@@ -6,7 +6,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 import toast, {Toaster} from 'react-hot-toast';
 
-const SetPassword = () => {
+const SetPasswordPage = () => {
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
     const [error, setError] = useState({
@@ -192,4 +192,4 @@ const SetPassword = () => {
             </div>
         </div>
     );
-};export default SetPassword;
+};export default SetPasswordPage;

@@ -4,7 +4,7 @@ import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast'; 
 import { useNavigate } from 'react-router-dom';
 
-export const ResetPage = () => {
+export const ResetPasswordPage = () => {
   
   const [newPassword, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
@@ -75,4 +75,4 @@ export const ResetPage = () => {
   );
 };
 
-export default ResetPage;
+export default ResetPasswordPage;

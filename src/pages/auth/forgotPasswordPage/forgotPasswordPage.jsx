@@ -23,7 +23,7 @@ function ForgotPasswordPage() {
       if (response.data.message?.includes("Forgot Password OTP sent")) {
         toast.success(response.data.message);
         console.log(response);
-        navigate("/verify/password/reset");
+        navigate("/verify/password-reset-otp");
       } else {
         toast.error(response.data.message);
       }

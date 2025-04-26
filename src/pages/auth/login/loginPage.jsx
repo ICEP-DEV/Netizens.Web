@@ -21,7 +21,7 @@ export const LoginPage = () => {
       if (response.data.message?.includes("OTP sent")) {
         toast.success(response.data.message);
         
-        navigate("/verifylogin");
+        navigate("/verify/login-otp");
       } else {
         toast.error(response.data.message || "Login failed.");
       }
