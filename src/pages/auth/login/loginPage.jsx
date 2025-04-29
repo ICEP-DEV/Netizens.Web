@@ -6,18 +6,27 @@ import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 import toast, { Toaster } from 'react-hot-toast';
 import { Link } from "react-router-dom";
+import { EyeIcon, EyeSlashIcon } from '@heroicons/react/16/solid';
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+   const [passwordVisible, setPasswordVisible] = useState(false);
   const navigate = useNavigate();
 
   const validateLogin = async () => {
     try {
       const response = await axios.post("http://localhost:5041/api/Auth/Login", {
         email,
-        password,
-      });
+        password}, {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+        }
+        
+      },
+      
+    );
   
       if (response.data.message?.includes("OTP sent")) {
         toast.success(response.data.message);
@@ -31,62 +40,68 @@ export const LoginPage = () => {
     }
   };
 
-  // const forgotPassword =async () =>{
-  //     navigate("/forgot-password")
-
-  // }
+  const togglePasswordVisibility = () => {
+    setPasswordVisible(!passwordVisible);
+};
   return (
+    <div className="login-container">
+          <Toaster />
+          
+          <div className="login-box">
+          <div className="branding">
+            <img className="logo" alt="TUT icon" src={Icon} />
+            {/* <p className="tagline">We empower people.</p> */}
+          </div>
+            <h1 className="login-page-title">Login</h1>
+    
+            <form onSubmit={(e) => {
+                e.preventDefault();
+                validateLogin();
+              }} className="form">
+              <div className="form-group">
+                <label htmlFor="email">Enter Email: </label>
+                <div className='form-input-container'>
+                    <input
+                        id="email"
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className={`email-input`}
+                        required
+                    />
+                </div>
+                 
 
-  <div className="login-page">
-    <Toaster />
-    <div className="branding">
-      <img className="logo" alt="TUT icon" src={Icon} />
-      <p className="tagline">We empower people.</p>
-    </div>
-
-    <div className="login-card">
-     
-      <form
-       className="login-form"
-       onSubmit={(e) => {
-       e.preventDefault();
-       validateLogin();
-     }}
->
-        <h1 className="login-heading">Login</h1>
-        <input
-          className="input email-input"
-          type="email"
-          placeholder="Email address"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-
-        />
-        <input
-          className="input password-input"
-          type="password"
-          placeholder="Password"
-          value={password}
-          onChange={(e) =>setPassword(e.target.value)}
-
-        />
-
-        <button type="submit" className="login-button">
-          Log in
-        </button>
-
-        {/* <button type="button" className="forgot-password" 
-        onClick={forgotPassword}
-        >
-          forgot password?
-
-        </button> */}
-        <div className="back-link">
-          <Link to="/forgot-password">Forgot password?</Link>
+                <label htmlFor="password">Password: </label>
+                <div className='form-input-container'>
+                    <input
+                        id="password"
+                        type={passwordVisible ? 'text' : 'password'}
+                        value={password}
+                        onChange={(e) =>setPassword(e.target.value)}
+                        className={`password-input`}
+                        required
+                    />
+                    <button
+                        type="button"
+                        className="toggle-visibility"
+                        onClick={togglePasswordVisibility}
+                    >
+                        {passwordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" />}
+                    </button>
+                </div>
+              </div>
+    
+              <button type="submit" className="submit-btn">
+                Login
+              </button>
+            </form>
+            <div className="back-link">
+              <Link to="/forgot-password">Forgot password?</Link>
+            </div>
+          </div>
         </div>
-      </form>
-    </div>
-  </div>
+
 );
 };
 export default LoginPage;

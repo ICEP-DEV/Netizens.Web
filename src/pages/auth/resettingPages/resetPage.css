@@ -3,7 +3,7 @@
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-color: #eff1ef;
+    background: linear-gradient(180deg, #fff 10%, #999 90%);
   }
   
   .reset-password-box {

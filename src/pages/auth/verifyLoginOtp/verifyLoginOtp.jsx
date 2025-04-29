@@ -13,7 +13,13 @@ const handleVerifyLoginOTP = async () => {
   try {
     const response = await axios.post("http://localhost:5041/api/Auth/VerifyLogInOTP", {
       otp
-    });
+    }, {
+      withCredentials: true,
+      headers: {
+        "Content-Type": "application/json",
+    }
+    
+  },);
 
     if (response.data.status) {
       toast.success(response?.data.message);

@@ -93,7 +93,13 @@ export const ResetPasswordPage = () => {
         const response = await axios.post("http://localhost:5041/api/Auth/ResetPassword", {
           NewPassword: newPassword, 
           ConfirmPassword: confirmPassword,
-        });
+        }, {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+        }
+        
+      },);
     
         if (response?.data.status) {
           toast.success(response?.data.message);

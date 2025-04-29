@@ -17,7 +17,13 @@ function ForgotPasswordPage() {
         "http://localhost:5041/api/Auth/RecoverAccount",
         {
           email,
+        }, {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
         }
+        
+      },
       );
 
       if (response.data.message?.includes("Forgot Password OTP sent")) {

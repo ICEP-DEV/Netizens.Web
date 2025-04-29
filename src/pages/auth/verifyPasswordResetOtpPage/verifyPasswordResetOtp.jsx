@@ -17,7 +17,13 @@ function VerifyPasswordResetOTPPage() {
         "http://localhost:5041/api/Auth/VerifyResetPasswordOtp",
         {
           otp,
+        }, {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
         }
+        
+      },
       );
 
       if (response.data.status) {
