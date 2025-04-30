@@ -1,4 +1,3 @@
-
 /* General layout */
 body {
     font-family: Arial, sans-serif;
@@ -10,17 +9,19 @@ body {
 /* Navbar */
 .navbar {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column;
+    align-items: center; /* center everything horizontally */
     background-color: lightblue;
     color: white;
     padding: 16px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    gap: 8px;
 }
 
 .navbar .title {
-    font-size: 1.2rem;
+    font-size: 2rem;  /* Bigger font */
     font-weight: bold;
+    text-align: center;
 }
 
 .edit-profile-link {
@@ -33,9 +34,35 @@ body {
     text-decoration: underline;
 }
 
+.toggle-sidebar {
+    background-color: #444;
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    cursor: pointer;
+    border-radius: 4px;
+}
+
 /* Dashboard content */
 .dashboard-content {
     padding: 24px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    min-height: calc(100vh - 80px); /* adjust for navbar height */
+    position: relative;
+}
+
+/* Centered user management card */
+.card {
+    background-color: white;
+    border: 2px solid #ffeb3b;
+    border-radius: 8px;
+    padding: 20px;
+    width: 100%;
+    max-width: 700px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transform: translateY(45%);
 }
 
 .section-title {
@@ -44,40 +71,34 @@ body {
     margin-bottom: 16px;
 }
 
-/* User management card */
-.card {
-    background-color: white;
-    border: 2px solid #ffeb3b; /* bright yellow border */
-    border-radius: 8px;
-    padding: 20px;
-    max-width: 600px;
-}
-
 .user-input-row {
     display: flex;
+    flex-wrap: wrap;
     gap: 10px;
     margin-bottom: 16px;
 }
 
 .user-input-row input {
-    flex: 1;
+    flex: 1 1 200px;
     padding: 8px;
     border: 1px solid #999;
     border-radius: 4px;
+    min-width: 180px;
 }
 
 .user-input-row button {
-    background-color: #3b5998; /* jean blue */
+    background-color: #3b5998;
     border: none;
     padding: 8px 16px;
     border-radius: 4px;
     color: white;
     font-weight: bold;
     cursor: pointer;
+    flex-shrink: 0;
 }
 
 .user-input-row button:hover {
-    background-color: #2d4373; /* darker jean blue */
+    background-color: #2d4373;
 }
 
 .card ul {
@@ -88,47 +109,68 @@ body {
 .card li {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 8px;
+    align-items: center;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    padding: 8px;
+    border-bottom: 1px solid #ddd;
+}
+
+.card li strong {
+    color: #3b5998;
+}
+
+.card .user-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
 }
 
 .card li button {
-    background-color: red;
-    color: white;
+    padding: 6px 12px;
     border: none;
-    padding: 4px 8px;
     border-radius: 4px;
+    color: white;
     cursor: pointer;
+    font-weight: bold;
 }
 
 .card li button:hover {
+    opacity: 0.9;
+}
+
+.card li button:nth-child(1) {
+    background-color: #28a745;
+}
+
+.card li button:nth-child(1):hover {
+    background-color: #218838;
+}
+
+.card li button:nth-child(2) {
+    background-color: red;
+}
+
+.card li button:nth-child(2):hover {
     background-color: darkred;
 }
 
 /* Sidebar */
 .sidebar {
     position: fixed;
-    left: -250px;
     top: 0;
+    left: 0;
     width: 250px;
     height: 100%;
     background-color: #eee;
-    transition: left 0.3s ease-in-out;
+    padding: 20px;
     z-index: 999;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease-in-out;
 }
 
 .sidebar.visible {
-    left: 0;
-}
-
-.toggle-sidebar {
-    position: absolute;
-    top: 20px;
-    left: 20px;
-    background-color: #444;
-    color: #fff;
-    border: none;
-    padding: 10px;
-    cursor: pointer;
+    transform: translateX(0);
 }
 
 /* Edit Profile Page */
@@ -136,7 +178,7 @@ body {
     max-width: 400px;
     margin: 40px auto;
     background-color: white;
-    border: 3px solid red; /* red border */
+    border: 3px solid red;
     padding: 24px;
     border-radius: 8px;
 }
@@ -156,7 +198,7 @@ body {
 .edit-profile-page input {
     width: 100%;
     padding: 8px;
-    background-color: #3b5998; /* jean blue */
+    background-color: #3b5998;
     color: white;
     border: 1px solid #999;
     border-radius: 4px;
