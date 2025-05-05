@@ -1,6 +1,6 @@
 
 import React, { useState } from 'react';
-import './AdminDashboard.css';
+import './editProfilePage.css';
 
 const EditProfilePage = () => {
 const [name, setName] = useState('Admin');

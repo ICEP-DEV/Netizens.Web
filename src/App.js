@@ -1,43 +1,69 @@
 
-import { Route, Routes } from 'react-router-dom';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+
+// Auth Pages
 import LoginPage from './pages/auth/login/loginPage';
-import LecturerDashboardPage from './pages/lecturer/lecturerDashboard/dashboard';
 import ResetPasswordPage from './pages/auth/resettingPages/resetPage';
 import VerifyLoginOTPPage from './pages/auth/verifyLoginOtp/verifyLoginOtp';
 import VerifyPasswordResetOTPPage from './pages/auth/verifyPasswordResetOtpPage/verifyPasswordResetOtp';
 import SetPasswordPage from './pages/auth/setPasswodPages/setPassword';
 import ForgotPasswordPage from './pages/auth/forgotPasswordPage/forgotPasswordPage';
-import AdminDashboard from './pages/admin/adminDashboard/adminDashboard';
+
+// Dashboard Pages
+import LecturerDashboardPage from './pages/lecturer/lecturerDashboard/dashboard';
 import HodDashboardPage from './pages/departmentHead/hodDashboard/hodDashboard';
 
-function App() {
+// Admin Pages
+import AdminDashboard from './pages/admin/adminDashboard/adminDashboard';
+import AddUserPage from './pages/admin/addUser/addUserPage';
+import EditProfilePage from './pages/admin/profile/editProfilePage';
+import ManageUsers from './pages/admin/manageUser/manageUserPage';
+import AddRolesPage from './pages/admin/addRoles/addRoles';
+
+const App = () => {
+  const [users, setUsers] = useState([
+    {
+      email: 'lecturer@example.com',
+      role: 'Lecturer',
+      departments: ['Computer Science'],
+      group: '',
+      isActive: true,
+    },
+    {
+      email: 'admin@example.com',
+      role: 'Admin',
+      departments: ['Information Technology'],
+      group: '',
+      isActive: true,
+    },
+  ]);
+
   return (
-    <>
-    <Routes>
-      {/* Auth Routes */}
-      {/* Login Routes */}
-      <Route path="/" element={<LoginPage />} />
-      <Route path="/verify/login-otp" element={<VerifyLoginOTPPage />} /> 
-      <Route path="/set-password" element={<SetPasswordPage/>} />
+   
+      <Routes>
+        {/* Auth Routes */}
+        <Route path="/" element={<LoginPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/verify/login-otp" element={<VerifyLoginOTPPage />} />
+        <Route path="/set-password" element={<SetPasswordPage />} />
+        <Route path="/forgot-password" element={<ForgotPasswordPage />} />
+        <Route path="/verify/password-reset-otp" element={<VerifyPasswordResetOTPPage />} />
+        <Route path="/reset-password" element={<ResetPasswordPage />} />
 
-      {/* Recover Account Routes */}
-      <Route path="/forgot-password" element={<ForgotPasswordPage/>} />
-      <Route path="/verify/password-reset-otp" element={<VerifyPasswordResetOTPPage />} />
-      <Route path="/reset-password" element={<ResetPasswordPage />} />
-      
-      {/* lecturer Routes */}
-      <Route path="/dashboard/lecturer" element={<LecturerDashboardPage />} />
-      
-      {/*Admin Routes */}
-      <Route path="/dashboard/admin" element={<AdminDashboard/>} />
+        {/* Dashboard Routes */}
+        <Route path="/dashboard/lecturer" element={<LecturerDashboardPage />} />
+        <Route path="/dashboard/admin" element={<AdminDashboard />} />
+        <Route path="/dashboard/hod" element={<HodDashboardPage />} />
 
-      {/* Department Head Routes */}
-      <Route path="/dashboard/hod" element={<HodDashboardPage />} />
-      
-
-    </Routes>
-    </>
+        {/* Admin Extra Pages */}
+        <Route path="/add-user" element={<AddUserPage />} />
+        <Route path="/edit-profile" element={<EditProfilePage />} />
+        <Route path="/manage-users" element={<ManageUsers users={users} setUsers={setUsers} />} />
+        <Route path="/add-role" element={<AddRolesPage />} /> {/* ✅ Added route */}
+      </Routes>
+   
   );
-}
+};
 
 export default App;

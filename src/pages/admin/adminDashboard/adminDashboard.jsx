@@ -1,38 +1,48 @@
-import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { useState, useRef } from 'react';
+import { FaBell, FaUserCircle, FaPowerOff } from 'react-icons/fa';
+import { Link, useNavigate } from 'react-router-dom';
 import './adminDashboard.css';
 
 const AdminDashboard = () => {
-  const [sidebarVisible, setSidebarVisible] = useState(false);
-  const [addUserVisible, setAddUserVisible] = useState(false);
-  const [newUserEmail, setNewUserEmail] = useState('');
-  const [newUserRole, setNewUserRole] = useState('');
-  const [newUserDepartments, setNewUserDepartments] = useState('');
-  const [users, setUsers] = useState([]);
+  const [users, setUsers] = useState([
+    {
+      email: 'lecturer@example.com',
+      role: 'Lecturer',
+      departments: ['Computer Science'],
+      group: '',
+      isActive: true,
+    },
+    {
+      email: 'admin@example.com',
+      role: 'Admin',
+      departments: ['Information Technology'],
+      group: '',
+      isActive: true,
+    },
+  ]);
 
-  // Add User Functionality
-  const addUser = () => {
-    if (newUserEmail && !users.some((user) => user.email === newUserEmail)) {
-      const departmentsArray = newUserDepartments.split(',').map((dep) => dep.trim()).filter((dep) => dep);
-      const newUser = {
-        email: newUserEmail,
-        role: newUserRole,
-        departments: departmentsArray,
-        isActive: true,
-      };
-      setUsers([...users, newUser]);
-      setNewUserEmail('');
-      setNewUserRole('');
-      setNewUserDepartments('');
-    }
+  const [error, setError] = useState('');
+  const [showGroupModal, setShowGroupModal] = useState(false);
+  const [selectedUserForGroup, setSelectedUserForGroup] = useState(null);
+  const manageUsersRef = useRef(null);
+  const navigate = useNavigate();
+
+  const groupOptions = Array.from({ length: 26 }, (_, i) =>
+    String.fromCharCode(65 + i)
+  );
+
+  const handleLogout = () => {
+    navigate('/login');
   };
 
-  // Delete User Functionality
+  const scrollToManageUsers = () => {
+    manageUsersRef.current?.scrollIntoView({ behavior: 'smooth' });
+  };
+
   const deleteUser = (emailToRemove) => {
     setUsers(users.filter((u) => u.email !== emailToRemove));
   };
 
-  // Toggle User Status (Active/Inactive)
   const toggleUserStatus = (email) => {
     setUsers(
       users.map((u) =>
@@ -41,112 +51,139 @@ const AdminDashboard = () => {
     );
   };
 
-  return (
-    <div className="dashboard-container">
-      {/* Sidebar Toggle Button */}
-      <button
-        className="toggle-sidebar"
-        onClick={() => setSidebarVisible(!sidebarVisible)}
-      >
-        ☰ Menu
-      </button>
+  const openGroupModal = (user) => {
+    if (user.role !== 'Lecturer') {
+      setError('User Is Not A Lecturer');
+      return;
+    }
+    if (!user.isActive) {
+      setError('Cannot assign group to inactive user');
+      return;
+    }
+    setSelectedUserForGroup(user.email);
+    setShowGroupModal(true);
+    setError('');
+  };
 
-      {/* Sidebar */}
-      <aside className={`sidebar ${sidebarVisible ? 'visible' : ''}`}>
-        <h2>Menu</h2>
-        <nav>
-          <ul>
-            <li><a href="/admin">Admin</a></li>
-            <li><Link to="/edit-profile">Edit Profile</Link></li>
-            <li>
-              <button onClick={() => setAddUserVisible(!addUserVisible)}>
-                Add User
-              </button>
-            </li>
-          </ul>
-        </nav>
+  const handleGroupSelect = (group) => {
+    setUsers((prevUsers) =>
+      prevUsers.map((user) =>
+        user.email === selectedUserForGroup ? { ...user, group } : user
+      )
+    );
+    setShowGroupModal(false);
+    setSelectedUserForGroup(null);
+  };
+
+  return (
+    <div className="admin-dashboard">
+      <aside className="sidebar">
+        <div className="logo"></div>
+
+        <Link to="/admin-details" className="sidebar-btn link-button">
+          Dashboard
+        </Link>
+
+        {/* ✅ Add Roles button now directly after Dashboard */}
+        <Link to="/add-role" className="sidebar-btn link-button">
+          Add Roles
+        </Link>
+
+        <Link to="/add-user" className="sidebar-btn link-button">
+          Add Users
+        </Link>
+
+        <Link to="/manage-users" className="sidebar-btn link-button">
+          Manage Users
+        </Link>
+
+        <button className="logout-btn" onClick={handleLogout}>
+          <FaPowerOff /> Logout
+        </button>
       </aside>
 
-      {/* Main content */}
-      <main className="main-content">
-        <nav className="navbar">
-          <div className="title">Admin</div>
-          <button
-            className="toggle-sidebar"
-            onClick={() => setSidebarVisible(!sidebarVisible)}
-          >
-            ☰ Menu
-          </button>
-        </nav>
+      <div className="main-panel">
+        <header className="topbar">
+          <div className="top-right">
+            <FaBell className="icon" />
+            <Link to="/edit-profile" className="admin-profile-link">
+              <FaUserCircle className="icon user-icon" />
+              <span>Admin</span>
+            </Link>
+          </div>
+        </header>
 
-        {/* Admin Details Section */}
-        <div className="dashboard-content">
-          <div className="card">
-            <h2 className="section-title">Admin Details</h2>
-            <ul>
-              <li>
-                <strong>Name:</strong> John Doe
-              </li>
-              <li>
-                <strong>Email:</strong> admin@example.com
-              </li>
-              <li>
-                <strong>Role:</strong> Administrator
-              </li>
-            </ul>
+        <div className="welcome">
+          <h1>Welcome To Admin Dashboard</h1>
+          <p><strong>Current week:</strong> April 14 - April 18, 2025</p>
+        </div>
+
+        <div className="quick-management">
+          <div className="quick-actions card">
+            <h3>Quick Actions:</h3>
+            <button onClick={scrollToManageUsers}>Assign Groups</button>
+          </div>
+
+          <div className="management-overview card">
+            <h3>Management Overview</h3>
+            <p>Total Lecturers: <a href="#">58</a></p>
+            <p>Total Department Head: <a href="#">5</a></p>
+            <p><span className="status-dot active"></span> Active: <a href="#">56</a></p>
+            <p><span className="status-dot inactive"></span> Inactive: <a href="#">2</a></p>
           </div>
         </div>
 
-        {/* Add User Section */}
-        {addUserVisible && (
-          <div className="dashboard-content">
-            <div className="card" id="add-user">
-              <h2 className="section-title">Add User</h2>
-              <div className="user-input-row">
-                <input
-                  type="email"
-                  placeholder="Enter user email"
-                  value={newUserEmail}
-                  onChange={(e) => setNewUserEmail(e.target.value)}
-                />
-                <input
-                  type="text"
-                  placeholder="Enter role (e.g. Manager)"
-                  value={newUserRole}
-                  onChange={(e) => setNewUserRole(e.target.value)}
-                />
-                <input
-                  type="text"
-                  placeholder="Enter departments (comma-separated)"
-                  value={newUserDepartments}
-                  onChange={(e) => setNewUserDepartments(e.target.value)}
-                />
-                <button onClick={addUser}>Add</button>
+        <div className="manage-users card" ref={manageUsersRef}>
+          <h3>Manage Users</h3>
+          {error && <p style={{ color: 'red' }}>{error}</p>}
+          <ul>
+            {users.map((user) => (
+              <li key={user.email}>
+                <strong>{user.email}</strong> | Role: {user.role} | Departments:{' '}
+                {user.departments.join(', ')} | Group: {user.group || 'N/A'} | Status:{' '}
+                <span className={`status-badge ${user.isActive ? 'active' : 'inactive'}`}>
+                  {user.isActive ? 'Active' : 'Inactive'}
+                </span>
+                <div className="user-actions">
+                  <button onClick={() => toggleUserStatus(user.email)}>
+                    {user.isActive ? 'Deactivate' : 'Activate'}
+                  </button>
+                  <button onClick={() => deleteUser(user.email)}>Delete</button>
+                  <button onClick={() => openGroupModal(user)}>Assign Group</button>
+                </div>
+              </li>
+            ))}
+          </ul>
+        </div>
+
+        {showGroupModal && (
+          <div className="group-modal">
+            <div className="modal-content">
+              <h3>Select Group (A-Z)</h3>
+              <div className="group-grid">
+                {groupOptions.map((group) => (
+                  <button
+                    key={group}
+                    onClick={() => handleGroupSelect(group)}
+                    className="group-btn"
+                  >
+                    {group}
+                  </button>
+                ))}
               </div>
+              <button
+                className="close-btn"
+                onClick={() => {
+                  setShowGroupModal(false);
+                  setSelectedUserForGroup(null);
+                }}
+              >
+                Close
+              </button>
             </div>
           </div>
         )}
-
-        {/* Manage Users Section */}
-        <div className="dashboard-content">
-          <h2 className="section-title">Manage Users</h2>
-          <div className="card">
-            <ul>
-              {users.map((user) => (
-                <li key={user.email}>
-                  <strong>{user.email}</strong> | Role: {user.role} | Departments: {user.departments.join(', ')} | Status: {user.isActive ? 'Active' : 'Inactive'}
-                  <div className="user-actions">
-                    <button onClick={() => toggleUserStatus(user.email)}>
-                      {user.isActive ? 'Deactivate' : 'Activate'}
-                    </button>
-                    <button onClick={() => deleteUser(user.email)}>Delete</button>
-                  </div>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </main>
+      </div>
     </div>
   );
 };
