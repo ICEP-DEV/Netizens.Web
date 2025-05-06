@@ -1,0 +1,49 @@
+.manage-user-container {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+  }
+  
+  .table-title {
+    margin-bottom: 20px;
+    color: #01579b;
+    font-size: 24px;
+    font-weight: bold;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: #e0f7fa; /* Sky Blue background */
+    border: 1px solid #90caf9;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  }
+  
+  .user-table th,
+  .user-table td {
+    padding: 12px 15px;
+    text-align: left;
+    border: 1px solid #b3e5fc;
+    font-size: 14px;
+  }
+  
+  .user-table th {
+    background-color: #b2ebf2;
+    color: #01579b;
+    text-transform: uppercase;
+    font-weight: bold;
+  }
+  
+  .user-table tr:hover {
+    background-color: #b3e5fc;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  .status-active {
+    color: #4caf50;
+    font-weight: bold;
+  }
+  
+  .status-inactive {
+    color: #f44336;
+    font-weight: bold;
+  }

@@ -1,63 +1,78 @@
-import React, { useState, useRef } from 'react';
+
+import React, { useState, useEffect } from 'react';
 import { FaBell, FaUserCircle, FaPowerOff } from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
 import './adminDashboard.css';
+import ManageUserTable from '../manageUsersTable/manageUserTable';
 
 const AdminDashboard = () => {
-  const [users, setUsers] = useState([
-    {
-      email: 'lecturer@example.com',
-      role: 'Lecturer',
-      departments: ['Computer Science'],
-      group: '',
-      isActive: true,
-    },
-    {
-      email: 'admin@example.com',
-      role: 'Admin',
-      departments: ['Information Technology'],
-      group: '',
-      isActive: true,
-    },
-  ]);
-
+  const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const [showGroupModal, setShowGroupModal] = useState(false);
   const [selectedUserForGroup, setSelectedUserForGroup] = useState(null);
-  const manageUsersRef = useRef(null);
   const navigate = useNavigate();
 
   const groupOptions = Array.from({ length: 26 }, (_, i) =>
     String.fromCharCode(65 + i)
   );
 
+  // Load users from localStorage on mount
+  useEffect(() => {
+    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+    setUsers(storedUsers);
+  }, []);
+
+  const saveUsers = (updatedUsers) => {
+    setUsers(updatedUsers);
+    localStorage.setItem('users', JSON.stringify(updatedUsers));
+  };
+
   const handleLogout = () => {
     navigate('/login');
   };
 
   const scrollToManageUsers = () => {
-    manageUsersRef.current?.scrollIntoView({ behavior: 'smooth' });
-  };
+    if (users.length === 0) {
+      navigate('/manage-users', {
+        state: { error: '❌ No Users Available To Assign Groups' },
+      });
+      return;
+    }
 
-  const deleteUser = (emailToRemove) => {
-    setUsers(users.filter((u) => u.email !== emailToRemove));
+    const hasActiveLecturer = users.some(
+      (user) => user.role === 'Lecturer' && user.isActive
+    );
+
+    if (!hasActiveLecturer) {
+      navigate('/manage-users', {
+        state: { error: '❌ No Active Lecturers Available To Assign Groups' },
+      });
+      return;
+    }
+
+    // Open Manage Users page with group modal open
+    navigate('/manage-users', { state: { openGroupModal: true } });
   };
 
   const toggleUserStatus = (email) => {
-    setUsers(
-      users.map((u) =>
-        u.email === email ? { ...u, isActive: !u.isActive } : u
-      )
+    const updated = users.map((user) =>
+      user.email === email ? { ...user, isActive: !user.isActive } : user
     );
+    saveUsers(updated);
+  };
+
+  const deleteUser = (email) => {
+    const updated = users.filter((user) => user.email !== email);
+    saveUsers(updated);
   };
 
   const openGroupModal = (user) => {
     if (user.role !== 'Lecturer') {
-      setError('User Is Not A Lecturer');
+      setError('❌ User is not a Lecturer');
       return;
     }
     if (!user.isActive) {
-      setError('Cannot assign group to inactive user');
+      setError('❌ Cannot assign group to inactive user');
       return;
     }
     setSelectedUserForGroup(user.email);
@@ -66,11 +81,10 @@ const AdminDashboard = () => {
   };
 
   const handleGroupSelect = (group) => {
-    setUsers((prevUsers) =>
-      prevUsers.map((user) =>
-        user.email === selectedUserForGroup ? { ...user, group } : user
-      )
+    const updated = users.map((user) =>
+      user.email === selectedUserForGroup ? { ...user, group } : user
     );
+    saveUsers(updated);
     setShowGroupModal(false);
     setSelectedUserForGroup(null);
   };
@@ -80,22 +94,10 @@ const AdminDashboard = () => {
       <aside className="sidebar">
         <div className="logo"></div>
 
-        <Link to="/admin-details" className="sidebar-btn link-button">
-          Dashboard
-        </Link>
-
-        {/* ✅ Add Roles button now directly after Dashboard */}
-        <Link to="/add-role" className="sidebar-btn link-button">
-          Add Roles
-        </Link>
-
-        <Link to="/add-user" className="sidebar-btn link-button">
-          Add Users
-        </Link>
-
-        <Link to="/manage-users" className="sidebar-btn link-button">
-          Manage Users
-        </Link>
+        <Link to="/admin-details" className="sidebar-btn link-button">Dashboard</Link>
+        <Link to="/add-role" className="sidebar-btn link-button">Add Roles</Link>
+        <Link to="/add-user" className="sidebar-btn link-button">Add Users</Link>
+        <Link to="/manage-users" className="sidebar-btn link-button">Manage Users</Link>
 
         <button className="logout-btn" onClick={handleLogout}>
           <FaPowerOff /> Logout
@@ -126,34 +128,17 @@ const AdminDashboard = () => {
 
           <div className="management-overview card">
             <h3>Management Overview</h3>
-            <p>Total Lecturers: <a href="#">58</a></p>
-            <p>Total Department Head: <a href="#">5</a></p>
-            <p><span className="status-dot active"></span> Active: <a href="#">56</a></p>
-            <p><span className="status-dot inactive"></span> Inactive: <a href="#">2</a></p>
+            <p>Total Lecturers: <a href="#">{users.filter(u => u.role === 'Lecturer').length}</a></p>
+            <p>Total Department Head: <a href="#">{users.filter(u => u.role === 'Department Head').length}</a></p>
+            <p><span className="status-dot active"></span> Active: <a href="#">{users.filter(u => u.isActive).length}</a></p>
+            <p><span className="status-dot inactive"></span> Inactive: <a href="#">{users.filter(u => !u.isActive).length}</a></p>
           </div>
         </div>
 
-        <div className="manage-users card" ref={manageUsersRef}>
+        <div className="manage-users card">
           <h3>Manage Users</h3>
           {error && <p style={{ color: 'red' }}>{error}</p>}
-          <ul>
-            {users.map((user) => (
-              <li key={user.email}>
-                <strong>{user.email}</strong> | Role: {user.role} | Departments:{' '}
-                {user.departments.join(', ')} | Group: {user.group || 'N/A'} | Status:{' '}
-                <span className={`status-badge ${user.isActive ? 'active' : 'inactive'}`}>
-                  {user.isActive ? 'Active' : 'Inactive'}
-                </span>
-                <div className="user-actions">
-                  <button onClick={() => toggleUserStatus(user.email)}>
-                    {user.isActive ? 'Deactivate' : 'Activate'}
-                  </button>
-                  <button onClick={() => deleteUser(user.email)}>Delete</button>
-                  <button onClick={() => openGroupModal(user)}>Assign Group</button>
-                </div>
-              </li>
-            ))}
-          </ul>
+          <ManageUserTable users={users} onAssignGroup={openGroupModal} />
         </div>
 
         {showGroupModal && (

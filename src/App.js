@@ -16,10 +16,12 @@ import HodDashboardPage from './pages/departmentHead/hodDashboard/hodDashboard';
 
 // Admin Pages
 import AdminDashboard from './pages/admin/adminDashboard/adminDashboard';
-import AddUserPage from './pages/admin/addUser/addUserPage';
 import EditProfilePage from './pages/admin/profile/editProfilePage';
-import ManageUsers from './pages/admin/manageUser/manageUserPage';
 import AddRolesPage from './pages/admin/addRoles/addRoles';
+
+// Updated Add & Manage User Pages
+import AddUserPage from './pages/admin/addUser/addUserPage';
+import ManageUserPage from './pages/admin/manageUser/manageUserPage';
 
 const App = () => {
   const [users, setUsers] = useState([
@@ -58,9 +60,9 @@ const App = () => {
 
         {/* Admin Extra Pages */}
         <Route path="/add-user" element={<AddUserPage />} />
+        <Route path="/manage-users" element={<ManageUserPage />} />
         <Route path="/edit-profile" element={<EditProfilePage />} />
-        <Route path="/manage-users" element={<ManageUsers users={users} setUsers={setUsers} />} />
-        <Route path="/add-role" element={<AddRolesPage />} /> {/* ✅ Added route */}
+        <Route path="/add-role" element={<AddRolesPage />} />
       </Routes>
    
   );

@@ -1,38 +1,52 @@
 
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 import './addRoles.css';
 
 const AddRolesPage = () => {
   const [newRole, setNewRole] = useState('');
+  const [roles, setRoles] = useState([]);
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [currentRole, setCurrentRole] = useState(null);
   const navigate = useNavigate();
 
   useEffect(() => {
-    const savedRole = localStorage.getItem('role');
-    if (savedRole) {
-      setCurrentRole(savedRole);
-    }
+    const savedRoles = JSON.parse(localStorage.getItem('roles')) || [];
+    setRoles(savedRoles);
   }, []);
 
-  const saveRole = () => {
+  const saveRole = async () => {
     const trimmedRole = newRole.trim();
-    if (trimmedRole) {
-      localStorage.setItem('role', trimmedRole);
-      setCurrentRole(trimmedRole);
-      setNewRole('');
-      setShowSuccessMessage(true);
-      setTimeout(() => {
-        setShowSuccessMessage(false);
-        navigate('/dashboard/admin');
-      }, 1500);
+    if (!trimmedRole || roles.includes(trimmedRole)) return;
+
+    try {
+      const response = await axios.post("http://localhost:5041/api/Auth/AddRole", {
+        roleName: trimmedRole
+      });
+
+      if (response.status === 200) {
+        const updatedRoles = [...roles, trimmedRole];
+        localStorage.setItem('roles', JSON.stringify(updatedRoles));
+        setRoles(updatedRoles);
+        setNewRole('');
+        setShowSuccessMessage(true);
+
+        setTimeout(() => {
+          setShowSuccessMessage(false);
+          navigate('/add-user');
+        }, 1500);
+      } else {
+        console.error('❌ Failed to add role:', response.statusText);
+      }
+    } catch (error) {
+      console.error('🚨 Error while adding role:', error.message);
     }
   };
 
-  const deleteRole = () => {
-    localStorage.removeItem('role');
-    setCurrentRole(null);
+  const deleteRole = (roleToDelete) => {
+    const updatedRoles = roles.filter((role) => role !== roleToDelete);
+    localStorage.setItem('roles', JSON.stringify(updatedRoles));
+    setRoles(updatedRoles);
   };
 
   return (
@@ -49,10 +63,19 @@ const AddRolesPage = () => {
         <button onClick={saveRole}>Save Role</button>
       </div>
 
-      {currentRole && (
+      {roles.length > 0 && (
         <div className="roles-list">
-          <h3>Current Role:</h3>
-          <p>{currentRole} <button className="delete-btn" onClick={deleteRole}>x</button></p>
+          <h3>Saved Roles:</h3>
+          <ul>
+            {roles.map((role, index) => (
+              <li key={index}>
+                {role}
+                <button className="delete-btn" onClick={() => deleteRole(role)}>
+                  x
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
       )}
 
