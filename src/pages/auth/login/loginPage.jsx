@@ -28,7 +28,7 @@ export const LoginPage = () => {
       
     );
   
-      if (response.data.message?.includes("OTP sent")) {
+      if (response.data.status) {
         toast.success(response.data.message);
         
         navigate("/verify/login-otp");

@@ -90,7 +90,13 @@ const handleSubmit = async (e) => {
         const response = await axios.post("http://localhost:5041/api/Auth/SetPassword", {
         password,
         confirmPassword
-        });
+        }, {
+            withCredentials: true,
+            headers: {
+              "Content-Type": "application/json",
+          }
+          
+        },);
 
         if (response.data.status) {
         toast.success(response.data.message);
