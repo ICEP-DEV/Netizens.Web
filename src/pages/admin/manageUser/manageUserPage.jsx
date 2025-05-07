@@ -1,3 +1,4 @@
+
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './manageUserPage.css';
@@ -18,7 +19,9 @@ const ManageUserPage = () => {
     setUsers(storedUsers);
 
     if (location.state?.openGroupModal) {
-      const lecturer = storedUsers.find((u) => u.role === 'Lecturer' && u.isActive);
+      const lecturer = storedUsers.find(
+        (u) => u.role === 'Lecturer' && u.isActive
+      );
       if (lecturer) {
         setSelectedUserForGroup(lecturer.email);
         setShowGroupModal(true);
@@ -86,7 +89,7 @@ const ManageUserPage = () => {
             <th>Contact</th>
             <th>Email</th>
             <th>Role</th>
-            <th>Department</th>
+            <th>Departments</th>
             <th>Group</th>
             <th>Status</th>
             <th>Actions</th>
@@ -102,18 +105,16 @@ const ManageUserPage = () => {
           ) : (
             users.map((user) => (
               <tr key={user.email}>
-                <td>{user.staffNumber}</td>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.contact}</td>
+                <td>{user.staffNumber || 'N/A'}</td>
+                <td>{user.firstName || 'N/A'}</td>
+                <td>{user.surname || 'N/A'}</td>
+                <td>{user.contactDetails || 'N/A'}</td>
                 <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>{user.department}</td>
+                <td>{user.role || 'N/A'}</td>
+                <td>{Array.isArray(user.departments) ? user.departments.join(', ') : 'N/A'}</td>
                 <td>{user.group || 'N/A'}</td>
                 <td>
-                  <span
-                    className={`status-badge ${user.isActive ? 'active' : 'inactive'}`}
-                  >
+                  <span className={`status-badge ${user.isActive ? 'active' : 'inactive'}`}>
                     {user.isActive ? 'Active' : 'Inactive'}
                   </span>
                 </td>
