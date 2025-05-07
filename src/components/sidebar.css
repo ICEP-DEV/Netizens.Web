@@ -1,6 +1,4 @@
 
-
-
 .sidebar-content{
   width: 200px;
   background-color: #e7e4e4;
@@ -9,7 +7,9 @@
   padding: 10px;
   margin: 5px;
   margin-left: 15px;
-  
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 
 .sidebar-content ul {
@@ -21,12 +21,12 @@
 
 .sidebar-content li {
  
-  text-align: start;
+  text-align: center;
   font-weight: bold ;
-  border-radius: 10px;
-  padding: 10px;
-  background: rgb(185, 183, 183) ;
-  margin: 10px 0;
+  border-radius: 15px;
+  padding: 15px;
+  background: rgb(68, 193, 243) ;
+  margin: 3px 0;
   cursor: pointer;
 }
 
@@ -40,4 +40,15 @@
   padding: 15px ;
  border: none;
   
+}
+
+.logo{
+
+  width: 100%;   
+  max-width: 200px;
+  height: auto;   
+  margin-bottom: 20px;
+  align-items: center;
+  justify-content: center;
+  justify-items: center;
 }
