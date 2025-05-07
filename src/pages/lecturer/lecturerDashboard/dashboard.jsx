@@ -1,8 +1,24 @@
 import React from 'react';
+import  { useEffect } from 'react';
 import Sidebar from '../../../components/sidebar';
 import './dashboard.css';
 
 const LecturerDashboardPage = () => {
+  useEffect(() => {
+    const cells = document.querySelectorAll('td');
+
+    cells.forEach(cell => {
+      const text = cell.textContent.trim().toLowerCase();
+
+      if (text === 'pending') {
+        cell.style.color = 'orange';
+        cell.style.fontWeight = 'bold';
+      } else if (text === 'approved') {
+        cell.style.color = 'blue';
+        cell.style.fontWeight = 'bold';
+      }
+    });
+  }, []);
   return (
     <div className="dashboard">
      
@@ -57,7 +73,43 @@ const LecturerDashboardPage = () => {
         <td>1</td>
         <td>COEF05D</td>
         <td>2025-04-20</td>
-        <td>Reviewed</td>
+        <td>Approved</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>PPAFO5D</td>
+        <td>2025-04-27</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>PPAFO5D</td>
+        <td>2025-04-27</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>PPAFO5D</td>
+        <td>2025-04-27</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>PPAFO5D</td>
+        <td>2025-04-27</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>PPAFO5D</td>
+        <td>2025-04-27</td>
+        <td>Pending</td>
+      </tr>
+      <tr>
+         <td>2</td>
+         <td>PPAFO5D</td>
+        <td>2025-04-27</td>
+        <td>Pending</td>
       </tr>
       <tr>
          <td>2</td>
