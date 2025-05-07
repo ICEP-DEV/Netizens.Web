@@ -42,7 +42,7 @@ const App = () => {
   ]);
 
   return (
-   
+  
       <Routes>
         {/* Auth Routes */}
         <Route path="/" element={<LoginPage />} />
@@ -64,7 +64,7 @@ const App = () => {
         <Route path="/edit-profile" element={<EditProfilePage />} />
         <Route path="/add-role" element={<AddRolesPage />} />
       </Routes>
-   
+  
   );
 };
 

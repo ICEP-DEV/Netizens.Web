@@ -16,7 +16,6 @@ const AdminDashboard = () => {
     String.fromCharCode(65 + i)
   );
 
-  // Load users from localStorage on mount
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     setUsers(storedUsers);
@@ -50,7 +49,6 @@ const AdminDashboard = () => {
       return;
     }
 
-    // Open Manage Users page with group modal open
     navigate('/manage-users', { state: { openGroupModal: true } });
   };
 
@@ -89,16 +87,21 @@ const AdminDashboard = () => {
     setSelectedUserForGroup(null);
   };
 
+  // Counts for management overview
+  const totalUsers = users.length;
+  const totalLecturers = users.filter(u => u.role === 'Lecturer').length;
+  const totalDeptHeads = users.filter(u => u.role === 'Department Head').length;
+  const totalActive = users.filter(u => u.isActive).length;
+  const totalInactive = users.filter(u => !u.isActive).length;
+
   return (
     <div className="admin-dashboard">
       <aside className="sidebar">
         <div className="logo"></div>
-
         <Link to="/admin-details" className="sidebar-btn link-button">Dashboard</Link>
         <Link to="/add-role" className="sidebar-btn link-button">Add Roles</Link>
         <Link to="/add-user" className="sidebar-btn link-button">Add Users</Link>
         <Link to="/manage-users" className="sidebar-btn link-button">Manage Users</Link>
-
         <button className="logout-btn" onClick={handleLogout}>
           <FaPowerOff /> Logout
         </button>
@@ -128,10 +131,17 @@ const AdminDashboard = () => {
 
           <div className="management-overview card">
             <h3>Management Overview</h3>
-            <p>Total Lecturers: <a href="#">{users.filter(u => u.role === 'Lecturer').length}</a></p>
-            <p>Total Department Head: <a href="#">{users.filter(u => u.role === 'Department Head').length}</a></p>
-            <p><span className="status-dot active"></span> Active: <a href="#">{users.filter(u => u.isActive).length}</a></p>
-            <p><span className="status-dot inactive"></span> Inactive: <a href="#">{users.filter(u => !u.isActive).length}</a></p>
+            <p>Total Users: <a href="#">{totalUsers}</a></p>
+            <p>Total Lecturers: <a href="#">{totalLecturers}</a></p>
+            <p>Total Department Heads: <a href="#">{totalDeptHeads}</a></p>
+            <p>
+              <span className="status-dot active"></span> Active: 
+              <a href="#"> {totalActive}</a>
+            </p>
+            <p>
+              <span className="status-dot inactive"></span> Inactive: 
+              <a href="#"> {totalInactive}</a>
+            </p>
           </div>
         </div>
 
