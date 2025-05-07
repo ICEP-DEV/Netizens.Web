@@ -1,8 +1,18 @@
 import React from 'react';
 import './sidebar.css';
 import Icon from '../assets/TUTicon1.jpeg';
+import { useNavigate } from 'react-router-dom';
 
 const Sidebar = () => {
+  const navigate=useNavigate();
+
+  const handleLogout = () => {
+    const confirmed = window.confirm('Are you sure you want to logout?');
+    if (confirmed) {
+      localStorage.clear(); 
+      navigate('/');
+    }
+  };
   return (
     <div className="sidebar-content">
       
@@ -13,7 +23,7 @@ const Sidebar = () => {
         <li>My Report </li>
         
       </ul>
-      <button>LOGOUT</button>
+      <button onClick={handleLogout}>LOGOUT</button>
     </div>
   );
 };

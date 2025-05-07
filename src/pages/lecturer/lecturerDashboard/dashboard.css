@@ -15,13 +15,15 @@
   box-sizing: border-box;
   height: 77vh;
   overflow: hidden;
+  
 }
 
 .welcome {
   margin: 0 0 10px 2vh;
-  font-size: larger;
+  font-size: xx-large;
   font-weight: bold;
   color: black;
+  
 }
 
 .main-header {
