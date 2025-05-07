@@ -1,14 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
-import {toast, Toaster} from 'react-hot-toast';
+import { toast, Toaster } from 'react-hot-toast';
 import './addRoles.css';
 
 const AddRolesPage = () => {
   const [newRole, setNewRole] = useState('');
   const [roles, setRoles] = useState([]);
-  const [showSuccessMessage, setShowSuccessMessage] = useState(false);
-  const [errorMessage, setErrorMessage] = useState('');
   const [department, setDepartment] = useState('');
   const [modules, setModules] = useState(['']);
   const navigate = useNavigate();
@@ -21,22 +19,22 @@ const AddRolesPage = () => {
   const saveRole = async () => {
     const trimmedRole = newRole.trim();
 
-    // No role entered
     if (!trimmedRole) {
       await sendRoleStatusToBackend("", 0);
+      toast.error("Please enter a valid role name.");
       return;
     }
 
-    // Role already exists
     if (roles.includes(trimmedRole)) {
       await sendRoleStatusToBackend("", 0);
+      toast.error("Role already exists.");
       return;
     }
 
     try {
       const response = await axios.post("http://localhost:5041/api/Auth/AddRole", {
         roleName: trimmedRole,
-        status: 1
+        status: 1,
       });
 
       if (response.status === 200) {
@@ -44,13 +42,12 @@ const AddRolesPage = () => {
         localStorage.setItem('roles', JSON.stringify(updatedRoles));
         setRoles(updatedRoles);
         setNewRole('');
-        setShowSuccessMessage(true);
-        setTimeout(() => setShowSuccessMessage(false), 1500);
+        toast.success("Role added successfully.");
       } else {
-        console.error('❌ Failed to add role:', response.statusText);
+        toast.error('Failed to add role.');
       }
     } catch (error) {
-      console.error('🚨 Error while adding role:', error.message);
+      toast.error(error.response?.data?.message || "An error occurred while adding role.");
     }
   };
 
@@ -58,7 +55,7 @@ const AddRolesPage = () => {
     try {
       await axios.post("http://localhost:5041/api/Auth/AddRole", {
         roleName,
-        status
+        status,
       });
     } catch (error) {
       console.error("🚨 Failed to send role status:", error.message);
@@ -66,24 +63,20 @@ const AddRolesPage = () => {
   };
 
   const saveDepartment = async () => {
-    // const trimmedDept = department.trim();
-    // if (!trimmedDept) {
-    //   setErrorMessage('Please Fill In All Details Before Saving');
-    //   return null;
-    // }
-
     try {
       const response = await axios.post('http://localhost:5041/api/Academy/AddDepartment', {
-        name : department
+        name: department,
       });
 
       if (response.data.status) {
-        toast.success(response?.data?.message)
+        toast.success(response?.data?.message);
+        return response.data.departmentID || response.data.id;
       } else {
-        toast.error(response?.data?.message)
+        toast.error(response?.data?.message);
+        return null;
       }
     } catch (error) {
-      toast.error((error.response?.data?.message || "An error occurred"));
+      toast.error(error.response?.data?.message || "An error occurred while adding department.");
       return null;
     }
   };
@@ -92,6 +85,7 @@ const AddRolesPage = () => {
     const updatedRoles = roles.filter((role) => role !== roleToDelete);
     localStorage.setItem('roles', JSON.stringify(updatedRoles));
     setRoles(updatedRoles);
+    toast.success("Role deleted.");
   };
 
   const handleModuleChange = (index, value) => {
@@ -113,32 +107,32 @@ const AddRolesPage = () => {
         const moduleData = {
           moduleName,
           moduleCode: moduleName.slice(0, 4).toUpperCase() + Math.floor(Math.random() * 9000 + 1000),
-          departmentID
+          departmentID,
         };
 
         const response = await axios.post('http://localhost:5041/api/Academy/AddModule', moduleData);
         if (response.status === 200 && response.data) {
           savedModuleIDs.push(response.data.moduleID || response.data.id);
         } else {
-          console.warn(`⚠️ Failed to add module "${moduleName}"`);
+          toast.error(`Failed to add module "${moduleName}"`);
         }
       }
+
+      toast.success("Modules saved successfully.");
     } catch (error) {
-      console.error('🚨 Error saving modules:', error.message);
-      alert('❌ Failed to save modules.');
+      toast.error(error.response?.data?.message || 'An error occurred while saving modules.');
     }
 
     return savedModuleIDs;
   };
 
   const handleSaveAll = async () => {
-    setErrorMessage('');
     const trimmedRole = newRole.trim();
     const trimmedDept = department.trim();
     const validModules = modules.filter((m) => m.trim() !== '');
 
     if (!trimmedRole || !trimmedDept || validModules.length === 0) {
-      setErrorMessage('Please Fill In All Details Before Saving');
+      toast.error("Please fill in all details before saving.");
       return;
     }
 
@@ -149,24 +143,17 @@ const AddRolesPage = () => {
 
     const moduleIDs = await handleSaveModules(departmentID);
 
-    console.log('✅ DepartmentID:', departmentID);
-    console.log('✅ ModuleIDs:', moduleIDs);
-
     setModules(['']);
     setDepartment('');
     setNewRole('');
-    setErrorMessage('');
-    setShowSuccessMessage(true);
+    toast.success("All data saved successfully.");
 
-    setTimeout(() => {
-      setShowSuccessMessage(false);
-      navigate('/add-user');
-    }, 1500);
+    setTimeout(() => navigate('/add-user'), 1500);
   };
 
   return (
     <div className="add-roles-page">
-        <Toaster/>
+      <Toaster />
       <h2>Manage Academic Structure</h2>
 
       <div className="centered-group">
@@ -193,14 +180,6 @@ const AddRolesPage = () => {
             ))}
           </ul>
         </div>
-      )}
-
-      {showSuccessMessage && (
-        <p className="success-message">✅ Data Saved Successfully</p>
-      )}
-
-      {errorMessage && (
-        <p className="error-message">{errorMessage}</p>
       )}
 
       <div className="centered-group">
