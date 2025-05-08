@@ -14,7 +14,7 @@ const Sidebar = () => {
     }
   };
   return (
-    <div className="sidebar-content">
+    <div className="sidebar-contents">
       <ul>
         <img className="logo" alt="TUT icon" src={Icon} />
         <li>Dashboard</li>

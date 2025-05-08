@@ -27,7 +27,7 @@ const LecturerDashboardPage = () => {
     <div className="dashboard">
       <Sidebar />
 
-      <div className="main-content">
+      <div className="main-contents">
         <div className="main-header">
           
           <div className="details">

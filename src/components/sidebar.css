@@ -1,4 +1,4 @@
-.sidebar-content {
+.sidebar-contents {
   width: 200px;
   background-color: #e7e4e4;
   color: black;
@@ -12,13 +12,13 @@
   border-radius: 10px;
 }
 
-.sidebar-content ul {
+.sidebar-contents ul {
   margin-top: 0vh;
   list-style: none;
   padding: 2px;
 }
 
-.sidebar-content li {
+.sidebar-contents li {
   text-align: center;
   font-weight: bold;
   border-radius: 15px;
@@ -29,10 +29,10 @@
   transition: transform 0.3s ease;
 }
 
-.sidebar-content li:hover {
+.sidebar-contents li:hover {
   transform: scale(1.09);
 }
-.sidebar-content button {
+.sidebar-contents button {
   width: 20vh;
   background-color: rgb(155, 194, 197);
   font-weight: bold;
@@ -53,6 +53,6 @@
   justify-items: center;
   
 }
-.sidebar-content button:hover {
+.sidebar-contents button:hover {
   transform: scale(1.1);
 }
