@@ -1,7 +1,7 @@
 import React from "react";
 import "./sidebar.css";
 import Icon from "../assets/TUTicon1.jpeg";
-import { useNavigate } from "react-router-dom";
+import { Link,useNavigate } from "react-router-dom";
 
 const Sidebar = () => {
   const navigate = useNavigate();
@@ -17,9 +17,9 @@ const Sidebar = () => {
     <div className="sidebar-contents">
       <ul>
         <img className="logo" alt="TUT icon" src={Icon} />
-        <li>Dashboard</li>
-        <li>New Report</li>
-        <li>My Report </li>
+        <Link className="sidebar-link">Dashboard</Link>
+        <Link className="sidebar-link">New Report</Link>
+        <Link to="/report-history" className="sidebar-link">My Report </Link>
       </ul>
       <button onClick={handleLogout}>LOGOUT</button>
     </div>
