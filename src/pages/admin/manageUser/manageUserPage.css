@@ -1,4 +1,3 @@
-
 .manage-users-page {
     padding: 20px;
     font-family: Arial, sans-serif;
@@ -16,27 +15,58 @@
     margin-bottom: 10px;
   }
   
+  /* Table Design */
   table {
     width: 100%;
-    border-collapse: collapse;
-    background-color: #e0f7fa;
-    border: 1px solid #90caf9;
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    border: none;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   th, td {
     padding: 12px 15px;
     text-align: center;
-    border: 1px solid #b3e5fc;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+    border-top: none;
+    border-bottom: none;
+    font-size: 14px;
+    vertical-align: middle;
+  }
+  
+  th:first-child,
+  td:first-child {
+    border-left: none;
+  }
+  
+  th:last-child,
+  td:last-child {
+    border-right: none;
   }
   
   th {
-    background-color: #b2ebf2;
-    color: #01579b;
+    background-color: #f0f0f0;
+    color: #000;
     font-weight: bold;
-    text-transform: uppercase;
+    text-transform: none;
   }
   
+  tr:nth-child(even) {
+    background-color: #f5f5f5;
+  }
+  
+  tr:nth-child(odd) {
+    background-color: #ffffff;
+  }
+  
+  tr:hover {
+    background-color: #e0e0e0;
+    transition: background-color 0.2s ease-in-out;
+  }
+  
+  /* Status badges */
   .status-badge {
     padding: 5px 10px;
     border-radius: 5px;
@@ -52,6 +82,7 @@
     background-color: #f44336;
   }
   
+  /* Action buttons */
   .user-actions button {
     margin: 0 3px;
     padding: 6px 10px;
@@ -68,13 +99,14 @@
     background-color: #0277bd;
   }
   
+  /* Modal styles */
   .group-modal {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(0,0,0,0.6);
+    background: rgba(0, 0, 0, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;

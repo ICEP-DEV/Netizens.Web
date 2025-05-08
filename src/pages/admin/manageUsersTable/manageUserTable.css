@@ -12,38 +12,79 @@
   
   .user-table {
     width: 100%;
-    border-collapse: collapse;
-    background-color: #e0f7fa; /* Sky Blue background */
-    border: 1px solid #90caf9;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-collapse: separate;
+    border-spacing: 0;
+    background-color: white;
+    border: none; /* Remove outer border */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
   }
   
   .user-table th,
   .user-table td {
-    padding: 12px 15px;
-    text-align: left;
-    border: 1px solid #b3e5fc;
+    padding: 10px;
+    text-align: center;
+    border-left: 1px solid black; /* Column dividers */
+    border-right: 1px solid black;
+    border-top: none;
+    border-bottom: none; /* Remove horizontal lines */
     font-size: 14px;
+    vertical-align: middle;
+  }
+  
+  .user-table th:first-child,
+  .user-table td:first-child {
+    border-left: none; /* No left border on first column */
+  }
+  
+  .user-table th:last-child,
+  .user-table td:last-child {
+    border-right: none; /* No right border on last column */
   }
   
   .user-table th {
-    background-color: #b2ebf2;
-    color: #01579b;
-    text-transform: uppercase;
+    background-color: #f0f0f0; /* Light gray header */
+    color: #000;
     font-weight: bold;
+    text-transform: none;
+  }
+  
+  .user-table tr:nth-child(even) {
+    background-color: #f5f5f5; /* Light gray rows */
+  }
+  
+  .user-table tr:nth-child(odd) {
+    background-color: #ffffff; /* White rows */
   }
   
   .user-table tr:hover {
-    background-color: #b3e5fc;
+    background-color: #e0e0e0; /* Subtle hover effect */
     transition: background-color 0.2s ease-in-out;
   }
   
   .status-active {
-    color: #4caf50;
+    color: green;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
   }
   
   .status-inactive {
-    color: #f44336;
+    color: red;
     font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 6px;
+  }
+  
+  .status-active::before {
+    content: "✅";
+    margin-right: 4px;
+  }
+  
+  .status-inactive::before {
+    content: "❌";
+    margin-right: 4px;
   }

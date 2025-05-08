@@ -5,9 +5,13 @@ const ManageUserTable = () => {
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    setUsers(storedUsers);
-  }, []); // Load users on component mount
+    const interval = setInterval(() => {
+      const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
+      setUsers(storedUsers);
+    }, 500); // Poll every 500ms for live updates
+
+    return () => clearInterval(interval); // Cleanup on unmount
+  }, []);
 
   return (
     <div className="manage-user-container">
@@ -16,32 +20,34 @@ const ManageUserTable = () => {
         <thead>
           <tr>
             <th>Staff Number</th>
-            <th>Full Names</th>
+            <th>First Name</th>
             <th>Surname</th>
-            <th>Contact Details</th>
+            <th>Contact</th>
             <th>Email</th>
             <th>Role</th>
-            <th>Department</th>
-            <th> Group</th>
+            <th>Departments</th>
+            <th>Group</th>
             <th>Status</th>
           </tr>
         </thead>
         <tbody>
           {users.length === 0 ? (
             <tr>
-              <td colSpan="9" style={{ textAlign: 'center' }}>No users available.</td>
+              <td colSpan="9" style={{ textAlign: 'center' }}>
+                No users available.
+              </td>
             </tr>
           ) : (
             users.map((user, index) => (
               <tr key={index}>
-                <td>{user.staffNumber}</td>
-                <td>{user.firstName}</td>
-                <td>{user.lastName}</td>
-                <td>{user.contact}</td>
+                <td>{user.staffNumber || 'N/A'}</td>
+                <td>{user.firstName || 'N/A'}</td>
+                <td>{user.surname || 'N/A'}</td>
+                <td>{user.contactDetails || 'N/A'}</td>
                 <td>{user.email}</td>
-                <td>{user.role}</td>
-                <td>{user.department}</td>
-                <td>{user.group || '-'}</td>
+                <td>{user.role || 'N/A'}</td>
+                <td>{Array.isArray(user.departments) ? user.departments.join(', ') : 'N/A'}</td>
+                <td>{user.group || 'N/A'}</td>
                 <td className={user.isActive ? 'status-active' : 'status-inactive'}>
                   {user.isActive ? 'Active' : 'Inactive'}
                 </td>

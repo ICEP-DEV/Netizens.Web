@@ -6,12 +6,12 @@
   background: linear-gradient(180deg, #fff 10%, #999 90%);
 }
 
-.branding{
+.branding {
   display: flex;
   flex-direction: column;
   /* padding-top: 200px;
-  padding-right: 400px;
-  padding-bottom: 300px; */
+    padding-right: 400px;
+    padding-bottom: 300px; */
   /* padding-left: 150px; */
   align-items: center;
   background: none;
@@ -21,7 +21,7 @@
   justify-self: flex-start;
 }
 
-.logo{
+.logo {
   width: 100%;
   max-width: 100px;
   height: 100px;
@@ -31,12 +31,12 @@
 }
 
 /* .tagline{
-  margin: 0;
-  font-family: "Inter-Italic", Helvetical;
-  font-size: 2rem;
-  font-style: italic;
-  text-align: center;
-} */
+    margin: 0;
+    font-family: "Inter-Italic", Helvetical;
+    font-size: 2rem;
+    font-style: italic;
+    text-align: center;
+  } */
 .login-box {
   background-color: rgb(255, 255, 255);
   display: flex;
@@ -52,8 +52,8 @@
 .login-page-title {
   text-align: center;
   margin-top: 0;
-  font-size: 30pt ;
-  font-weight: 900 ;
+  font-size: 30pt;
+  font-weight: 900;
   color: #000000f2;
   margin-bottom: 1.5rem;
 }
@@ -93,23 +93,19 @@
   background-color: #10105a;
 }
 
-
-
-.toggle-visibility{
+.toggle-visibility {
   margin-top: 6px;
   margin-left: 5px;
   width: 40px;
-  height: 30px; 
+  height: 30px;
 }
 
-.icon{
+.icon {
   margin-top: 5px;
   width: 15px;
   height: 15px;
 }
 
-.form-input-container{
+.form-input-container {
   display: flex;
 }
-
-
