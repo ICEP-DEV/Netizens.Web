@@ -18,6 +18,7 @@ import DepartmentHeadDashboard from "./pages/admin/Logout/DepartmentHeadDashboar
 import AdminDashboard from "./pages/admin/adminDashboard/adminDashboard";
 import EditProfilePage from "./pages/admin/profile/editProfilePage";
 import AddRolesPage from "./pages/admin/addRoles/addRoles";
+import AssignGroup from "./pages/admin/assingGroupPages/assignGroup";
 
 // Updated Add & Manage User Pages
 import AddUserPage from "./pages/admin/addUser/addUserPage";
@@ -53,6 +54,7 @@ const App = () => {
       <Route path="/manage-users" element={<ManageUserPage />} />
       <Route path="/edit-profile" element={<EditProfilePage />} />
       <Route path="/add-role" element={<AddRolesPage />} />
+      <Route path="/assign-group" element={<AssignGroup />} />
 
       {/* Lecturer My Report */}
       <Route path="/report-history" element={<ReportHistory />} />
