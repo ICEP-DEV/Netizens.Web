@@ -18,7 +18,7 @@ const Sidebar = () => {
       <ul>
         <img className="logo" alt="TUT icon" src={Icon} />
         <Link className="sidebar-link">Dashboard</Link>
-        <Link className="sidebar-link">New Report</Link>
+        <Link to="/weekly-report" className="sidebar-link">New Report</Link>
         <Link to="/report-history" className="sidebar-link">My Report </Link>
       </ul>
       <button onClick={handleLogout}>LOGOUT</button>
