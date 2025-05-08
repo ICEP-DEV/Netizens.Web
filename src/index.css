@@ -1,0 +1,851 @@
+.lecturer-repots-page {
+    background-color: #8b9999;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 100%;
+  }
+  
+  .lecturer-repots-page .div {
+    background-color: #8b9999;
+    height: 717px;
+    overflow: hidden;
+    position: relative;
+    width: 1112px;
+  }
+  
+  .lecturer-repots-page .overlap {
+    height: 525px;
+    left: -2px;
+    position: absolute;
+    top: 121px;
+    width: 1116px;
+  }
+  
+  .lecturer-repots-page .rectangle {
+    background-color: #ffffff;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px #00000080;
+    height: 523px;
+    left: 2px;
+    position: absolute;
+    top: 0;
+    width: 1112px;
+  }
+  
+  .lecturer-repots-page .rectangle-2 {
+    background-color: #d9d9d9;
+    height: 47px;
+    left: 0;
+    position: absolute;
+    top: 82px;
+    width: 1116px;
+  }
+  
+  .lecturer-repots-page .rectangle-3 {
+    background-color: #d9d9d9;
+    height: 47px;
+    left: 0;
+    position: absolute;
+    top: 377px;
+    width: 1116px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-2 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 423px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 391px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .rectangle-4 {
+    background-color: #d9d9d9;
+    height: 47px;
+    left: 0;
+    position: absolute;
+    top: 478px;
+    width: 1116px;
+  }
+  
+  .lecturer-repots-page .rectangle-5 {
+    background-color: #d9d9d9;
+    height: 47px;
+    left: 0;
+    position: absolute;
+    top: 277px;
+    width: 1116px;
+  }
+  
+  .lecturer-repots-page .rectangle-6 {
+    background-color: #d9d9d9;
+    height: 47px;
+    left: 0;
+    position: absolute;
+    top: 180px;
+    width: 1116px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-3 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 422px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 195px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-4 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 422px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 149px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-5 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 422px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 345px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-6 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 426px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 443px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .line {
+    height: 397px;
+    left: 68px;
+    object-fit: cover;
+    position: absolute;
+    top: 128px;
+    width: 3px;
+  }
+  
+  .lecturer-repots-page .img {
+    height: 396px;
+    left: 817px;
+    object-fit: cover;
+    position: absolute;
+    top: 129px;
+    width: 2px;
+  }
+  
+  .lecturer-repots-page .line-2 {
+    height: 396px;
+    left: 618px;
+    object-fit: cover;
+    position: absolute;
+    top: 129px;
+    width: 1px;
+  }
+  
+  .lecturer-repots-page .line-3 {
+    height: 395px;
+    left: 331px;
+    object-fit: cover;
+    position: absolute;
+    top: 130px;
+    width: 2px;
+  }
+  
+  .lecturer-repots-page .frame-2 {
+    height: 20px;
+    left: 0;
+    position: absolute;
+    top: 50px;
+    width: 74px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-7 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 14px;
+    font-weight: 700;
+    left: 16px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: -1px;
+  }
+  
+  .lecturer-repots-page .overlap-group {
+    background-color: #d9d9d9;
+    border-radius: 5px;
+    height: 23px;
+    left: 84px;
+    position: absolute;
+    top: -3px;
+    width: 96px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-8 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 12px;
+    font-weight: 400;
+    left: 14px;
+    letter-spacing: 0;
+    line-height: normal;
+    opacity: 0.8;
+    position: absolute;
+    top: 4px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-9 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 24px;
+    font-weight: 700;
+    left: 29px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 92px;
+  }
+  
+  .lecturer-repots-page .surname-initials {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 121px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 97px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-10 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 422px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 95px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-11 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 653px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 97px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-12 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 920px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 96px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .div-wrapper {
+    align-items: center;
+    background-color: var(--variable-collection-color-88);
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    height: 29px;
+    justify-content: center;
+    left: 908px;
+    padding: 5px 31px;
+    position: absolute;
+    top: 140px;
+    width: 100px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-13 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 16px;
+    font-weight: 400;
+    letter-spacing: 0;
+    line-height: normal;
+    margin-top: -1px;
+    position: relative;
+    text-decoration: underline;
+    white-space: nowrap;
+    width: fit-content;
+  }
+  
+  .lecturer-repots-page .frame-3 {
+    align-items: center;
+    background-color: var(--variable-collection-color-88);
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    height: 29px;
+    justify-content: center;
+    left: 908px;
+    padding: 5px 31px;
+    position: absolute;
+    top: 286px;
+    width: 100px;
+  }
+  
+  .lecturer-repots-page .frame-4 {
+    align-items: center;
+    background-color: var(--variable-collection-color-88);
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    height: 29px;
+    justify-content: center;
+    left: 908px;
+    padding: 5px 31px;
+    position: absolute;
+    top: 338px;
+    width: 100px;
+  }
+  
+  .lecturer-repots-page .frame-5 {
+    align-items: center;
+    background-color: var(--variable-collection-color-88);
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    height: 29px;
+    justify-content: center;
+    left: 908px;
+    padding: 5px 31px;
+    position: absolute;
+    top: 387px;
+    width: 100px;
+  }
+  
+  .lecturer-repots-page .frame-6 {
+    align-items: center;
+    background-color: var(--variable-collection-color-88);
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    height: 29px;
+    justify-content: center;
+    left: 908px;
+    padding: 5px 31px;
+    position: absolute;
+    top: 436px;
+    width: 100px;
+  }
+  
+  .lecturer-repots-page .frame-7 {
+    align-items: center;
+    background-color: var(--variable-collection-color-88);
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    height: 29px;
+    justify-content: center;
+    left: 910px;
+    padding: 5px 31px;
+    position: absolute;
+    top: 488px;
+    width: 100px;
+  }
+  
+  .lecturer-repots-page .frame-8 {
+    align-items: center;
+    background-color: var(--variable-collection-color-88);
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    height: 29px;
+    justify-content: center;
+    left: 908px;
+    padding: 5px 31px;
+    position: absolute;
+    top: 238px;
+    width: 100px;
+  }
+  
+  .lecturer-repots-page .frame-9 {
+    align-items: center;
+    background-color: var(--variable-collection-color-88);
+    border-radius: 25px;
+    box-shadow: 0px 4px 4px #00000080;
+    display: flex;
+    gap: 10px;
+    height: 29px;
+    justify-content: center;
+    left: 908px;
+    padding: 5px 31px;
+    position: absolute;
+    top: 189px;
+    width: 100px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-14 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 134px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 342px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-15 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 136px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 489px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-16 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 133px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 438px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-17 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 134px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 397px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-18 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 132px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 240px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-19 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 132px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 296px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-20 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 132px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 189px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-21 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 132px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 149px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-22 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 423px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 296px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-23 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 422px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 243px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-24 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 20px;
+    font-weight: 400;
+    left: 425px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 489px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-25 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 643px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 193px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-26 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 643px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 148px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-27 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 643px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 240px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-28 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 643px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 287px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-29 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 643px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 391px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-30 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 643px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 345px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-31 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 643px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 492px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-32 {
+    color: #000000;
+    font-family: "Inter-Regular", Helvetica;
+    font-size: 14px;
+    font-weight: 400;
+    left: 643px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 453px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-33 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 27px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 149px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-34 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 27px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 289px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-35 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 28px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 343px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-36 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 27px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 392px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-37 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 28px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 445px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-38 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 29px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 498px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-39 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 27px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 193px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .text-wrapper-40 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 20px;
+    font-weight: 700;
+    left: 28px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 243px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .rectangle-7 {
+    background-color: #ffffff;
+    border-radius: 5px;
+    filter: blur(1px);
+    height: 15px;
+    left: 145px;
+    position: absolute;
+    top: 51px;
+    width: 21px;
+  }
+  
+  .lecturer-repots-page .expand-arrow {
+    height: 21px;
+    left: 142px;
+    position: absolute;
+    top: 48px;
+    width: 27px;
+  }
+  
+  .lecturer-repots-page .text-wrapper-41 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 16px;
+    font-weight: 700;
+    left: 548px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 17px;
+    white-space: nowrap;
+  }
+  
+  .lecturer-repots-page .sorting-arrows {
+    height: 30px;
+    left: 1053px;
+    position: absolute;
+    top: 36px;
+    width: 30px;
+  }
+  
+  .lecturer-repots-page .rectangle-8 {
+    height: 396px;
+    left: 1099px;
+    position: absolute;
+    top: 129px;
+    width: 13px;
+  }
+  
+  .lecturer-repots-page .rectangle-9 {
+    background-color: #8b9999;
+    border: 1px solid;
+    border-color: #000000;
+    border-radius: 5px;
+    box-shadow: inset 2px 2px 4px 2px #00000080;
+    height: 40px;
+    left: 1099px;
+    position: absolute;
+    top: 182px;
+    width: 13px;
+  }
+  
+  .lecturer-repots-page .frame-23 {
+    left: -3px !important;
+    position: absolute !important;
+    top: 654px !important;
+  }
+  
+  .lecturer-repots-page .text-wrapper-42 {
+    color: #000000;
+    font-family: "Inter-Bold", Helvetica;
+    font-size: 32px;
+    font-weight: 700;
+    left: 13px;
+    letter-spacing: 0;
+    line-height: normal;
+    position: absolute;
+    top: 36px;
+  }

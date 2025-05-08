@@ -23,6 +23,10 @@ import AddRolesPage from './pages/admin/addRoles/addRoles';
 import AddUserPage from './pages/admin/addUser/addUserPage';
 import ManageUserPage from './pages/admin/manageUser/manageUserPage';
 
+
+// Lecturer My Report
+import ReportHistory from './pages/lecturer/myReport/reportHistory';
+
 const App = () => {
   const [users, setUsers] = useState([
     {
@@ -63,6 +67,10 @@ const App = () => {
         <Route path="/manage-users" element={<ManageUserPage />} />
         <Route path="/edit-profile" element={<EditProfilePage />} />
         <Route path="/add-role" element={<AddRolesPage />} />
+
+        {/* Lecturer My Report */}
+        <Route path="/report-history" element={<ReportHistory />} />
+
       </Routes>
    
   );
