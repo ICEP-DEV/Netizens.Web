@@ -12,6 +12,7 @@ import ForgotPasswordPage from "./pages/auth/forgotPasswordPage/forgotPasswordPa
 // Dashboard Pages
 import LecturerDashboardPage from "./pages/lecturer/lecturerDashboard/dashboard";
 import HodDashboardPage from "./pages/departmentHead/hodDashboard/hodDashboard";
+import DepartmentHeadDashboard from "./pages/admin/Logout/DepartmentHeadDashboard";
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/adminDashboard/adminDashboard";
@@ -45,7 +46,7 @@ const App = () => {
       <Route path="/dashboard/lecturer" element={<LecturerDashboardPage />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
       <Route path="/dashboard/hod" element={<HodDashboardPage />} />
-
+      <Route path="/dashboard/department-head" element={<DepartmentHeadDashboard />} />
 
       {/* Admin Extra Pages */}
       <Route path="/add-user" element={<AddUserPage />} />
@@ -55,7 +56,6 @@ const App = () => {
 
       {/* Lecturer My Report */}
       <Route path="/report-history" element={<ReportHistory />} />
-
     </Routes>
 
 
