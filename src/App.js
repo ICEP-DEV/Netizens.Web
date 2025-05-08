@@ -27,6 +27,7 @@ import ManageUserPage from "./pages/admin/manageUser/manageUserPage";
 
 // Lecturer My Report
 import ReportHistory from './pages/lecturer/myReport/reportHistory';
+import WeeklyReport from "./pages/lecturer/lecturerWeeklyReport/weeklyReprt";
 
 const App = () => {
   return (
@@ -58,6 +59,7 @@ const App = () => {
 
       {/* Lecturer My Report */}
       <Route path="/report-history" element={<ReportHistory />} />
+      <Route path="/weekly-report" element={<WeeklyReport/> }/>
     </Routes>
 
 

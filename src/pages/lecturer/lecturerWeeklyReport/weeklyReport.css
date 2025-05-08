@@ -1,0 +1,161 @@
+body {
+    margin: 0;
+    background-color: #8fa09b;
+    font-family: Arial, sans-serif;
+  }
+  .container {
+    padding: 30px;
+  }
+  
+  h1 {
+    margin-top: 10px;
+  }
+  .submission-date {
+    display:flex;
+    justify-content: flex-end;
+    align-items: center;
+    font-size: 30px;
+    font-weight: bold;
+    margin-top: 10px;
+    gap:5px;
+  }
+  form {
+    background-color: #e4e7e6;
+    padding: 20px;
+    border-radius: 10px;
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+  }
+  
+  .left-panel {
+    flex: 1 1 60%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .right-panel {
+    flex: 1 1 35%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+  }
+  
+  .input-group label {
+    font-weight: bold;
+    font-size: 30px;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .input-group input[type="text"],
+  .input-group input[type="date"],
+  .input-group input[type="number"],
+  .input-group textarea {
+    width: 70%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    font-size: 14px;
+    box-sizing: border-box;
+  }
+  
+  .input-group textarea {
+    resize: vertical;
+    height: 100px;
+  }
+  
+  .week-inputs {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  
+  .groups-section,
+  .communication-section {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+  }
+  
+  .groups-section h3,
+  .communication-section h3 {
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .groups-radio {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+  }
+  
+  .groups-radio label {
+    display: block;
+    margin-bottom: 10px;
+  }
+  
+  .groups-radio input[type="number"] {
+    margin-top: 8px;
+    padding: 5px;
+    width: 100px;
+  }
+  
+  .communication-section label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  /* General button styling */
+  button {
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: 600;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin: 8px;
+  }
+  
+  /* Submit Button */
+  .button-submit {
+    background-color: #007bff;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 123, 255, 0.2);
+  }
+  
+  .button-submit:hover {
+    background-color: #0056b3;
+    box-shadow: 0 6px 10px rgba(0, 123, 255, 0.3);
+  }
+  /* Clear Button */
+  .button-clear {
+    background-color: #6c757d;
+    color: white;
+    box-shadow: 0 4px 6px rgba(108, 117, 125, 0.2);
+  }
+  
+  .button-clear:hover {
+    background-color: #5a6268;
+    box-shadow: 0 6px 10px rgba(108, 117, 125, 0.3);
+  }
+  
+  /* Back Button */
+  .back-button1 {
+    background-color: transparent;
+    color:black;
+    font-weight: 500;
+    border-radius: 6px;
+    padding: 8px 16px;
+    margin-top: 20px;
+    transition: all 0.3s ease;
+  }
+  
+  .back-button1:hover {
+    background-color:black;
+    color: white;
+  }
