@@ -1,14 +1,38 @@
 import React from "react";
-import { useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleUser,
+  faTriangleExclamation,
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 import Sidebar from "../../../components/sidebar";
 import "./dashboard.css";
 
 const LecturerDashboardPage = () => {
+  const [name, setName] = useState("");
+
   useEffect(() => {
+    axios
+      .post(
+        "http://localhost:5041/api/Auth/GetUserDetails",
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        setName(response.data.name);
+      })
+      .catch((error) => {
+        console.error("Error fetching user details:", error);
+      });
+
     const cells = document.querySelectorAll("td");
 
     cells.forEach((cell) => {
@@ -29,12 +53,9 @@ const LecturerDashboardPage = () => {
 
       <div className="main-contents">
         <div className="main-header">
-          
           <div className="details">
-            
-            <FontAwesomeIcon icon={faCircleUser}  className="userIcon"/>
-            <p> Username</p>
-            
+            <FontAwesomeIcon icon={faCircleUser} className="userIcon" />
+            <p> {name}</p>
           </div>
           <p className="welcome">Welcome, Lecturer</p>
         </div>
@@ -59,12 +80,13 @@ const LecturerDashboardPage = () => {
             <div className="item">
               <h1>
                 Upcoming <br /> in:
-                
               </h1>
-              <FontAwesomeIcon icon={faTriangleExclamation}  className="triangle-excl-icon" />
+              <FontAwesomeIcon
+                icon={faTriangleExclamation}
+                className="triangle-excl-icon"
+              />
               <p>4 days</p>
-
-              </div>
+            </div>
           </div>
 
           <div className="table-section">
