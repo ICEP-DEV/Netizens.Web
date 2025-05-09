@@ -5,10 +5,7 @@ const WeeklyReport = () => {
   return (
     <div className="container">
       <h1>Submit weekly report</h1>
-      <div className="submission-date">
-        <label>Submission Date:</label>
-        <input type="date" defaultValue="2025-04-25" />
-      </div>
+      
 
       <form>
         <div className="left-panel">
