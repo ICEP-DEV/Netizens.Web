@@ -137,7 +137,7 @@ const AdminDashboard = () => {
           <FaBookOpen className="sidebar-icon-left" /> Modules
         </Link>
         <Link to="/add-user" className="sidebar-btn link-button">
-          <FaUsers className="sidebar-icon-left" /> Users
+          <FaUsers className="sidebar-icon-left" /> User Registration
         </Link>
         <Link to="/manage-users" className="sidebar-btn link-button">
           <FaChalkboardTeacher className="sidebar-icon-left" /> User Management

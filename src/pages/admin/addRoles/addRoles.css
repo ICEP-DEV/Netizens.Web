@@ -1,0 +1,115 @@
+/* addRoles.css */
+
+.add-roles-page {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  font-family: 'Arial', sans-serif;
+}
+
+.add-roles-page h2 {
+  text-align: center;
+  color: #222;
+  font-size: 24px;
+  font-weight: bold;
+  margin-bottom: 25px;
+}
+
+.centered-group {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.inline-group.role-input {
+  display: flex;
+  gap: 10px;
+  width: 100%;
+  max-width: 450px;
+}
+
+.inline-group input {
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f1f1f1;
+}
+
+.inline-group button {
+  padding: 10px 16px;
+  font-size: 16px;
+  background-color: #28a745;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.inline-group button:hover {
+  background-color: #218838;
+}
+
+.roles-list {
+  margin-top: 30px;
+}
+
+.roles-list h3 {
+  color: #444;
+  font-size: 20px;
+  margin-bottom: 15px;
+}
+
+.roles-list ul {
+  padding-left: 0;
+  list-style-type: none;
+}
+
+.roles-list li {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+  font-size: 16px;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  color: #fff;
+  border: none;
+  padding: 6px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+@media (max-width: 500px) {
+  .inline-group.role-input {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .roles-list li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .delete-btn {
+    align-self: flex-end;
+  }
+}

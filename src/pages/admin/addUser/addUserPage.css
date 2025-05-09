@@ -1,0 +1,81 @@
+.add-user-page {
+  background-color: #7a8a86;
+  border-radius: 15px;
+  padding: 20px;
+  max-width: 500px;
+  margin: 40px auto;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  font-family: 'Arial', sans-serif;
+}
+
+.add-user-page h2 {
+  text-align: center;
+  font-size: 26px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  color: #000;
+}
+
+.add-user-page p {
+  color: #ff0000;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.add-user-page a button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 20px;
+}
+
+.add-user-page a button:hover {
+  background-color: #449d48;
+}
+
+.user-input-row {
+  background-color: #fff;
+  border-radius: 12px;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.user-input-row input,
+.user-input-row select {
+  padding: 10px 12px;
+  font-size: 16px;
+  border-radius: 10px;
+  border: none;
+  background-color: #ddd;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.user-input-row select[multiple] {
+  height: 100px;
+}
+
+.user-input-row button {
+  padding: 10px;
+  font-size: 16px;
+  background-color: #349ecf;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.user-input-row button:hover {
+  background-color: #2a90c0;
+}
