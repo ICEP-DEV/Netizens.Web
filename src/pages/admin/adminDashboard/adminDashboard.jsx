@@ -1,25 +1,50 @@
-
 import React, { useState, useEffect } from 'react';
-import { FaBell, FaUserCircle, FaPowerOff } from 'react-icons/fa';
+import {
+  FaBell,
+  FaUserCircle,
+  FaPowerOff,
+  FaTachometerAlt,
+  FaUsers,
+  FaUserShield,
+  FaChalkboardTeacher,
+  FaUserEdit,
+  FaBookOpen,
+  FaUniversity,
+} from 'react-icons/fa';
 import { Link, useNavigate } from 'react-router-dom';
-import './adminDashboard.css';
 import ManageUserTable from '../manageUsersTable/manageUserTable';
+import Icon from "../../../assets/TUTicon1.jpeg";
+import './adminDashboard.css';
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
   const [error, setError] = useState('');
   const [showGroupModal, setShowGroupModal] = useState(false);
   const [selectedUserForGroup, setSelectedUserForGroup] = useState(null);
+  const [currentTime, setCurrentTime] = useState(new Date());
   const navigate = useNavigate();
 
-  const groupOptions = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(65 + i)
-  );
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
     setUsers(storedUsers);
   }, []);
+
+  const getCurrentWeekRange = (date) => {
+    const day = date.getDay();
+    const monday = new Date(date);
+    const friday = new Date(date);
+    monday.setDate(date.getDate() - ((day + 6) % 7));
+    friday.setDate(monday.getDate() + 4);
+    const options = { month: 'long', day: 'numeric', year: 'numeric' };
+    return `${monday.toLocaleDateString(undefined, options)} - ${friday.toLocaleDateString(undefined, options)}`;
+  };
 
   const saveUsers = (updatedUsers) => {
     setUsers(updatedUsers);
@@ -87,7 +112,6 @@ const AdminDashboard = () => {
     setSelectedUserForGroup(null);
   };
 
-  // Counts for management overview
   const totalUsers = users.length;
   const totalLecturers = users.filter(u => u.role === 'Lecturer').length;
   const totalDeptHeads = users.filter(u => u.role === 'Department Head').length;
@@ -97,11 +121,30 @@ const AdminDashboard = () => {
   return (
     <div className="admin-dashboard">
       <aside className="sidebar">
-        <div className="logo"></div>
-        <Link to="/admin-details" className="sidebar-btn link-button">Dashboard</Link>
-        <Link to="/add-role" className="sidebar-btn link-button">Add Roles</Link>
-        <Link to="/add-user" className="sidebar-btn link-button">Add Users</Link>
-        <Link to="/manage-users" className="sidebar-btn link-button">Manage Users</Link>
+        <img src={Icon} alt="TUT Icon" className="sidebar-icon" />
+        <div className="university-name">Tshwane University Of Technology</div>
+
+        <Link to="/admin-details" className="sidebar-btn link-button">
+          <FaTachometerAlt className="sidebar-icon-left" /> Dashboard
+        </Link>
+        <Link to="/add-role" className="sidebar-btn link-button">
+          <FaUserShield className="sidebar-icon-left" /> Roles
+        </Link>
+        <Link to="/add-department" className="sidebar-btn link-button">
+          <FaUniversity className="sidebar-icon-left" /> Department
+        </Link>
+        <Link to="/add-module" className="sidebar-btn link-button">
+          <FaBookOpen className="sidebar-icon-left" /> Modules
+        </Link>
+        <Link to="/add-user" className="sidebar-btn link-button">
+          <FaUsers className="sidebar-icon-left" /> Users
+        </Link>
+        <Link to="/manage-users" className="sidebar-btn link-button">
+          <FaChalkboardTeacher className="sidebar-icon-left" /> User Management
+        </Link>
+        <Link to="/edit-profile" className="sidebar-btn link-button">
+          <FaUserEdit className="sidebar-icon-left" /> Profile
+        </Link>
         <button className="logout-btn" onClick={handleLogout}>
           <FaPowerOff /> Logout
         </button>
@@ -109,6 +152,12 @@ const AdminDashboard = () => {
 
       <div className="main-panel">
         <header className="topbar">
+          <div className="date-time-display">
+            <div>{currentTime.toLocaleDateString()}</div>
+            <div>{currentTime.toLocaleTimeString()}</div>
+            <div className="week-range">📅 Week: {getCurrentWeekRange(currentTime)}</div>
+          </div>
+
           <div className="top-right">
             <FaBell className="icon" />
             <Link to="/edit-profile" className="admin-profile-link">
@@ -120,7 +169,6 @@ const AdminDashboard = () => {
 
         <div className="welcome">
           <h1>Welcome To Admin Dashboard</h1>
-          <p><strong>Current week:</strong> April 14 - April 18, 2025</p>
         </div>
 
         <div className="quick-management">
@@ -134,14 +182,8 @@ const AdminDashboard = () => {
             <p>Total Users: <a href="#">{totalUsers}</a></p>
             <p>Total Lecturers: <a href="#">{totalLecturers}</a></p>
             <p>Total Department Heads: <a href="#">{totalDeptHeads}</a></p>
-            <p>
-              <span className="status-dot active"></span> Active: 
-              <a href="#"> {totalActive}</a>
-            </p>
-            <p>
-              <span className="status-dot inactive"></span> Inactive: 
-              <a href="#"> {totalInactive}</a>
-            </p>
+            <p><span className="status-dot active"></span> Active: <a href="#"> {totalActive}</a></p>
+            <p><span className="status-dot inactive"></span> Inactive: <a href="#"> {totalInactive}</a></p>
           </div>
         </div>
 
@@ -156,7 +198,7 @@ const AdminDashboard = () => {
             <div className="modal-content">
               <h3>Select Group (A-Z)</h3>
               <div className="group-grid">
-                {groupOptions.map((group) => (
+                {Array.from({ length: 26 }, (_, i) => String.fromCharCode(65 + i)).map((group) => (
                   <button
                     key={group}
                     onClick={() => handleGroupSelect(group)}
