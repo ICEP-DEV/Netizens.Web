@@ -1,0 +1,87 @@
+/* addModules.css */
+.add-interface-page {
+  max-width: 700px;
+  margin: 40px auto;
+  padding: 25px;
+  background-color: #ffffff;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.add-interface-page h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.inline-group {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.inline-group input,
+.inline-group select {
+  flex: 1 1 45%;
+  padding: 10px;
+  font-size: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.inline-group button {
+  padding: 10px 15px;
+  font-size: 15px;
+  background-color: #17a2b8;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.inline-group button:hover {
+  background-color: #138496;
+}
+
+.delete-btn {
+  background-color: #dc3545;
+  padding: 8px 12px;
+  font-size: 14px;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  background-color: #c82333;
+}
+
+.existing-modules {
+  margin-top: 30px;
+  background-color: #f8f9fa;
+  padding: 15px;
+  border-radius: 8px;
+}
+
+.existing-modules h3 {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.existing-modules ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.existing-modules li {
+  margin-bottom: 8px;
+  font-size: 15px;
+}
+
+.code-tag {
+  font-weight: bold;
+  color: #555;
+}

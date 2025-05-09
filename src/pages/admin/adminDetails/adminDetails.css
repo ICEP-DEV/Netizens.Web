@@ -1,14 +1,14 @@
-.add-user-page {
+.admin-details-page {
   background-color: #7a8a86;
   border-radius: 15px;
   padding: 20px;
-  max-width: 500px;
+  max-width: 480px;
   margin: 40px auto;
   box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
   font-family: 'Arial', sans-serif;
 }
 
-.add-user-page h2 {
+.admin-details-page h2 {
   text-align: center;
   font-size: 26px;
   font-weight: bold;
@@ -16,42 +16,16 @@
   color: #000;
 }
 
-.add-user-page p {
-  color: #ff0000;
-  font-weight: bold;
-  font-size: 16px;
-  text-align: center;
-  margin-bottom: 10px;
-}
-
-.add-user-page a button {
-  display: block;
-  width: 100%;
-  padding: 10px;
-  font-size: 16px;
-  background-color: #4caf50;
-  color: white;
-  border: none;
-  border-radius: 10px;
-  cursor: pointer;
-  margin-bottom: 20px;
-}
-
-.add-user-page a button:hover {
-  background-color: #449d48;
-}
-
-.user-input-row {
+.admin-input-form {
   background-color: #fff;
   border-radius: 12px;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 14px;
+  gap: 12px;
 }
 
-.user-input-row input,
-.user-input-row select {
+.admin-input-form input {
   padding: 10px 12px;
   font-size: 16px;
   border-radius: 10px;
@@ -61,11 +35,13 @@
   box-sizing: border-box;
 }
 
-.user-input-row select[multiple] {
-  height: 100px;
+.admin-input-form input[readonly] {
+  background-color: #c0c0c0;
+  color: #555;
+  cursor: not-allowed;
 }
 
-.user-input-row button {
+.admin-input-form button {
   padding: 10px;
   font-size: 16px;
   background-color: #349ecf;
@@ -76,6 +52,6 @@
   margin-top: 10px;
 }
 
-.user-input-row button:hover {
+.admin-input-form button:hover {
   background-color: #2a90c0;
 }

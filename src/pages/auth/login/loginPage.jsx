@@ -1,12 +1,10 @@
-import React from "react";
-import Icon from "../../../assets/TUTicon1.jpeg";
-import "./loginPage.css";
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
-import { Link } from "react-router-dom";
 import { EyeIcon, EyeSlashIcon } from "@heroicons/react/16/solid";
+import Icon from "../../../assets/TUTicon1.jpeg";
+import "./loginPage.css";
 
 export const LoginPage = () => {
   const [email, setEmail] = useState("");
@@ -18,21 +16,16 @@ export const LoginPage = () => {
     try {
       const response = await axios.post(
         "http://localhost:5041/api/Auth/Login",
-        {
-          email,
-          password,
-        },
+        { email, password },
         {
           withCredentials: true,
-          headers: {
-            "Content-Type": "application/json",
-          },
+          headers: { "Content-Type": "application/json" },
         }
       );
 
       if (response.data.status) {
+        localStorage.setItem("loggedInEmail", email); // ✅ Store logged-in email
         toast.success(response.data.message);
-
         navigate("/verify/login-otp");
       } else {
         toast.error(response.data.message || "Login failed.");
@@ -45,17 +38,15 @@ export const LoginPage = () => {
   const togglePasswordVisibility = () => {
     setPasswordVisible(!passwordVisible);
   };
+
   return (
     <div className="login-container">
       <Toaster />
-
       <div className="login-box">
         <div className="branding">
           <img className="logo" alt="TUT icon" src={Icon} />
-          {/* <p className="tagline">We empower people.</p> */}
         </div>
         <h1 className="login-page-title">Login</h1>
-
         <form
           onSubmit={(e) => {
             e.preventDefault();
@@ -71,7 +62,7 @@ export const LoginPage = () => {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
-                className={`email-input`}
+                className="email-input"
                 required
               />
             </div>
@@ -83,7 +74,7 @@ export const LoginPage = () => {
                 type={passwordVisible ? "text" : "password"}
                 value={password}
                 onChange={(e) => setPassword(e.target.value)}
-                className={`password-input`}
+                className="password-input"
                 required
               />
               <button
@@ -111,4 +102,5 @@ export const LoginPage = () => {
     </div>
   );
 };
+
 export default LoginPage;

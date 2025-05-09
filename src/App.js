@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 // Auth Pages
 import LoginPage from "./pages/auth/login/loginPage";
@@ -19,15 +19,19 @@ import AdminDashboard from "./pages/admin/adminDashboard/adminDashboard";
 import EditProfilePage from "./pages/admin/profile/editProfilePage";
 import AddRolesPage from "./pages/admin/addRoles/addRoles";
 import AssignGroup from "./pages/admin/assingGroupPages/assignGroup";
+import AdminDetails from "./pages/admin/adminDetails/adminDetails";
 
-// Updated Add & Manage User Pages
+// User Management Pages
 import AddUserPage from "./pages/admin/addUser/addUserPage";
 import ManageUserPage from "./pages/admin/manageUser/manageUserPage";
 
-
-// Lecturer My Report
-import ReportHistory from './pages/lecturer/myReport/reportHistory';
+// Lecturer Report Pages
+import ReportHistory from "./pages/lecturer/myReport/reportHistory";
 import WeeklyReport from "./pages/lecturer/lecturerWeeklyReport/weeklyReprt";
+
+// Department & Module Pages
+import AddDepartment from "./pages/admin/addDepartment/addDepartment";
+import AddModule from "./pages/admin/addModules/addModules";
 
 const App = () => {
   return (
@@ -38,10 +42,7 @@ const App = () => {
       <Route path="/verify/login-otp" element={<VerifyLoginOTPPage />} />
       <Route path="/set-password" element={<SetPasswordPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-      <Route
-        path="/verify/password-reset-otp"
-        element={<VerifyPasswordResetOTPPage />}
-      />
+      <Route path="/verify/password-reset-otp" element={<VerifyPasswordResetOTPPage />} />
       <Route path="/reset-password" element={<ResetPasswordPage />} />
 
       {/* Dashboard Routes */}
@@ -50,20 +51,22 @@ const App = () => {
       <Route path="/dashboard/hod" element={<HodDashboardPage />} />
       <Route path="/dashboard/department-head" element={<DepartmentHeadDashboard />} />
 
-      {/* Admin Extra Pages */}
+      {/* Admin Functionality */}
       <Route path="/add-user" element={<AddUserPage />} />
       <Route path="/manage-users" element={<ManageUserPage />} />
       <Route path="/edit-profile" element={<EditProfilePage />} />
       <Route path="/add-role" element={<AddRolesPage />} />
       <Route path="/assign-group" element={<AssignGroup />} />
+      <Route path="/admin-details" element={<AdminDetails />} />
 
-      {/* Lecturer My Report */}
+      {/* Department & Module Management */}
+      <Route path="/add-department" element={<AddDepartment />} />
+      <Route path="/add-module" element={<AddModule />} />
+
+      {/* Lecturer Reports */}
       <Route path="/report-history" element={<ReportHistory />} />
-      <Route path="/weekly-report" element={<WeeklyReport/> }/>
+      <Route path="/weekly-report" element={<WeeklyReport />} />
     </Routes>
-
-
-
   );
 };
 

@@ -1,0 +1,91 @@
+/* addDepartment.css */
+.add-interface-page {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 25px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  .add-interface-page h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .inline-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 15px;
+  }
+  
+  .inline-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 15px;
+  }
+  
+  .inline-group button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    border: none;
+    border-radius: 5px;
+    color: white;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .inline-group button:hover {
+    background-color: #0056b3;
+  }
+  
+  .roles-list {
+    margin-top: 20px;
+  }
+  
+  .roles-list h3 {
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .department-list {
+    list-style-type: none;
+    padding-left: 0;
+  }
+  
+  .department-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 8px 12px;
+    margin-bottom: 8px;
+  }
+  
+  .department-item span {
+    font-size: 16px;
+    color: #333;
+  }
+  
+  .delete-btn {
+    background-color: #dc3545;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-btn:hover {
+    background-color: #b52a37;
+  }
+  
