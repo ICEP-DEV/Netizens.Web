@@ -1,8 +1,8 @@
-body {
+/* body {
     margin: 0;
     background-color: #8fa09b;
     font-family: Arial, sans-serif;
-  }
+  } */
   .container {
     padding: 30px;
   }
@@ -19,14 +19,14 @@ body {
     margin-top: 10px;
     gap:5px;
   }
-  form {
+  /* form {
     background-color: #e4e7e6;
     padding: 20px;
     border-radius: 10px;
     display: flex;
     gap: 20px;
     justify-content: space-between;
-  }
+  } */
   
   .left-panel {
     flex: 1 1 60%;
@@ -110,7 +110,7 @@ body {
     margin-bottom: 8px;
   }
   /* General button styling */
-  button {
+  /* button {
     padding: 10px 20px;
     font-size: 16px;
     font-weight: 600;
@@ -119,7 +119,7 @@ body {
     cursor: pointer;
     transition: all 0.3s ease;
     margin: 8px;
-  }
+  } */
   
   /* Submit Button */
   .button-submit {

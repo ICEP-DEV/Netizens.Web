@@ -79,7 +79,7 @@ export const LoginPage = () => {
               />
               <button
                 type="button"
-                className="toggle-visibility"
+                className="login-toggle-visibility"
                 onClick={togglePasswordVisibility}
               >
                 {passwordVisible ? (
