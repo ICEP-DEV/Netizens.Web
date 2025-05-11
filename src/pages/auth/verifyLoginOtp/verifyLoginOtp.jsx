@@ -33,16 +33,16 @@ const handleVerifyLoginOTP = async () => {
 };
 
   return (
-    <div className="otp-container">
+    <div className="login-otp-container">
           <Toaster />
-          <div className="otp-box">
-            <h1 className="title">Verify Login OTP</h1>
+          <div className="login-otp-box">
+            <h1 className="login-otp-title">Verify Login OTP</h1>
     
             <form onSubmit={(e) => {
                   e.preventDefault();
                   handleVerifyLoginOTP();
-                }} className="form">
-              <div className="form-group">
+                }} className="login-otp-form">
+              <div className="login-otp-form-group">
                 <label htmlFor="email">Enter OTP sent to your email: </label>
                 <input
                     id="otp"
@@ -50,18 +50,18 @@ const handleVerifyLoginOTP = async () => {
                     maxLength="6"
                     value={otp}
                     onChange={(e) => setOtp(e.target.value)}
-                    className="otp-input"
+                    className="login-otp-input"
                     required
                   />
 
               </div>
     
-              <button type="submit" className="submit-btn">
+              <button type="submit" className="login-otp-submit-btn">
                 Verify OTP
               </button>
             </form>
     
-            <div className="back-link">
+            <div className="login-otp-back-link">
               <Link >Resend OTP</Link>
             </div>
           </div>

@@ -43,8 +43,8 @@ export const LoginPage = () => {
     <div className="login-container">
       <Toaster />
       <div className="login-box">
-        <div className="branding">
-          <img className="logo" alt="TUT icon" src={Icon} />
+        <div className="login-branding">
+          <img className="login-logo" alt="TUT icon" src={Icon} />
         </div>
         <h1 className="login-page-title">Login</h1>
         <form
@@ -52,11 +52,11 @@ export const LoginPage = () => {
             e.preventDefault();
             validateLogin();
           }}
-          className="form"
+          className="login-form"
         >
-          <div className="form-group">
+          <div className="login-form-group">
             <label htmlFor="email">Enter Email: </label>
-            <div className="form-input-container">
+            <div className="login-form-input-container">
               <input
                 id="email"
                 type="email"
@@ -68,7 +68,7 @@ export const LoginPage = () => {
             </div>
 
             <label htmlFor="password">Password: </label>
-            <div className="form-input-container">
+            <div className="login-form-input-container">
               <input
                 id="password"
                 type={passwordVisible ? "text" : "password"}
@@ -83,19 +83,19 @@ export const LoginPage = () => {
                 onClick={togglePasswordVisibility}
               >
                 {passwordVisible ? (
-                  <EyeSlashIcon className="icon" />
+                  <EyeSlashIcon className="login-icon" />
                 ) : (
-                  <EyeIcon className="icon" />
+                  <EyeIcon className="login-icon" />
                 )}
               </button>
             </div>
           </div>
 
-          <button type="submit" className="submit-btn">
+          <button type="submit" className="login-submit-btn">
             Login
           </button>
         </form>
-        <div className="back-link">
+        <div className="login-back-link">
           <Link to="/forgot-password">Forgot password?</Link>
         </div>
       </div>

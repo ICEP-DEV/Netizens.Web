@@ -122,11 +122,11 @@ return (
     <div className="set-password-container">
     <Toaster />
     <div className="set-password-box">
-        <h1 className="title">Create Password</h1>
-        <form onSubmit={handleSubmit} className="form">
-        <div className="form-group">
+        <h1 className="set-password-title">Create Password</h1>
+        <form onSubmit={handleSubmit} className="set-password-form">
+        <div className="set-password-form-group">
             <label htmlFor="email">Enter password: </label>
-            <div className='form-input-container'>
+            <div className='set-password-form-input-container'>
             <input
                 id="password"
                 type={passwordVisible ? 'text' : 'password'}
@@ -137,15 +137,15 @@ return (
             />
             <button
                 type="button"
-                className="toggle-visibility"
+                className="set-password-toggle-visibility"
                 onClick={togglePasswordVisibility}
             >
-                {passwordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" />}
+                {passwordVisible ? <EyeSlashIcon className="set-password-icon" /> : <EyeIcon className="set-password-icon" />}
             </button>
             </div>
 
             <label htmlFor="email">Confirm password: </label>
-            <div className='form-input-container'>
+            <div className='set-password-form-input-container'>
             <input
                 id="confirmPassword"
                 type={confirmPasswordVisible ? 'text' : 'password'}
@@ -156,19 +156,19 @@ return (
             />
             <button
                 type="button"
-                className="toggle-visibility"
+                className="set-password-toggle-visibility"
                 onClick={toggleConfirmPasswordVisibility}
         >
-                {confirmPasswordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" />}
+                {confirmPasswordVisible ? <EyeSlashIcon className="set-password-icon" /> : <EyeIcon className="set-password-icon" />}
             </button>
             </div>
 
         </div>
 
-          <button type="submit" className="submit-btn">Submit</button>
+          <button type="submit" className="set-password-submit-btn">Submit</button>
         </form>
 
-        <div className="password-rules">
+        <div className="set-password-password-rules">
         <h3>Password Requirements:</h3>
         <ul>
             <li>Password must be 8 characters or more.</li>

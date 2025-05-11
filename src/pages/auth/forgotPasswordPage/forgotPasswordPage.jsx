@@ -42,10 +42,10 @@ function ForgotPasswordPage() {
     <div className="forgot-password-container">
       <Toaster />
       <div className="forgot-password-box">
-        <h1 className="title">Forgot Password</h1>
+        <h1 className="forgot-password-title">Forgot Password</h1>
 
-        <form onSubmit={handleSubmit} className="form">
-          <div className="form-group">
+        <form onSubmit={handleSubmit} className="forgot-password-form">
+          <div className="forgot-password-form-group">
             <label htmlFor="email">Enter your email:</label>
             <input
               id="email"
@@ -56,12 +56,12 @@ function ForgotPasswordPage() {
             />
           </div>
 
-          <button type="submit" className="submit-btn">
+          <button type="submit" className="forgot-password-submit-btn">
             Submit
           </button>
         </form>
 
-        <div className="back-link">
+        <div className="forgot-password-back-link">
           <Link to="/">Back to Login</Link>
         </div>
       </div>

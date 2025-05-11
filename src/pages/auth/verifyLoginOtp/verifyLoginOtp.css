@@ -1,4 +1,4 @@
-.otp-container {
+.login-otp-container {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -6,7 +6,7 @@
   background: linear-gradient(180deg, #fff 10%, #999 90%);
 }
 
-.otp-box {
+.login-otp-box {
   background-color: rgb(255, 255, 255);
   padding: 2rem;
   border-radius: 1rem;
@@ -15,7 +15,7 @@
   width: 100%;
 }
 
-.title {
+.login-otp-title {
   text-align: center;
   font-size: 1.8rem;
   color: #000000f2;
@@ -31,19 +31,19 @@
   font-size: 0.9rem;
 } */
 
-.form {
+.login-otp-form {
   display: flex;
   flex-direction: column;
   gap: 1rem;
 }
 
-.form-group label {
+.login-otp-form-group label {
   display: block;
   font-weight: 500;
   margin-bottom: 0.25rem;
 }
 
-.form-group input {
+.login-otp-form-group input {
   width: 100%;
   margin-top: 5px;
   padding: 0.5rem;
@@ -51,7 +51,7 @@
   border-radius: 8px;
 }
 
-.submit-btn {
+.login-otp-submit-btn {
   background-color: #000000;
   color: white;
   padding: 0.6rem;
@@ -61,22 +61,22 @@
   font-weight: 600;
 }
 
-.submit-btn:hover {
+.login-otp-submit-btn:hover {
   background-color: #10105a;
 }
 
-.back-link {
+.login-otp-back-link {
   margin-top: 1rem;
   text-align: center;
   font-size: 0.9rem;
 }
 
-.back-link a {
+.login-otp-back-link a {
   color: #020d24;
   text-decoration: none;
 }
 
-.back-link a:hover {
+.login-otp-back-link a:hover {
   text-decoration: underline;
   color: #10105a
 }
