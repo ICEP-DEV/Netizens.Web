@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import axios from 'axios';
 import './addUserPage.css';
+import { toast, Toaster } from 'react-hot-toast';
 
 const AddUserPage = ({ interface: interfaceData = null }) => {
   const location = useLocation();
@@ -16,37 +17,26 @@ const AddUserPage = ({ interface: interfaceData = null }) => {
   const [email, setEmail] = useState('');
   const [selectedRole, setSelectedRole] = useState('');
   const [roleOptions, setRoleOptions] = useState([]);
-  const [roleIdMap, setRoleIdMap] = useState({});
 
   useEffect(() => {
-    if (interfaceData) {
-      const idMap = {};
-      const roles = interfaceData.map(role => {
-        idMap[role.roleName] = role.roleId;
-        return role.roleName;
-      });
-      setRoleOptions(roles);
-      setRoleIdMap(idMap);
-    } else {
+    if (!interfaceData) {
       fetchRoles();
+    } else {
+      setRoleOptions(interfaceData);
     }
   }, [interfaceData]);
 
   const fetchRoles = async () => {
     try {
-      const response = await axios.get('http://localhost:5041/api/Auth/GetAllRoles');
-      if (Array.isArray(response.data)) {
-        const idMap = {};
-        const roles = response.data.map(role => {
-          idMap[role.roleName] = role.roleId;
-          return role.roleName;
-        });
-        setRoleOptions(roles);
-        setRoleIdMap(idMap);
+      const response = await axios.get('http://localhost:5041/api/Getters/GetAllRoles');
+      if (response?.data?.status && Array.isArray(response.data.roles)) {
+        setRoleOptions(response.data.roles);
       } else {
+        toast.error('Failed to load roles.');
         setRoleOptions([]);
       }
-    } catch {
+    } catch (error) {
+      toast.error('Error fetching roles.');
       setRoleOptions([]);
     }
   };
@@ -67,6 +57,16 @@ const AddUserPage = ({ interface: interfaceData = null }) => {
     return true;
   };
 
+  const resetForm = () => {
+    setStaffNumber('');
+    setFirstName('');
+    setSurname('');
+    setContactDetails('');
+    setEmail('');
+    setSelectedRole('');
+    setError('');
+  };
+
   const addUser = async () => {
     if (!validateInputs()) return;
 
@@ -76,27 +76,26 @@ const AddUserPage = ({ interface: interfaceData = null }) => {
       userSurname: surname.trim(),
       contacts: contactDetails.trim(),
       email: email.trim(),
-      roleId: roleIdMap[selectedRole] || 0,
+      roleId: parseInt(selectedRole),
     };
 
     try {
-      await axios.post('http://localhost:5041/api/Auth/AddUserAccount', payload);
+      const results = await axios.post('http://localhost:5041/api/Auth/AddUserAccount', payload);
 
-      setStaffNumber('');
-      setFirstName('');
-      setSurname('');
-      setContactDetails('');
-      setEmail('');
-      setSelectedRole('');
-      setError('');
-      alert('User successfully added.');
+      if (results?.data?.status) {
+        toast.success(results?.data?.message);
+        resetForm();
+      } else {
+        toast.error(results?.data?.message);
+      }
     } catch (err) {
-      setError(err.response?.data?.message || 'Failed to add user. Check input or backend.');
+      toast.error(err.results?.data?.message || 'An error occurred.');
     }
   };
 
   return (
     <div className="add-user-page">
+      <Toaster />
       <h2>Registration</h2>
 
       {error && (
@@ -149,9 +148,9 @@ const AddUserPage = ({ interface: interfaceData = null }) => {
           onChange={(e) => setSelectedRole(e.target.value)}
         >
           <option value="">Select Role</option>
-          {roleOptions.map((role, idx) => (
-            <option key={idx} value={role}>
-              {role}
+          {roleOptions.map((role) => (
+            <option key={role.roleId || role.RoleId} value={role.roleId || role.RoleId}>
+              {role.roleName || role.RoleName}
             </option>
           ))}
         </select>
