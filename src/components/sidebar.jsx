@@ -16,10 +16,11 @@ const Sidebar = () => {
   return (
     <div className="sidebar-contents">
       <ul>
-        <img className="logo" alt="TUT icon" src={Icon} />
+        <img className="sidebar-logo" alt="TUT icon" src={Icon} />
         <Link className="sidebar-link">Dashboard</Link>
         <Link to="/weekly-report" className="sidebar-link">New Report</Link>
         <Link to="/report-history" className="sidebar-link">My Report </Link>
+        <Link to="/report-history" className="sidebar-link">My Profile </Link>
       </ul>
       <button onClick={handleLogout}>LOGOUT</button>
     </div>

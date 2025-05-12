@@ -46,7 +46,7 @@
   transition: transform 0.3s ease;
 }
 
-.logo {
+.sidebar-logo {
   width: 100%;
   max-width: 200px;
   height: auto;
@@ -54,6 +54,8 @@
   align-items: center;
   justify-content: center;
   justify-items: center;
+  mix-blend-mode: multiply;
+  filter: brightness(2);
   
 }
 .sidebar-contents button:hover {
