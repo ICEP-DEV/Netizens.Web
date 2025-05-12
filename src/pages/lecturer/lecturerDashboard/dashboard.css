@@ -1,4 +1,4 @@
-.dashboard {
+.lecture-dashboard {
   display: flex;
   background-color: rgb(167, 186, 187);
   min-height: 100vh;
@@ -8,7 +8,7 @@
   
 }
 
-.main-body {
+.lecture-dashboard-main-body {
   
   
   background-color: white;
@@ -20,14 +20,14 @@
   overflow: hidden;
 }
 
-.welcome {
+.lecture-dashboard-welcome {
   margin: 0 0 10px 2vh;
   font-size: xx-large;
   font-weight: bold;
   color: black;
 }
 
-.main-header {
+.lecture-dashboard-main-header {
   display: flex;
   flex-direction: column;
   padding-bottom: 10px;
@@ -40,7 +40,7 @@
   flex-direction: row;
 }
 
-.details {
+.lecture-dashboard-details {
   display: flex;
   padding: 5px 10px;
   font-weight: 200;
@@ -52,12 +52,12 @@
   
   
 }
-.details p{
+.lecture-dashboard-details p{
   display: flex;
   align-self: flex-end;
 }
 
-.main-contents {
+.lecture-dashboard-main-contents {
   flex: 1;
   display: flex;
   flex-direction: column;
@@ -66,7 +66,7 @@
   box-sizing: border-box;
 }
 
-.vertical-items {
+.lecture-dashboard-vertical-items {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -75,19 +75,20 @@
   box-sizing: border-box;
 }
 
-.item {
+.lecture-dashboard-item {
   background-color: #f5eded;
   padding: 20px;
   border-radius: 8px;
   flex: 1 1 180px;
   min-width: 50px;
   box-sizing: border-box;
-  text-align: center;
-  height: 30vh;
+  height: 34vh;
   border: 2px solid black;
   box-sizing: border-box;
   margin-left: 2vh;
   text-align: start;
+  overflow: hidden;
+  
   
 }
 
@@ -97,12 +98,13 @@
   border: none;
   margin: 0;
   text-align: start;
+  overflow: hidden;
 }
-.item p {
+.lecture-dashboard-item p {
   font-size: 3vh;
 }
 
-.item button {
+.lecture-dashboard-item button {
   font-size: large;
   border: none;
   font-weight: bolder;
@@ -117,12 +119,12 @@
   transition: transform 0.3s;
   cursor: pointer;
 }
-.item button:hover {
+.lecture-dashboard-item button:hover {
   transform: scale(1.1);
 }
 
 @media (max-width: 768px) {
-  .item {
+  .lecture-dashboard-item {
     flex: 1 1 100%;
   }
 
@@ -130,7 +132,7 @@
     flex: 1 1 100%;
   }
 }
-.table-section {
+.lecture-dashboard-table-section {
   
   width: 100%;
   background-color: #f5eded;
@@ -142,7 +144,7 @@
   overflow-y: auto;
 }
 
-.table-heading {
+.lecture-dashboard-table-heading {
   font-size: xx-large;
   font-weight: black;
   margin-bottom: 1px;
@@ -150,31 +152,32 @@
   border-bottom: 3px solid black;
 }
 
-table {
+.lecture-dashboard-table {
   width: 100%;
   border-collapse: collapse;
 }
-.tbody tr:nth-child(odd) {
+.lecture-dashboard-tbody tr:nth-child(odd) {
   background-color: #f5eded;
 }
 
-.tbody tr:nth-child(even) {
+.lecture-dashboard-tbody tr:nth-child(even) {
   background-color: white;
 }
 
-th,
-td {
-  text-align: start;
+.lecture-dashboard-table th,
+.lecture-dashboard-table td {
+  text-align: center;
   padding: 12px 8px;
   border-left: 1px solid black;
   position: sticky;
   z-index: 1;
 }
 
-th {
+.lecture-dashboard-table th {
   font-weight: bold;
+  
 }
-.userIcon{
+.lecture-dashboard-userIcon{
   display: flex;
   width:35%;
   max-width: 60px;
@@ -183,14 +186,14 @@ th {
  
 }
 
-.triangle-excl-icon{
+.lecture-dashboard-triangle-excl-icon{
   
   display: flex;
   width:60%;
   max-width: 75px;
   height:auto;
-  padding: 40px;
-  position: absolute;
+  padding: 1px;
   color: red;
+  position: absolute;
 
 }
