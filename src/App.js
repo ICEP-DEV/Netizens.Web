@@ -20,7 +20,7 @@ import EditProfilePage from "./pages/admin/profile/editProfilePage";
 import AddRolesPage from "./pages/admin/addRoles/addRoles";
 import AssignGroup from "./pages/admin/assingGroupPages/assignGroup";
 import AdminDetails from "./pages/admin/adminDetails/adminDetails";
-import AssignDepartment from "./pages/admin/assignDepartment/assignDepartment";
+import AssignDepartment from "./pages/assignDepartment/assignDepartment";
 
 // User Management Pages
 import AddUserPage from "./pages/admin/addUser/addUserPage";

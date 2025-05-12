@@ -126,3 +126,87 @@
   color: #10105a
 }
 
+/* Tablets */
+@media (max-width: 1024px) {
+  
+  .login-container {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .login-branding {
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .login-logo {
+    max-width: 80px;
+    height: 80px;
+  }
+}
+
+/* Smaller tablets and large phones */
+@media (max-width: 768px) {
+  
+  .login-container {
+    padding: 1rem;
+  }
+
+  .login-branding {
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem 0;
+  }
+
+  .login-box {
+    max-width: 90%;
+    padding: 1.5rem;
+  }
+
+  .login-page-title {
+    font-size: 24pt;
+  }
+}
+
+/* Mobile  */
+@media (max-width: 480px) {
+  
+  .login-container {
+    padding: 1rem;
+  }
+
+  .login-logo {
+    max-width: 60px;
+    height: 60px;
+  }
+
+  .login-box {
+    padding: 1rem;
+    border-radius: 0.75rem;
+  }
+
+  .login-page-title {
+    font-size: 20pt;
+  }
+
+  .login-submit-btn {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+
+  .login-back-link {
+    font-size: 0.8rem;
+  }
+
+  .login-form-input-container {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .login-toggle-visibility {
+    margin: 0.5rem 0 0 0;
+    align-self: flex-end;
+  }
+}

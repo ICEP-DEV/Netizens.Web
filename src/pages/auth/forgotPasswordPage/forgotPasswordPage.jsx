@@ -26,7 +26,7 @@ function ForgotPasswordPage() {
       },
       );
 
-      if (response.data.message?.includes("Forgot Password OTP sent")) {
+      if (response.data.status) {
         toast.success(response.data.message);
         console.log(response);
         navigate("/verify/password-reset-otp");
