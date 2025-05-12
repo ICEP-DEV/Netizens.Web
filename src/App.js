@@ -20,6 +20,7 @@ import EditProfilePage from "./pages/admin/profile/editProfilePage";
 import AddRolesPage from "./pages/admin/addRoles/addRoles";
 import AssignGroup from "./pages/admin/assingGroupPages/assignGroup";
 import AdminDetails from "./pages/admin/adminDetails/adminDetails";
+import AssignDepartment from "./pages/admin/assignDepartment/assignDepartment";
 
 // User Management Pages
 import AddUserPage from "./pages/admin/addUser/addUserPage";
@@ -58,6 +59,8 @@ const App = () => {
       <Route path="/add-role" element={<AddRolesPage />} />
       <Route path="/assign-group" element={<AssignGroup />} />
       <Route path="/admin-details" element={<AdminDetails />} />
+      <Route path="/assign-department" element={<AssignDepartment />} />
+     
 
       {/* Department & Module Management */}
       <Route path="/add-department" element={<AddDepartment />} />

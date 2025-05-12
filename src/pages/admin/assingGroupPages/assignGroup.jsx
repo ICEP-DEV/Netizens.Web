@@ -1,9 +1,11 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import axios from "axios";
+import { toast, Toaster } from 'react-hot-toast';
 import './assignGroup.css';
 
 const AssignGroup = () => {
   const [selectedModules, setSelectedModules] = useState([]);
-  const availableModules = [
+  const [availableModules, setAvailableModules] = useState([
     'CAPF05D',
     'CSM115D',
     'CGAF05D',
@@ -12,7 +14,22 @@ const AssignGroup = () => {
     'CFAF05D',
     '16P105X',
     'CAPF05X',
-  ];
+  ]);
+  const [userId, setUserId] = useState(1); 
+  
+  useEffect(() => {
+    const fetchInitialData = async () => {
+      try {
+        console.log('Fetched lecturer and module data.');
+        toast.success('Module assigned successfully!');
+      } catch (error) {
+        console.error('Error fetching initial data:', error);
+        toast.error('Failed to assign module.');
+      }
+    };
+
+    fetchInitialData();
+  }, []);
 
   const toggleModule = (mod) => {
     setSelectedModules((prev) =>
@@ -22,9 +39,24 @@ const AssignGroup = () => {
     );
   };
 
+  const handleAssign = async (moduleId) => {
+    try {
+      const response = await axios.post('https://your-api-url/api/Assigning/AssignModuleToUser', {
+        userId: userId, 
+        moduleId: moduleId
+      });
+      console.log('Assignment successful:', response.data);
+      toast.success('Module assigned successfully!');
+    } catch (error) {
+      console.error('Error assigning module:', error);
+      toast.error('Failed to assign module.');
+    }
+  };
+
   return (
     <div className="form-container">
-      <h2>Groups allocation Form</h2>
+      <Toaster />
+      <h2>Groups allocation form</h2>
 
       <div className="top-section">
         <div className="lecturer-details">
@@ -91,12 +123,16 @@ const AssignGroup = () => {
                 <td>
                   <select>
                     <option>Select group(s)</option>
+                   
+                    <option value="group1">Group 1</option>
+                    <option value="group2">Group 2</option>
+                    <option value="group3">Group 3</option>
                   </select>
                 </td>
                 <td>
                   <div className="assign-action">
                     <span role="img" aria-label="assign">📤</span><br />
-                    <a href="#">assign</a>
+                    <button onClick={() => handleAssign(mod)} className="assign-btn">Assign</button>
                   </div>
                 </td>
               </tr>
