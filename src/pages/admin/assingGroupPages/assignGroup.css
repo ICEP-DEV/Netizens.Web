@@ -1,5 +1,6 @@
+/* Base styles (already mobile-first) */
 .form-container {
-  background-color: #7a8a87;
+  background-color: #8a9994;
   color: #000;
   font-family: Arial, sans-serif;
   padding: 20px;
@@ -12,32 +13,35 @@ h2 {
 
 .top-section {
   display: flex;
+  flex-direction: column; /* stacked by default */
   justify-content: space-between;
   margin-bottom: 20px;
 }
+
 .lecturer-details {
   font-size: 18px;
   background-color: #fff;
   padding: 20px;
   border-radius: 8px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  box-shadow: #EEEEEE 0px 0px 8px rgba(0, 0, 0, 0.2);
+}
+
+.lecturer-details li a {
+  font-size: 18px;
+  text-decoration: underline;
+  color: #003366;
 }
 
 .lecturer-details ul {
-  list-style-type: disc;
-  padding-left: 20px;
+  list-style: none;
+  padding-left: 0;
 }
 
-.lecturer-details a {
-  text-decoration: underline;
-  color: #000;
-}
 
-.module-selector {
-  width: 50%;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
+.module-selector label {
+  font-size: 18px;
+  display: block;
+  margin-bottom: 10px;
 }
 
 .module-selector select {
@@ -47,23 +51,26 @@ h2 {
 }
 
 .added-modules {
-  background-color: #fff;
+  background-color: #F5F5F5;
   padding: 15px;
   border-radius: 8px;
   box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  font-size: 18px;
 }
 
 .added-modules table {
   width: 100%;
   border-collapse: collapse;
   margin-top: 10px;
+  font-size: 18px;
 }
 
 .added-modules th,
 .added-modules td {
   padding: 10px;
-  border: 1px solid #ccc;
+  border: 1px solid #F5F5F5;
   text-align: center;
+  font-size: 18px;
 }
 
 .delete-btn {
@@ -85,25 +92,90 @@ h2 {
 .back-btn {
   margin-top: 20px;
   background-color: #000;
-  color: #fff;
+  color: #F5F5F5;
   border: none;
   padding: 10px 15px;
   font-size: 1em;
   cursor: pointer;
   border-radius: 5px;
 }
+
 .checkbox-list {
   display: flex;
   flex-direction: column;
-  background-color: white;
+  background-color: #F5F5F5;
   padding: 10px;
   max-height: 250px;
   overflow-y: auto;
-  border: 1px solid #ccc;
+  border: 1px solid hsl(83, 71%, 30%);
   border-radius: 4px;
 }
 
 .checkbox-item {
   margin-bottom: 5px;
-  font-size: 14px;
+  font-size: 16px;
+}
+
+/* Smartphones (up to 600px) */
+@media (max-width: 600px) {
+  .top-section {
+    flex-direction: column;
+  }
+
+  .module-selector select {
+    height: 150px;
+  }
+
+  .added-modules table,
+  .added-modules th,
+  .added-modules td {
+    font-size: 14px;
+  }
+
+  .lecturer-details {
+    font-size: 16px;
+    padding: 15px;
+  }
+
+  .back-btn {
+    font-size: 0.9em;
+    padding: 8px 12px;
+  }
+}
+
+/* Tablets (601px to 1024px) */
+@media (min-width: 601px) and (max-width: 1024px) {
+  .top-section {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+
+  .lecturer-details,
+  .module-selector,
+  .added-modules {
+    flex: 1 1 100%;
+  }
+
+  .module-selector select {
+    height: 180px;
+  }
+}
+
+/* Desktops (1025px and up) */
+@media (min-width: 1025px) {
+  .top-section {
+    flex-direction: row;
+    gap: 30px;
+  }
+
+  .lecturer-details,
+  .module-selector,
+  .added-modules {
+    flex: 1;
+  }
+
+  .module-selector select {
+    height: 200px;
+  }
 }
