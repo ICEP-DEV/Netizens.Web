@@ -6,7 +6,7 @@ import LoginPage from "./pages/auth/login/loginPage";
 import ResetPasswordPage from "./pages/auth/resettingPages/resetPage";
 import VerifyLoginOTPPage from "./pages/auth/verifyLoginOtp/verifyLoginOtp";
 import VerifyPasswordResetOTPPage from "./pages/auth/verifyPasswordResetOtpPage/verifyPasswordResetOtp";
-import SetPasswordPage from "./pages/auth/setPasswodPages/setPassword";
+import SetPasswordPage from "./pages/auth/setPasswordPages/setPassword";
 import ForgotPasswordPage from "./pages/auth/forgotPasswordPage/forgotPasswordPage";
 
 // Dashboard Pages
@@ -18,9 +18,9 @@ import DepartmentHeadDashboard from "./pages/admin/Logout/DepartmentHeadDashboar
 import AdminDashboard from "./pages/admin/adminDashboard/adminDashboard";
 import EditProfilePage from "./pages/admin/profile/editProfilePage";
 import AddRolesPage from "./pages/admin/addRoles/addRoles";
-import AssignGroup from "./pages/admin/assingGroupPages/assignGroup";
-import AdminDetails from "./pages/admin/adminDetails/adminDetails";
+import AssignGroup from "./pages/admin/assignGroupPages/assignGroup";
 import AssignDepartment from "./pages/assignDepartment/assignDepartment";
+import AdminDetails from "./pages/admin/adminDetails/adminDetails";
 
 // User Management Pages
 import AddUserPage from "./pages/admin/addUser/addUserPage";
@@ -28,11 +28,14 @@ import ManageUserPage from "./pages/admin/manageUser/manageUserPage";
 
 // Lecturer Report Pages
 import ReportHistory from "./pages/lecturer/myReport/reportHistory";
-import WeeklyReport from "./pages/lecturer/lecturerWeeklyReport/weeklyReprt";
+import WeeklyReport from "./pages/lecturer/lecturerWeeklyReport/weeklyReport";
 
 // Department & Module Pages
 import AddDepartment from "./pages/admin/addDepartment/addDepartment";
 import AddModule from "./pages/admin/addModules/addModules";
+
+// Report Management Page 
+import Reports from "./pages/admin/report/report";
 
 const App = () => {
   return (
@@ -60,7 +63,6 @@ const App = () => {
       <Route path="/assign-group" element={<AssignGroup />} />
       <Route path="/admin-details" element={<AdminDetails />} />
       <Route path="/assign-department" element={<AssignDepartment />} />
-     
 
       {/* Department & Module Management */}
       <Route path="/add-department" element={<AddDepartment />} />
@@ -69,6 +71,9 @@ const App = () => {
       {/* Lecturer Reports */}
       <Route path="/report-history" element={<ReportHistory />} />
       <Route path="/weekly-report" element={<WeeklyReport />} />
+
+      {/* Department Head Report Management */}
+      <Route path="/dashboard/department-head/reports" element={<Reports />} />
     </Routes>
   );
 };

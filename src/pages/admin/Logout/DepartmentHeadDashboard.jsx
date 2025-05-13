@@ -1,6 +1,7 @@
 // src/components/DepartmentHeadDashboard.js
 import React from "react";
 import "./DepartmentHeadDashboard.css";
+import { useNavigate } from "react-router-dom";
 import DepartmentHeadDashboardSideBar from "../../../components/DepartmentHeadDashboardSideBar";
 
 const noSubmissions = [
@@ -9,15 +10,17 @@ const noSubmissions = [
 ];
 
 const DepartmentHeadDashboard = () => {
-  return (
+  const navigate = useNavigate();
 
-    
+  const goToReports = (filter) => {
+    navigate(`/dashboard/department-head/reports?filter=${filter}`);
+  };
+
+  return (
     <div className="dashboard-wrapper">
       <div className="dashboard-container">
-        {/* Sidebar */}
-        <DepartmentHeadDashboardSideBar/>
+        <DepartmentHeadDashboardSideBar />
 
-        {/* Main Content */}
         <main className="main-content">
           <header className="header">
             <h1>Welcome To Department Head Dashboard</h1>
@@ -31,20 +34,21 @@ const DepartmentHeadDashboard = () => {
           <section className="summary-section">
             <div className="quick-actions card">
               <h3>Quick Actions:</h3>
-              <a href="#">📘 View Reports</a>
-              <a href="#">⏳ Pending approval</a>
+              <button className="action-btn" onClick={() => goToReports("done")}>📘 View Reports</button>
+              <button className="action-btn" onClick={() => goToReports("pending")}>⏳ Pending Approval</button>
             </div>
+
             <div className="overview card">
               <h3>System Overview:</h3>
-              <p>Total Lecturer: <span className="blue">36</span></p>
-              <p>Reports submitted: <span className="blue">25 (This week)</span></p>
+              <p>Total Lecturers: <span className="blue">36</span></p>
+              <p>Reports Submitted: <span className="blue">25 (This week)</span></p>
               <p>Reports Pending Approval: <span className="orange">3</span></p>
               <p>Missed Reports: <span className="red">2</span></p>
             </div>
           </section>
 
           <section className="no-submissions">
-            <h2>Lectures with <span className="red">No</span> Submissions this week:</h2>
+            <h2>Lecturers with <span className="red">No</span> Submissions this week:</h2>
             <table>
               <thead>
                 <tr>

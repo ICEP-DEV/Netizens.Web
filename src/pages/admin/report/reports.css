@@ -1,0 +1,88 @@
+.report-container {
+  background-color: #fff;
+  margin: 40px auto;
+  padding: 30px;
+  max-width: 1000px;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+  margin-bottom: 20px;
+  font-size: 28px;
+  color: #333;
+}
+
+.view-section {
+  display: flex;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.view-section label {
+  margin-right: 10px;
+  font-weight: bold;
+  color: #444;
+}
+
+.view-section select {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #f9f9f9;
+  font-size: 14px;
+}
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 30px;
+  font-size: 15px;
+}
+
+.report-table th,
+.report-table td {
+  border: 1px solid #ddd;
+  padding: 12px 10px;
+  text-align: left;
+}
+
+.report-table th {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.report-table tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.view-btn {
+  background-color: #007bff;
+  border: none;
+  color: white;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.view-btn:hover {
+  background-color: #0056b3;
+}
+
+.back-btn {
+  margin-top: 20px;
+  text-align: left;
+}
+
+.back-btn a {
+  text-decoration: none;
+  color: #007bff;
+  font-weight: bold;
+  transition: color 0.3s ease;
+}
+
+.back-btn a:hover {
+  color: #0056b3;
+}

@@ -1,6 +1,5 @@
 import React from 'react';
-import './reportHistory.css'; // You must create this CSS file separately
-
+import './reportHistory.css'; // 
 const ReportHistory = () => {
   const reports = [
     { id: 1, subject: 'PPAF05D', date: '28-Mar-2025' },
