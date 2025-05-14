@@ -30,12 +30,16 @@ import ManageUserPage from "./pages/admin/manageUser/manageUserPage";
 import ReportHistory from "./pages/lecturer/myReport/reportHistory";
 import WeeklyReport from "./pages/lecturer/lecturerWeeklyReport/weeklyReport";
 
+// Lecture Profile Pages
+import ViewLecturerProfile from "./pages/lecturer/lecturerProfile/lecturerVIewProfile";
+
 // Department & Module Pages
 import AddDepartment from "./pages/admin/addDepartment/addDepartment";
 import AddModule from "./pages/admin/addModules/addModules";
 
 // Report Management Page 
 import Reports from "./pages/admin/report/report";
+import EditLecturerProfile from "./pages/lecturer/lecturerProfile/lecturerEditProfile";
 
 const App = () => {
   return (
@@ -71,6 +75,10 @@ const App = () => {
       {/* Lecturer Reports */}
       <Route path="/report-history" element={<ReportHistory />} />
       <Route path="/weekly-report" element={<WeeklyReport />} />
+
+      {/* Lecturer Edit Profile */}
+      <Route path="/lecturer-edit-profile" element={<EditLecturerProfile />} />
+      <Route path="/view-lecturer-profile" element={<ViewLecturerProfile />} />
 
       {/* Department Head Report Management */}
       <Route path="/dashboard/department-head/reports" element={<Reports />} />

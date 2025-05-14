@@ -1,0 +1,73 @@
+
+
+/* Page background */
+.edit-profile-page {
+  background-color: #8a9493;
+  min-height: 85vh;
+  padding: 40px 20px;
+  font-family: Arial, sans-serif;
+}
+
+/* Header */
+.edit-profile-page h2 {
+  color: black;
+  text-align: center;
+  margin-bottom: 30px;
+  font-size: 26px;
+}
+
+/* Form container */
+.edit-profile-page form {
+  max-width: 500px;
+  margin: 0 auto;
+  background: white;
+  padding: 30px 40px;
+  border-radius: 10px;
+  box-shadow: 2px 4px 10px rgba(132, 139, 134, 0.2);
+}
+
+/* Label styling */
+.edit-profile-page label {
+  display: block;
+  margin-top: 15px;
+  font-weight: bold;
+  color: black;
+}
+
+/* Input fields */
+.edit-profile-page input {
+  width: 100%;
+  padding: 10px 12px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 14px;
+  background-color: #f9f9f9;
+}
+
+/* Read-only input styling */
+.edit-profile-page input[readonly] {
+  background-color: #e0e0e0;
+  cursor: not-allowed;
+}
+
+/* Submit button */
+.edit-profile-page button {
+  display: block;
+  width: 100%;
+  margin-top: 25px;
+  padding: 10px 0;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.2);
+  transition: background-color 0.3s ease;
+}
+
+.edit-profile-page button:hover {
+  background-color: #0056b3;
+}
