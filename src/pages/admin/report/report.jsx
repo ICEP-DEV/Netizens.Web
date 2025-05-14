@@ -1,55 +1,69 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { toast, Toaster } from 'react-hot-toast';
 import './reports.css';
 import { useLocation } from 'react-router-dom';
 
-const staticReports = [
-  { id: 1, subject: 'PPAF05D', date: '28-Mar-2025', status: 'done' },
-  { id: 2, subject: 'CSM115D', date: '28-Mar-2025', status: 'done' },
-  { id: 3, subject: 'PPAF05D', date: '20-Mar-2025', status: 'pending' },
-  { id: 4, subject: 'CSM115D', date: '20-Mar-2025', status: 'upcoming' },
-  { id: 5, subject: 'CSM115D', date: '14-Mar-2025', status: 'done' },
-  { id: 6, subject: 'PPAF05D', date: '14-Mar-2025', status: 'pending' },
-  { id: 7, subject: 'CSM115D', date: '06-Mar-2025', status: 'done' },
-  { id: 8, subject: 'PPAF05D', date: '06-Mar-2025', status: 'upcoming' }
-];
-
-// Sample hardcoded localStorage data
-const sampleLocalReports = [
-  { id: 101, subject: 'ICT201D', date: '01-Apr-2025', status: 'done', name: 'Mashaba T' },
-  { id: 102, subject: 'ICT201D', date: '25-Mar-2025', status: 'pending', name: 'Baloyi R' },
-  { id: 103, subject: 'ICT201D', date: '30-Mar-2025', status: 'upcoming', name: 'Khosa N' }
-];
-
-const Reports = () => {
+const Reports = ({ interface: interfaceData = null }) => {
   const location = useLocation();
   const query = new URLSearchParams(location.search);
   const defaultFilter = query.get("filter") || "done";
-  const [filter, setFilter] = useState(defaultFilter);
 
-  const [localReports, setLocalReports] = useState([]);
+  const [filter, setFilter] = useState(defaultFilter);
+  const [reports, setReports] = useState([]);
+  const [viewedReport, setViewedReport] = useState(null);
 
   useEffect(() => {
-    // Set initial hardcoded data to local storage once (only if not set)
-    const existing = localStorage.getItem('localReports');
-    if (!existing) {
-      localStorage.setItem('localReports', JSON.stringify(sampleLocalReports));
+    if (!interfaceData) {
+      fetchReports(filter);
+    } else {
+      setReports(interfaceData);
     }
+  }, [filter, interfaceData]);
 
-    // Read and parse localStorage reports
-    const stored = JSON.parse(localStorage.getItem('localReports')) || [];
-    setLocalReports(stored);
-  }, []);
+  const fetchReports = async (status) => {
+    try {
+      let response;
+      if (status === 'pending') {
+        response = await axios.get('http://localhost:5041/api/PendingReport/GetDetail', {
+          params: { reportId: 0 }
+        });
+      } else if (status === 'done') {
+        response = await axios.get('http://localhost:5041/api/Reports/GetAll');
+      }
 
-  // Merge static and localStorage reports
-  const allReports = [
-    ...staticReports.map(r => ({ ...r, name: 'Nevhutaru B' })),
-    ...localReports
-  ];
+      if (response?.data) {
+        setReports(response.data);
+      } else {
+        toast.error('No reports found.');
+        setReports([]);
+      }
+    } catch (error) {
+      toast.error('Error fetching reports.');
+      setReports([]);
+    }
+  };
 
-  const filteredReports = allReports.filter(report => report.status === filter);
+  const handleViewReport = async (reportId) => {
+    try {
+      const response = await axios.post('http://localhost:5041/api/Reports/ReviewReport', {
+        reportId,
+        feedback: ''
+      });
+
+      if (response?.data) {
+        setViewedReport(response.data);
+      } else {
+        toast.error('Report details not found.');
+      }
+    } catch (error) {
+      toast.error('Failed to load report details.');
+    }
+  };
 
   return (
     <div className="report-container">
+      <Toaster />
       <h1>Reports</h1>
 
       <div className="view-section">
@@ -57,7 +71,6 @@ const Reports = () => {
         <select id="report-type" value={filter} onChange={(e) => setFilter(e.target.value)}>
           <option value="done">Done Reports</option>
           <option value="pending">Pending Reports</option>
-          <option value="upcoming">Upcoming Reports</option>
         </select>
       </div>
 
@@ -72,17 +85,47 @@ const Reports = () => {
           </tr>
         </thead>
         <tbody>
-          {filteredReports.map((report, index) => (
-            <tr key={report.id}>
-              <td>{index + 1}</td>
-              <td>{report.name}</td>
-              <td>{report.subject}</td>
-              <td>{report.date}</td>
-              <td><button className="view-btn">View</button></td>
+          {reports.length > 0 ? (
+            reports.map((report, index) => (
+              <tr key={report.id || report.reportId}>
+                <td>{index + 1}</td>
+                <td>{report.userModule?.user?.userSurname || report.name}</td>
+                <td>{report.userModule?.module?.moduleCode || report.subject}</td>
+                <td>
+                  {report.submissionDate
+                    ? new Date(report.submissionDate).toLocaleDateString()
+                    : report.date || 'N/A'}
+                </td>
+                <td>
+                  <button className="view-btn" onClick={() => handleViewReport(report.id || report.reportId)}>
+                    View
+                  </button>
+                </td>
+              </tr>
+            ))
+          ) : (
+            <tr>
+              <td colSpan="5">No reports to display.</td>
             </tr>
-          ))}
+          )}
         </tbody>
       </table>
+
+      {viewedReport && (
+        <div className="report-details-popup">
+          <div className="report-details">
+            <h2>Report Details</h2>
+            <p><strong>Challenges:</strong> {viewedReport.challenges || 'N/A'}</p>
+            <p><strong>Suggestions:</strong> {viewedReport.suggestions || 'N/A'}</p>
+            <p><strong>Weekly Activity:</strong> {viewedReport.weeklyActivity || 'N/A'}</p>
+            <p><strong>Start Date:</strong> {viewedReport.start_Date || 'N/A'}</p>
+            <p><strong>End Date:</strong> {viewedReport.end_Date || 'N/A'}</p>
+            <p><strong>Reviewed By:</strong> {viewedReport.reviewedBy || 'N/A'}</p>
+            <p><strong>Status:</strong> {viewedReport.reportStatus ? 'Reviewed' : 'Not Reviewed'}</p>
+            <button onClick={() => setViewedReport(null)}>Close</button>
+          </div>
+        </div>
+      )}
 
       <div className="back-btn">
         <a href="/dashboard/department-head">← Back to Dashboard</a>
