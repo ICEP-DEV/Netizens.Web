@@ -1,4 +1,4 @@
-.sidebar-content {
+.navpanel-content {
   width: 220px;
   background-color: #d3d3d3;
   padding: 20px;
@@ -24,7 +24,7 @@
   color: #333;
 }
 
-.sidebar-btn {
+.navpanel-btn {
   width: 100%;
   background: #3399ff;
   color: white;
@@ -43,16 +43,16 @@
   cursor: pointer;
 }
 
-.sidebar-btn:hover {
+.navpanel-btn:hover {
   background-color: #267acc;
   transform: translateY(-1px);
 }
 
-.sidebar-icon-left {
+.navpanel-icon-left {
   font-size: 16px;
 }
 
-.logout-btn {
+.navpanel-logout-btn {
   margin-top: auto;
   padding: 12px;
   background-color: #2e4a62;
@@ -70,7 +70,7 @@
   transition: background 0.3s ease, transform 0.2s ease;
 }
 
-.logout-btn:hover {
+.navpanel-logout-btn:hover {
   background-color: #1b2f3e;
   transform: translateY(-1px);
 }
