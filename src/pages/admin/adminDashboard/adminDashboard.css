@@ -4,8 +4,13 @@
   background-color: #7c8e8b;
 } */
 
-.admin-dashboard {
+.admin-page-dashboard-container {
   display: flex;
+  flex-direction: column;
+}
+.admin-dashboard-container{
+  display: flex;
+  flex-direction: row;
 }
 
 .sidebar {

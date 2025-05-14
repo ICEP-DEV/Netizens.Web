@@ -15,6 +15,8 @@ import { Link, useNavigate } from 'react-router-dom';
 import ManageUserTable from '../manageUsersTable/manageUserTable';
 import Icon from "../../../assets/TUTicon1.jpeg";
 import './adminDashboard.css';
+import AdminSideBar from '../../../components/adminSideBar/adminSideBar';
+import Ribbon from '../../../components/ribbon/ribbon';
 
 const AdminDashboard = () => {
   const [users, setUsers] = useState([]);
@@ -119,37 +121,10 @@ const AdminDashboard = () => {
   const totalInactive = users.filter(u => !u.isActive).length;
 
   return (
-    <div className="admin-dashboard">
-      <aside className="sidebar">
-        <img src={Icon} alt="TUT Icon" className="sidebar-icon" />
-        <div className="university-name">Tshwane University Of Technology</div>
-
-        <Link to="/admin-details" className="sidebar-btn link-button">
-          <FaTachometerAlt className="sidebar-icon-left" /> Dashboard
-        </Link>
-        <Link to="/add-role" className="sidebar-btn link-button">
-          <FaUserShield className="sidebar-icon-left" /> Roles
-        </Link>
-        <Link to="/add-department" className="sidebar-btn link-button">
-          <FaUniversity className="sidebar-icon-left" /> Department
-        </Link>
-        <Link to="/add-module" className="sidebar-btn link-button">
-          <FaBookOpen className="sidebar-icon-left" /> Modules
-        </Link>
-        <Link to="/add-user" className="sidebar-btn link-button">
-          <FaUsers className="sidebar-icon-left" /> User Registration
-        </Link>
-        <Link to="/manage-users" className="sidebar-btn link-button">
-          <FaChalkboardTeacher className="sidebar-icon-left" /> User Management
-        </Link>
-        <Link to="/edit-profile" className="sidebar-btn link-button">
-          <FaUserEdit className="sidebar-icon-left" /> Profile
-        </Link>
-        <button className="logout-btn" onClick={handleLogout}>
-          <FaPowerOff /> Logout
-        </button>
-      </aside>
-
+    <div className="admin-page-dashboard-container">
+      <Ribbon />
+      <div className='admin-dashboard-container'>
+      <AdminSideBar />
       <div className="main-panel">
         <header className="topbar">
           <div className="date-time-display">
@@ -222,6 +197,10 @@ const AdminDashboard = () => {
         )}
       </div>
     </div>
+
+      </div>
+
+      
   );
 };
 
