@@ -29,26 +29,26 @@ const Sidebar = () => {
   };
 
   return (
-    <div className="sidebar-container">
+    <div className="Lectur-sidebar-container">
       <Toaster />
       <div>
-        <img className="sidebar-logo" alt="TUT icon" src={Icon} />
-        <ul className="sidebar-links">
-          <Link to="/dashboard" className="sidebar-link">
+        <img className="Lectur-sidebar-logo" alt="TUT icon" src={Icon} />
+        <ul className="Lectur-sidebar-links">
+          <Link to="/dashboard" className="Lectur-sidebar-link">
             Dashboard
           </Link>
-          <Link to="/weekly-report" className="sidebar-link">
+          <Link to="/weekly-report" className="Lectur-sidebar-link">
             New Report
           </Link>
-          <Link to="/report-history" className="sidebar-link">
+          <Link to="/report-history" className="Lectur-sidebar-link">
             My Report
           </Link>
-          <Link to="/profile" className="sidebar-link">
+          <Link to="/profile" className="Lectur-sidebar-link">
             My Profile
           </Link>
         </ul>
       </div>
-      <button className="sidebar-logout-btn" onClick={handleLogout}>
+      <button className="Lectur-sidebar-logout-btn" onClick={handleLogout}>
         LOGOUT
       </button>
     </div>

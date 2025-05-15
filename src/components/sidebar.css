@@ -1,4 +1,4 @@
-.sidebar-container {
+.Lectur-sidebar-container {
   width: 200px;
   background-color: #e7e4e4;
   color: black;
@@ -12,7 +12,7 @@
   border-radius: 10px;
 }
 
-.sidebar-logo {
+.Lectur-sidebar-logo {
   width: 100%;
   max-width: 160px;
   height: auto;
@@ -22,7 +22,7 @@
   filter: brightness(2);
 }
 
-.sidebar-links {
+.Lectur-sidebar-links {
   list-style: none;
   padding: 0;
   display: flex;
@@ -30,7 +30,7 @@
   gap: 12px;
 }
 
-.sidebar-link {
+.Lectur-sidebar-link {
   text-align: center;
   font-weight: bold;
   border-radius: 15px;
@@ -42,12 +42,12 @@
   color: black;
 }
 
-.sidebar-link:hover {
+.Lectur-sidebar-link:hover {
   transform: scale(1.05);
   text-decoration: underline;
 }
 
-.sidebar-logout-btn {
+.Lectur-sidebar-logout-btn {
   width: 100%;
   background-color: rgb(155, 194, 197);
   font-weight: bold;
@@ -60,6 +60,6 @@
   margin-top: 20px;
 }
 
-.sidebar-logout-btn:hover {
+.Lectur-sidebar-logout-btn:hover {
   transform: scale(1.05);
 }
