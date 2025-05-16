@@ -5,12 +5,14 @@
     border-right: 1px solid #e5e7eb;
     background-color: white;
     justify-content: space-between;
+    
   }
   
   .sidebar-main {
     display: flex;
     flex-direction: column;
     flex-grow: 1;
+    min-height: 0;
   }
   
   .sidebar-header {
@@ -76,7 +78,7 @@
   }
   
   .sidebar-link:hover .sidebar-icon {
-    color: #6b7280;
+    color: #5f89dd;
   }
   
   .sidebar-link.active .sidebar-icon {
@@ -97,35 +99,7 @@
   .sidebar-footer {
     border-top: 1px solid #e5e7eb;
     padding: 16px;
-  }
-  
-  .user-info {
-    display: flex;
-    align-items: center;
-    margin-bottom: 12px;
-  }
-  
-  .user-avatar {
-    width: 32px;
-    height: 32px;
-    border-radius: 9999px;
-    object-fit: cover;
-  }
-  
-  .user-text {
-    margin-left: 12px;
-  }
-  
-  .user-name {
-    font-size: 14px;
-    font-weight: 500;
-    color: #111827;
-  }
-  
-  .user-role {
-    font-size: 12px;
-    color: #6b7280;
-    text-transform: capitalize;
+    padding-top: 450px;
   }
   
   .sidebar-actions {

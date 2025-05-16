@@ -25,12 +25,7 @@ function AdminSideBar({ closeSidebar }) {
   const adminNavItems = [
     { name: 'Dashboard', icon: BarChart, path: '/admin/dashboard' },
     { name: 'Manage Users', icon: Users, path: '/admin/users' },
-    { name: 'Lecturers', icon: UserPlus, path: '/admin/users' },
-    { name: 'Reviewers', icon: UserPlus, path: '/admin/users' },
-    { name: 'Departments', icon: Landmark, path: '/admin/users' },
-    { name: 'Roles', icon: User, path: '/admin/users' },
-    { name: 'Groups', icon: UsersRound, path: '/admin/users' },
-    { name: 'Modules', icon: Notebook, path: '/admin/users' },
+    { name: 'Academic', icon: Landmark, path: '/admin/users' },
   ];
 
   let navItems = adminNavItems;
@@ -83,17 +78,7 @@ function AdminSideBar({ closeSidebar }) {
       </div>
 
       <div className="sidebar-footer">
-        <div className="user-info">
-          {/* <img
-            src={user?.avatar || `https://ui-avatars.com/api/?name=${encodeURIComponent(user?.name || 'User')}`}
-            alt={user?.name}
-            className="user-avatar"
-          /> */}
-          <div className="user-text">
-            <p className="user-name">Admin 1</p>
-            <p className="user-role">Admin</p>
-          </div>
-        </div>
+        
 
         <div className="sidebar-actions">
           <Link to="#" className="action-link">
