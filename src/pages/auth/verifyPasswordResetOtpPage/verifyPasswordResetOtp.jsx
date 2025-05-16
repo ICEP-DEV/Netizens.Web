@@ -38,13 +38,13 @@ function VerifyPasswordResetOTPPage() {
     }
   };
   return (
-    <div className="otp-container">
+    <div className="password-reset-otp-container">
           <Toaster />
-          <div className="otp-box">
-            <h1 className="title">Verify Reset Password OTP</h1>
+          <div className="password-reset-otp-box">
+            <h1 className="password-reset-otp-title">Verify Reset Password OTP</h1>
     
-            <form onSubmit={handleVerify} className="form">
-              <div className="form-group">
+            <form onSubmit={handleVerify} className="password-reset-otp-form">
+              <div className="password-reset-otp-form-group">
                 <label htmlFor="email">Enter OTP sent to your email: </label>
                 <input
                   type="text"
@@ -54,12 +54,12 @@ function VerifyPasswordResetOTPPage() {
                 />
               </div>
     
-              <button type="submit" className="submit-btn">
+              <button type="submit" className="password-reset-otp-submit-btn">
                 Verify OTP
               </button>
             </form>
     
-            <div className="back-link">
+            <div className="password-reset-otp-back-link">
               <Link >Resend OTP</Link>
             </div>
           </div>

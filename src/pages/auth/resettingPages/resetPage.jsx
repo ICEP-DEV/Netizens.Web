@@ -128,13 +128,13 @@ export const ResetPasswordPage = () => {
     <div className="reset-password-container">
           <Toaster />
           <div className="reset-password-box">
-            <h1 className="title">Reset Password</h1>
+            <h1 className="reset-password-title">Reset Password</h1>
     
             <form onSubmit={
-                  handleSubmit} className="form">
-              <div className="form-group">
+                  handleSubmit} className="reset-password-form">
+              <div className="reset-password-form-group">
                 <label htmlFor="email">Enter password: </label>
-                <div className='form-input-container'>
+                <div className='reset-password-form-input-container'>
                     <input
                         id="password"
                         type={passwordVisible ? 'text' : 'password'}
@@ -145,10 +145,10 @@ export const ResetPasswordPage = () => {
                     />
                     <button
                         type="button"
-                        className="toggle-visibility"
+                        className="reset-password-toggle-visibility"
                         onClick={togglePasswordVisibility}
                     >
-                        {passwordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" /> }
+                        {passwordVisible ? <EyeSlashIcon className="reset-password-icon" /> : <EyeIcon className="reset-password-icon" /> }
                     </button> 
                 </div>
                 {/* {error.lengthError && <p className="error-message">{error.lengthError}</p>}
@@ -158,7 +158,7 @@ export const ResetPasswordPage = () => {
                  
 
                 <label htmlFor="email">Confirm password: </label>
-                <div className='form-input-container'>
+                <div className='reset-password-form-input-container'>
                     <input
                         id="confirmPassword"
                         type={confirmPasswordVisible ? 'text' : 'password'}
@@ -169,20 +169,20 @@ export const ResetPasswordPage = () => {
                     />
                     <button
                         type="button"
-                        className="toggle-visibility"
+                        className="reset-password-toggle-visibility"
                         onClick={toggleConfirmPasswordVisibility}
                     >
-                        {confirmPasswordVisible ? <EyeSlashIcon className="icon" /> : <EyeIcon className="icon" />}
+                        {confirmPasswordVisible ? <EyeSlashIcon className="reset-password-icon" /> : <EyeIcon className="reset-password-icon" />}
                     </button>
                 </div>
               </div>
     
-              <button type="submit" className="submit-btn">
+              <button type="submit" className="reset-password-submit-btn">
                 Reset Password
               </button>
             </form>
     
-            <div className="password-rules">
+            <div className="reset-password-password-rules">
                     <h3>Password Requirements:</h3>
                     <ul>
                         <li>Password must be 8 characters or more.</li>

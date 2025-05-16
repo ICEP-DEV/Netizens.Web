@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import './manageUserPage.css';
@@ -76,49 +75,56 @@ const ManageUserPage = () => {
   };
 
   return (
-    <div className="manage-users-page">
-      <h2>Manage Users</h2>
-      {error && <p className="error-text">{error}</p>}
+    <div className="manageUserPage-container">
+      <h2 className="manageUserPage-heading">Manage Users</h2>
+      {error && <p className="manageUserPage-errorText">{error}</p>}
 
-      <table>
+      <table className="manageUserPage-table">
         <thead>
           <tr>
-            <th>Staff Number</th>
-            <th>First Name</th>
-            <th>Surname</th>
-            <th>Contact</th>
-            <th>Email</th>
-            <th>Role</th>
-            <th>Departments</th>
-            <th>Group</th>
-            <th>Status</th>
-            <th>Actions</th>
+            <th className="manageUserPage-th">Staff Number</th>
+            <th className="manageUserPage-th">First Name</th>
+            <th className="manageUserPage-th">Surname</th>
+            <th className="manageUserPage-th">Contact</th>
+            <th className="manageUserPage-th">Email</th>
+            <th className="manageUserPage-th">Role</th>
+            <th className="manageUserPage-th">Departments</th>
+            <th className="manageUserPage-th">Group</th>
+            <th className="manageUserPage-th">Status</th>
+            <th className="manageUserPage-th">Actions</th>
           </tr>
         </thead>
         <tbody>
           {users.length === 0 ? (
             <tr>
-              <td colSpan="10" style={{ textAlign: 'center' }}>
-                No users available.
-              </td>
+              <td colSpan="10" className="manageUserPage-td">No users available.</td>
             </tr>
           ) : (
-            users.map((user) => (
-              <tr key={user.email}>
-                <td>{user.staffNumber || 'N/A'}</td>
-                <td>{user.firstName || 'N/A'}</td>
-                <td>{user.surname || 'N/A'}</td>
-                <td>{user.contactDetails || 'N/A'}</td>
-                <td>{user.email}</td>
-                <td>{user.role || 'N/A'}</td>
-                <td>{Array.isArray(user.departments) ? user.departments.join(', ') : 'N/A'}</td>
-                <td>{user.group || 'N/A'}</td>
-                <td>
-                  <span className={`status-badge ${user.isActive ? 'active' : 'inactive'}`}>
+            users.map((user, index) => (
+              <tr
+                key={user.email}
+                className={index % 2 === 0 ? 'manageUserPage-row-even' : 'manageUserPage-row-odd'}
+              >
+                <td className="manageUserPage-td">{user.staffNumber || 'N/A'}</td>
+                <td className="manageUserPage-td">{user.firstName || 'N/A'}</td>
+                <td className="manageUserPage-td">{user.surname || 'N/A'}</td>
+                <td className="manageUserPage-td">{user.contactDetails || 'N/A'}</td>
+                <td className="manageUserPage-td">{user.email}</td>
+                <td className="manageUserPage-td">{user.role || 'N/A'}</td>
+                <td className="manageUserPage-td">
+                  {Array.isArray(user.departments) ? user.departments.join(', ') : 'N/A'}
+                </td>
+                <td className="manageUserPage-td">{user.group || 'N/A'}</td>
+                <td className="manageUserPage-td">
+                  <span
+                    className={`manageUserPage-statusBadge ${
+                      user.isActive ? 'manageUserPage-statusActive' : 'manageUserPage-statusInactive'
+                    }`}
+                  >
                     {user.isActive ? 'Active' : 'Inactive'}
                   </span>
                 </td>
-                <td className="user-actions">
+                <td className="manageUserPage-td manageUserPage-userActions">
                   <button onClick={() => toggleUserStatus(user.email)}>
                     {user.isActive ? 'Deactivate' : 'Activate'}
                   </button>
@@ -132,10 +138,10 @@ const ManageUserPage = () => {
       </table>
 
       {showGroupModal && (
-        <div className="group-modal">
-          <div className="modal-content">
-            <h3>Select Group (A-Z)</h3>
-            <div className="group-grid">
+        <div className="manageUserPage-groupModal">
+          <div className="manageUserPage-modalContent">
+            <h3>Select Group (A–Z)</h3>
+            <div className="manageUserPage-groupGrid">
               {groupOptions.map((group) => (
                 <button key={group} onClick={() => handleGroupSelect(group)}>
                   {group}
@@ -143,7 +149,7 @@ const ManageUserPage = () => {
               ))}
             </div>
             <button
-              className="close-btn"
+              className="manageUserPage-closeBtn"
               onClick={() => {
                 setShowGroupModal(false);
                 setSelectedUserForGroup(null);

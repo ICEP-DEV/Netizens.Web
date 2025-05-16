@@ -1,217 +1,216 @@
+/* body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background-color: #7c8e8b;
+} */
 
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background-color: #7c8e8b;
-  }
-  
-  .admin-dashboard {
-    display: flex;
-  }
-  
-  .sidebar {
-    background-color: #e0e0e0;
-    padding: 20px 10px;
-    width: 200px;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    align-items: center;
-    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  .sidebar-btn,
-  .link-button {
-    background-color: #b2c2c2;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    font-weight: bold;
-    border-radius: 10px;
-    cursor: pointer;
-    text-align: center;
-    text-decoration: none;
-    color: black;
-  }
-  
-  .logout-btn {
-    margin-top: auto;
-    background-color: #5a6f6f;
-    color: white;
-    padding: 10px;
-    border: none;
-    width: 100%;
-    border-radius: 8px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-  
-  .main-panel {
-    flex: 1;
-    padding: 20px;
-    color: #fff;
-  }
-  
-  .topbar {
-    display: flex;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 12px;
-  }
-  
-  .top-right {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-  }
-  
-  .icon {
-    font-size: 24px;
-  }
-  
-  .user-icon {
-    color: #005fa3;
-  }
-  
-  .welcome {
-    margin: 20px 0;
-  }
-  
-  .quick-management {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
-  }
-  
-  .card {
-    background-color: #f5f5f5;
-    padding: 20px;
-    border-radius: 8px;
-    color: black;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-    flex: 1;
-  }
-  
-  .quick-actions ul {
-    list-style: none;
-    padding: 0;
-  }
-  
-  .quick-actions li {
-    margin: 10px 0;
-  }
-  
-  .quick-actions a {
-    text-decoration: none;
-    color: #007acc;
-    font-weight: bold;
-  }
-  
-  .status-dot {
-    display: inline-block;
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    margin-right: 6px;
-  }
-  
-  .status-dot.active {
-    background-color: green;
-  }
-  
-  .status-dot.inactive {
-    background-color: red;
-  }
-  
-  .user-table table {
-    width: 100%;
-    border-collapse: collapse;
-    background-color: white;
-    color: black;
-  }
-  
-  .user-table th,
-  .user-table td {
-    padding: 12px;
-    text-align: center;
-    border: 1px solid #ccc;
-  }
-  
-  .status-badge.active {
-    color: green;
-    font-weight: bold;
-  }
-  
-  .status-badge.inactive {
-    color: red;
-    font-weight: bold;
-  }
-  
-  .edit-icon {
-    cursor: pointer;
-    color: #007acc;
-  }
-  
-  /* Group Modal Styles */
-  .group-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-  }
-  
-  .modal-content {
-    background: #fff;
-    padding: 2rem;
-    border-radius: 12px;
-    width: 80%;
-    max-width: 600px;
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-  }
-  
-  .group-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
-    gap: 12px;
-    margin: 20px 0;
-  }
-  
-  .group-btn {
-    padding: 16px;
-    font-size: 18px;
-    font-weight: bold;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    text-align: center;
-    transition: background-color 0.2s;
-  }
-  
-  .group-btn:hover {
-    background-color: #0056b3;
-  }
-  
-  .close-btn {
-    padding: 10px 20px;
-    background-color: #999;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    font-size: 16px;
-    cursor: pointer;
-    margin-top: 10px;
-    transition: background-color 0.2s;
-  }
-  
-  .close-btn:hover {
-    background-color: #777;
-  }
+.admin-page-dashboard-container {
+  display: flex;
+  flex-direction: column;
+}
+.admin-dashboard-container{
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  background-color: #e0e0e0;
+  padding: 20px 10px;
+  width: 200px;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  align-items: center;
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.2);
+}
+
+.sidebar-icon {
+  width: 100px;
+  height: 100px;
+  object-fit: contain;
+  border-radius: 10px;
+  margin-bottom: 5px;
+}
+
+.sidebar-icon-left {
+  margin-right: 8px;
+}
+
+.university-name {
+  text-align: center;
+  font-weight: bold;
+  text-decoration: underline;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+.sidebar-btn,
+.link-button {
+  background-color: #b2c2c2;
+  border: none;
+  padding: 10px;
+  width: 100%;
+  font-weight: bold;
+  border-radius: 10px;
+  cursor: pointer;
+  text-align: left;
+  text-decoration: none;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+
+.logout-btn {
+  margin-top: auto;
+  background-color: #5a6f6f;
+  color: white;
+  padding: 10px;
+  border: none;
+  width: 100%;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.main-panel {
+  flex: 1;
+  padding: 20px;
+  color: #fff;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.top-right {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.icon {
+  font-size: 24px;
+}
+
+.user-icon {
+  color: #005fa3;
+}
+
+.date-time-display {
+  color: #fff;
+  font-weight: bold;
+  text-align: left;
+  font-size: 0.95rem;
+}
+
+.week-range {
+  font-style: italic;
+  font-size: 0.9rem;
+  margin-top: 4px;
+}
+
+.welcome {
+  margin: 20px 0;
+}
+
+.quick-management {
+  display: flex;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background-color: #f5f5f5;
+  padding: 20px;
+  border-radius: 8px;
+  color: black;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  flex: 1;
+}
+
+.status-dot {
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-right: 6px;
+}
+
+.status-dot.active {
+  background-color: green;
+}
+
+.status-dot.inactive {
+  background-color: red;
+}
+
+.group-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  width: 80%;
+  max-width: 600px;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.group-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  gap: 12px;
+  margin: 20px 0;
+}
+
+.group-btn {
+  padding: 16px;
+  font-size: 18px;
+  font-weight: bold;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: center;
+  transition: background-color 0.2s;
+}
+
+.group-btn:hover {
+  background-color: #0056b3;
+}
+
+.close-btn {
+  padding: 10px 20px;
+  background-color: #999;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 10px;
+  transition: background-color 0.2s;
+}
+
+.close-btn:hover {
+  background-color: #777;
+}

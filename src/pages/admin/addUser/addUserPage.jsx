@@ -1,91 +1,105 @@
-
 import React, { useState, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import './addUserPage.css';
+import { toast, Toaster } from 'react-hot-toast';
 
-const AddUserPage = () => {
+const AddUserPage = ({ interface: interfaceData = null }) => {
   const location = useLocation();
   const showAssignButton = location.state?.showAssignButton || false;
   const incomingError = location.state?.error || '';
 
   const [error, setError] = useState(incomingError);
-  const [newUserEmail, setNewUserEmail] = useState('');
-  const [newUserRole, setNewUserRole] = useState('');
-  const [newUserDepartments, setNewUserDepartments] = useState([]);
-  const [roleOptions, setRoleOptions] = useState([]);
-
   const [staffNumber, setStaffNumber] = useState('');
   const [firstName, setFirstName] = useState('');
   const [surname, setSurname] = useState('');
   const [contactDetails, setContactDetails] = useState('');
-
-  const departmentOptions = [
-    'Information Technology',
-    'Informatics',
-    'Computer Science',
-    'Multimedia Computing',
-    'Computer Systems Engineering',
-  ];
+  const [email, setEmail] = useState('');
+  const [selectedRole, setSelectedRole] = useState('');
+  const [roleOptions, setRoleOptions] = useState([]);
 
   useEffect(() => {
-    const savedRoles = JSON.parse(localStorage.getItem('roles')) || [];
-    setRoleOptions(savedRoles);
-  }, []);
+    if (!interfaceData) {
+      fetchRoles();
+    } else {
+      setRoleOptions(interfaceData);
+    }
+  }, [interfaceData]);
 
-  const addUser = () => {
-    const isPhoneValid = /^\d{10}$/.test(contactDetails);
-    const users = JSON.parse(localStorage.getItem('users')) || [];
+  const fetchRoles = async () => {
+    try {
+      const response = await axios.get('http://localhost:5041/api/Getters/GetAllRoles');
+      if (response?.data?.status && Array.isArray(response.data.roles)) {
+        setRoleOptions(response.data.roles);
+      } else {
+        toast.error('Failed to load roles.');
+        setRoleOptions([]);
+      }
+    } catch (error) {
+      toast.error('Error fetching roles.');
+      setRoleOptions([]);
+    }
+  };
 
-    if (!isPhoneValid) {
-      setError('Phone Number Length Is Incorrect');
-      return;
+  const isPhoneValid = (phone) => /^\d{10}$/.test(phone);
+
+  const validateInputs = () => {
+    if (!staffNumber || !firstName || !surname || !contactDetails || !email || !selectedRole) {
+      setError('Please fill all required fields.');
+      return false;
     }
 
-    if (
-      newUserEmail &&
-      !users.some((user) => user.email === newUserEmail) &&
-      newUserRole &&
-      staffNumber &&
-      firstName &&
-      surname &&
-      contactDetails
-    ) {
-      const newUser = {
-        email: newUserEmail,
-        role: newUserRole,
-        departments: newUserDepartments,
-        staffNumber,
-        firstName,
-        surname,
-        contactDetails,
-        group: '',
-        isActive: true,
-      };
+    if (!isPhoneValid(contactDetails)) {
+      setError('Phone number must be exactly 10 digits.');
+      return false;
+    }
 
-      const updatedUsers = [...users, newUser];
-      localStorage.setItem('users', JSON.stringify(updatedUsers));
+    return true;
+  };
 
-      // Clear fields
-      setNewUserEmail('');
-      setNewUserRole('');
-      setNewUserDepartments([]);
-      setStaffNumber('');
-      setFirstName('');
-      setSurname('');
-      setContactDetails('');
-      setError('');
-    } else {
-      setError('Please fill all required fields or check for duplicate email.');
+  const resetForm = () => {
+    setStaffNumber('');
+    setFirstName('');
+    setSurname('');
+    setContactDetails('');
+    setEmail('');
+    setSelectedRole('');
+    setError('');
+  };
+
+  const addUser = async () => {
+    if (!validateInputs()) return;
+
+    const payload = {
+      staffNo: parseInt(staffNumber),
+      userName: firstName.trim(),
+      userSurname: surname.trim(),
+      contacts: contactDetails.trim(),
+      email: email.trim(),
+      roleId: parseInt(selectedRole),
+    };
+
+    try {
+      const results = await axios.post('http://localhost:5041/api/Auth/AddUserAccount', payload);
+
+      if (results?.data?.status) {
+        toast.success(results?.data?.message);
+        resetForm();
+      } else {
+        toast.error(results?.data?.message);
+      }
+    } catch (err) {
+      toast.error(err.results?.data?.message || 'An error occurred.');
     }
   };
 
   return (
     <div className="add-user-page">
-      <h2>Add User</h2>
+      <Toaster />
+      <h2>Registration</h2>
+
       {error && (
-        <p style={{ color: '#ff0000', fontWeight: 'bold', fontSize: '16px' }}>
-          {error}
-        </p>
+        <p style={{ color: '#ff0000', fontWeight: 'bold', fontSize: '16px' }}>{error}</p>
       )}
 
       {showAssignButton && (
@@ -115,48 +129,28 @@ const AddUserPage = () => {
         />
         <input
           type="text"
-          placeholder="Contact Details"
+          placeholder="Contact Number (10 digits)"
           value={contactDetails}
           onChange={(e) => {
             const value = e.target.value;
-            if (/^\d{0,10}$/.test(value)) {
-              setContactDetails(value);
-            }
+            if (/^\d{0,10}$/.test(value)) setContactDetails(value);
           }}
         />
         <input
           type="email"
-          placeholder="Enter user email"
-          value={newUserEmail}
-          onChange={(e) => setNewUserEmail(e.target.value)}
+          placeholder="Email Address"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
 
-        {roleOptions.length > 0 && (
-          <select
-            value={newUserRole}
-            onChange={(e) => setNewUserRole(e.target.value)}
-          >
-            <option value="">Select role</option>
-            {roleOptions.map((role) => (
-              <option key={role} value={role}>
-                {role}
-              </option>
-            ))}
-          </select>
-        )}
-
         <select
-          multiple
-          value={newUserDepartments}
-          onChange={(e) =>
-            setNewUserDepartments(
-              Array.from(e.target.selectedOptions, (option) => option.value)
-            )
-          }
+          value={selectedRole}
+          onChange={(e) => setSelectedRole(e.target.value)}
         >
-          {departmentOptions.map((dep) => (
-            <option key={dep} value={dep}>
-              {dep}
+          <option value="">Select Role</option>
+          {roleOptions.map((role) => (
+            <option key={role.roleId || role.RoleId} value={role.roleId || role.RoleId}>
+              {role.roleName || role.RoleName}
             </option>
           ))}
         </select>

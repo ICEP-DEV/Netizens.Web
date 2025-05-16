@@ -1,6 +1,5 @@
 import React from 'react';
-import './reportHistory.css'; // You must create this CSS file separately
-
+import './reportHistory.css'; // 
 const ReportHistory = () => {
   const reports = [
     { id: 1, subject: 'PPAF05D', date: '28-Mar-2025' },
@@ -13,6 +12,11 @@ const ReportHistory = () => {
     { id: 8, subject: 'PPAF05D', date: '06-Mar-2025' }
   ];
 
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
+
   return (
     <div className="report-container">
       <h1>Report History</h1>
@@ -20,7 +24,9 @@ const ReportHistory = () => {
       <div className="view-section">
         <label htmlFor="view-by">View By:</label>
         <select id="view-by">
-          <option>Month</option>
+          {months.map((month) => (
+            <option key={month} value={month}>{month}</option>
+          ))}
         </select>
       </div>
 

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import React from "react";
+import { Routes, Route } from "react-router-dom";
 
 // Auth Pages
 import LoginPage from "./pages/auth/login/loginPage";
 import ResetPasswordPage from "./pages/auth/resettingPages/resetPage";
 import VerifyLoginOTPPage from "./pages/auth/verifyLoginOtp/verifyLoginOtp";
 import VerifyPasswordResetOTPPage from "./pages/auth/verifyPasswordResetOtpPage/verifyPasswordResetOtp";
-import SetPasswordPage from "./pages/auth/setPasswodPages/setPassword";
+import SetPasswordPage from "./pages/auth/setPasswordPages/setPassword";
 import ForgotPasswordPage from "./pages/auth/forgotPasswordPage/forgotPasswordPage";
 import ReportsPage from "./pages/auth/reports/ReportsPage";
 
@@ -19,15 +19,31 @@ import HodDashboard from "./pages/departmentHead/hodDashboard/HodDashboard"
 import AdminDashboard from "./pages/admin/adminDashboard/adminDashboard";
 import EditProfilePage from "./pages/admin/profile/editProfilePage";
 import AddRolesPage from "./pages/admin/addRoles/addRoles";
+import AssignGroup from "./pages/admin/assignGroupPages/assignGroup";
+import AssignDepartment from "./pages/assignDepartment/assignDepartment";
+import AdminDetails from "./pages/admin/adminDetails/adminDetails";
 
 
 // Updated Add & Manage User Pages
+
+// User Management Pages
 import AddUserPage from "./pages/admin/addUser/addUserPage";
 import ManageUserPage from "./pages/admin/manageUser/manageUserPage";
 
+// Lecturer Report Pages
+import ReportHistory from "./pages/lecturer/myReport/reportHistory";
+import WeeklyReport from "./pages/lecturer/lecturerWeeklyReport/weeklyReport";
 
-// Lecturer My Report
-import ReportHistory from './pages/lecturer/myReport/reportHistory';
+// Lecture Profile Pages
+import ViewLecturerProfile from "./pages/lecturer/lecturerProfile/lecturerVIewProfile";
+
+// Department & Module Pages
+import AddDepartment from "./pages/admin/addDepartment/addDepartment";
+import AddModule from "./pages/admin/addModules/addModules";
+
+// Report Management Page 
+import Reports from "./pages/admin/report/report";
+import EditLecturerProfile from "./pages/lecturer/lecturerProfile/lecturerEditProfile";
 
 const App = () => {
   return (
@@ -38,10 +54,7 @@ const App = () => {
       <Route path="/verify/login-otp" element={<VerifyLoginOTPPage />} />
       <Route path="/set-password" element={<SetPasswordPage />} />
       <Route path="/forgot-password" element={<ForgotPasswordPage />} />
-      <Route
-        path="/verify/password-reset-otp"
-        element={<VerifyPasswordResetOTPPage />}
-      />
+      <Route path="/verify/password-reset-otp" element={<VerifyPasswordResetOTPPage />} />
       <Route path="/reset-password" element={<ResetPasswordPage />} />
 
       {/* Dashboard Routes */}
@@ -50,20 +63,35 @@ const App = () => {
       {/* <Route path="/dashboard/hod" element={<HodDashboardPage />} /> */}
       <Route path="/dashboard/hod-department" element={<HodDashboard />} />
 
-      {/* Admin Extra Pages */}
+      {/* Admin Functionality */}
       <Route path="/add-user" element={<AddUserPage />} />
       <Route path="/manage-users" element={<ManageUserPage />} />
       <Route path="/edit-profile" element={<EditProfilePage />} />
       <Route path="/add-role" element={<AddRolesPage />} />
+
       <Route path="/reports-page" element={<ReportsPage />} />
       
 
-      {/* Lecturer My Report */}
+      <Route path="/assign-group" element={<AssignGroup />} />
+      <Route path="/admin-details" element={<AdminDetails />} />
+      <Route path="/assign-department" element={<AssignDepartment />} />
+
+
+      {/* Department & Module Management */}
+      <Route path="/add-department" element={<AddDepartment />} />
+      <Route path="/add-module" element={<AddModule />} />
+
+      {/* Lecturer Reports */}
       <Route path="/report-history" element={<ReportHistory />} />
+      <Route path="/weekly-report" element={<WeeklyReport />} />
+
+      {/* Lecturer Edit Profile */}
+      <Route path="/lecturer-edit-profile" element={<EditLecturerProfile />} />
+      <Route path="/view-lecturer-profile" element={<ViewLecturerProfile />} />
+
+      {/* Department Head Report Management */}
+      <Route path="/dashboard/department-head/reports" element={<Reports />} />
     </Routes>
-
-
-
   );
 };
 

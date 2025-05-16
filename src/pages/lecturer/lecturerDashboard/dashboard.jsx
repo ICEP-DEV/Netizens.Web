@@ -1,14 +1,38 @@
 import React from "react";
-import { useEffect } from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCircleUser, faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-
+import { useEffect, useState } from "react";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faCircleUser,
+  faTriangleExclamation,
+} from "@fortawesome/free-solid-svg-icons";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 import Sidebar from "../../../components/sidebar";
 import "./dashboard.css";
 
 const LecturerDashboardPage = () => {
+  const [name, setName] = useState("");
+
   useEffect(() => {
+    axios
+      .post(
+        "http://localhost:5041/api/Auth/GetUserDetails",
+        {},
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
+      .then((response) => {
+        setName(response.data.name);
+      })
+      .catch((error) => {
+        console.error("Error fetching user details:", error);
+      });
+
     const cells = document.querySelectorAll("td");
 
     cells.forEach((cell) => {
@@ -24,30 +48,27 @@ const LecturerDashboardPage = () => {
     });
   }, []);
   return (
-    <div className="dashboard">
+    <div className="lecture-dashboard">
       <Sidebar />
 
-      <div className="main-content">
-        <div className="main-header">
-          
-          <div className="details">
-            
-            <FontAwesomeIcon icon={faCircleUser}  className="userIcon"/>
-            <p> Username</p>
-            
+      <div className="lecture-dashboard-main-contents">
+        <div className="lecture-dashboard-main-header">
+          <div className="lecture-dashboard-details">
+            <FontAwesomeIcon icon={faCircleUser} className="lecture-dashboard-userIcon" />
+            <p> {name}</p>
           </div>
-          <p className="welcome">Welcome, Lecturer</p>
+          <p className="lecture-dashboard-welcome">Welcome, Lecturer</p>
         </div>
 
-        <div className="main-body">
-          <div className="vertical-items">
-            <div className="item weekly-report">
+        <div className="lecture-dashboard-main-body">
+          <div className="lecture-dashboard-vertical-items">
+            <div className="lecture-dashboard-item weekly-report">
               <h2>Weekly Report</h2>
               <p>Submit your activity report</p>
               <button>New Report</button>
             </div>
 
-            <div className="item">
+            <div className="lecture-dashboard-item">
               <h2>
                 Submission <br /> Status
               </h2>
@@ -56,20 +77,21 @@ const LecturerDashboardPage = () => {
                 are up to date
               </p>
             </div>
-            <div className="item">
+            <div className="lecture-dashboard-item">
               <h1>
                 Upcoming <br /> in:
-                
               </h1>
-              <FontAwesomeIcon icon={faTriangleExclamation}  className="triangle-excl-icon" />
+              <FontAwesomeIcon
+                icon={faTriangleExclamation}
+                className="lecture-dashboard-triangle-excl-icon"
+              />
               <p>4 days</p>
-
-              </div>
+            </div>
           </div>
 
-          <div className="table-section">
-            <h2 className="table-heading">Recent Submissions:</h2>
-            <table>
+          <div className="lecture-dashboard-table-section">
+            <h2 className="lecture-dashboard-table-heading">Recent Submissions:</h2>
+            <table className="lecture-dashboard-table">
               <thead>
                 <tr>
                   <th>#</th>
@@ -78,7 +100,7 @@ const LecturerDashboardPage = () => {
                   <th>Review Status:</th>
                 </tr>
               </thead>
-              <tbody>
+              <tbody className="lecture-dashboard-tbody">
                 <tr>
                   <td>1</td>
                   <td>COEF05D</td>
