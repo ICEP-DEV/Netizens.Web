@@ -60,7 +60,6 @@ const App = () => {
       {/* Dashboard Routes */}
       <Route path="/dashboard/lecturer" element={<LecturerDashboardPage />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
-      {/* <Route path="/dashboard/hod" element={<HodDashboardPage />} /> */}
       <Route path="/dashboard/hod-department" element={<HodDashboardPage />} />
 
       {/* Admin Functionality */}
