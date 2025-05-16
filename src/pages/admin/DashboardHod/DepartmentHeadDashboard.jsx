@@ -1,4 +1,4 @@
-// src/components/DepartmentHeadDashboard.js
+
 import React from "react";
 import "./DepartmentHeadDashboard.css";
 import { useNavigate } from "react-router-dom";

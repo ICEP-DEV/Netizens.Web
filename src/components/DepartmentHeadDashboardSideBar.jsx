@@ -2,10 +2,6 @@ import React from "react";
 import "./DepartmentHeadDashboardSidebar.css";
 import Icon from "../assets/TUTicon1.jpeg";
 import { useNavigate } from "react-router-dom";
-
-import { FaChartBar, FaFileAlt, FaChartLine, FaSignOutAlt } from 'react-icons/fa';
-
-import { Link } from "react-router-dom";
 import {
   FaTachometerAlt,
   FaFileAlt,

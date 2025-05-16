@@ -12,8 +12,8 @@ import ReportsPage from "./pages/auth/reports/ReportsPage";
 
 // Dashboard Pages
 import LecturerDashboardPage from "./pages/lecturer/lecturerDashboard/dashboard";
-// import HodDashboardPage from "./pages/departmentHead/hodDashboard/hodDashboard";
-import HodDashboard from "./pages/departmentHead/hodDashboard/HodDashboard"
+import HodDashboardPage from "./pages/departmentHead/hodDashboard/hodDashboard";
+
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/adminDashboard/adminDashboard";
@@ -61,7 +61,7 @@ const App = () => {
       <Route path="/dashboard/lecturer" element={<LecturerDashboardPage />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
       {/* <Route path="/dashboard/hod" element={<HodDashboardPage />} /> */}
-      <Route path="/dashboard/hod-department" element={<HodDashboard />} />
+      <Route path="/dashboard/hod-department" element={<HodDashboardPage />} />
 
       {/* Admin Functionality */}
       <Route path="/add-user" element={<AddUserPage />} />
