@@ -1,149 +1,159 @@
-.manage-users-page {
-    padding: 20px;
-    font-family: Arial, sans-serif;
-    background-color: #f0faff;
-  }
-  
-  .manage-users-page h2 {
-    margin-bottom: 20px;
-    color: #01579b;
-  }
-  
-  .error-text {
-    color: red;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  /* Table Design */
-  table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    background-color: white;
-    border: none;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  th, td {
-    padding: 12px 15px;
-    text-align: center;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-    border-top: none;
-    border-bottom: none;
-    font-size: 14px;
-    vertical-align: middle;
-  }
-  
-  th:first-child,
-  td:first-child {
-    border-left: none;
-  }
-  
-  th:last-child,
-  td:last-child {
-    border-right: none;
-  }
-  
-  th {
-    background-color: #f0f0f0;
-    color: #000;
-    font-weight: bold;
-    text-transform: none;
-  }
-  
-  tr:nth-child(even) {
-    background-color: #f5f5f5;
-  }
-  
-  tr:nth-child(odd) {
-    background-color: #ffffff;
-  }
-  
-  tr:hover {
-    background-color: #e0e0e0;
-    transition: background-color 0.2s ease-in-out;
-  }
-  
-  /* Status badges */
-  .status-badge {
-    padding: 5px 10px;
-    border-radius: 5px;
-    color: white;
-    font-weight: bold;
-  }
-  
-  .status-badge.active {
-    background-color: #4caf50;
-  }
-  
-  .status-badge.inactive {
-    background-color: #f44336;
-  }
-  
-  /* Action buttons */
-  .user-actions button {
-    margin: 0 3px;
-    padding: 6px 10px;
-    font-size: 0.9em;
-    cursor: pointer;
-    border: none;
-    border-radius: 4px;
-    background-color: #0288d1;
-    color: white;
-    transition: background-color 0.2s;
-  }
-  
-  .user-actions button:hover {
-    background-color: #0277bd;
-  }
-  
-  /* Modal styles */
-  .group-modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0, 0, 0, 0.6);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .modal-content {
-    background: white;
-    padding: 20px;
-    border-radius: 10px;
-    width: 400px;
-    max-width: 90%;
-    text-align: center;
-  }
-  
-  .group-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    margin: 10px 0;
-  }
-  
-  .group-grid button {
-    margin: 5px;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 4px;
-    background-color: #0288d1;
-    color: white;
-    cursor: pointer;
-  }
-  
-  .group-grid button:hover {
-    background-color: #0277bd;
-  }
-  
-  .close-btn {
-    margin-top: 15px;
-    background-color: #f44336 !important;
-    color: white;
-  }
+/* Container */
+.manageUserPage-container {
+  padding: 20px;
+  font-family: Arial, sans-serif;
+  background-color: #f0faff;
+}
+
+/* Heading */
+.manageUserPage-heading {
+  margin-bottom: 20px;
+  color: #01579b;
+}
+
+/* Error text */
+.manageUserPage-errorText {
+  color: red;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Table */
+.manageUserPage-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+  background-color: white;
+  border: none;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.manageUserPage-th,
+.manageUserPage-td {
+  padding: 12px 15px;
+  text-align: center;
+  border-left: 1px solid black;
+  border-right: 1px solid black;
+  border-top: none;
+  border-bottom: none;
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+.manageUserPage-th:first-child,
+.manageUserPage-td:first-child {
+  border-left: none;
+}
+
+.manageUserPage-th:last-child,
+.manageUserPage-td:last-child {
+  border-right: none;
+}
+
+.manageUserPage-th {
+  background-color: #f0f0f0;
+  color: #000;
+  font-weight: bold;
+  text-transform: none;
+}
+
+.manageUserPage-row-even {
+  background-color: #f5f5f5;
+}
+
+.manageUserPage-row-odd {
+  background-color: #ffffff;
+}
+
+.manageUserPage-row-even:hover,
+.manageUserPage-row-odd:hover {
+  background-color: #e0e0e0;
+  transition: background-color 0.2s ease-in-out;
+}
+
+/* Status Badges */
+.manageUserPage-statusBadge {
+  padding: 5px 10px;
+  border-radius: 5px;
+  color: white;
+  font-weight: bold;
+}
+
+.manageUserPage-statusActive {
+  background-color: #4caf50;
+}
+
+.manageUserPage-statusInactive {
+  background-color: #f44336;
+}
+
+/* Action Buttons */
+.manageUserPage-userActions button {
+  margin: 0 3px;
+  padding: 6px 10px;
+  font-size: 0.9em;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  background-color: #0288d1;
+  color: white;
+  transition: background-color 0.2s;
+}
+
+.manageUserPage-userActions button:hover {
+  background-color: #0277bd;
+}
+
+/* Modal */
+.manageUserPage-groupModal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+}
+
+.manageUserPage-modalContent {
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  width: 400px;
+  max-width: 90%;
+  text-align: center;
+}
+
+.manageUserPage-groupGrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.manageUserPage-groupGrid button {
+  margin: 5px;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  background-color: #0288d1;
+  color: white;
+  cursor: pointer;
+}
+
+.manageUserPage-groupGrid button:hover {
+  background-color: #0277bd;
+}
+
+.manageUserPage-closeBtn {
+  margin-top: 15px;
+  background-color: #f44336 !important;
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  border-radius: 4px;
+  cursor: pointer;
+}
