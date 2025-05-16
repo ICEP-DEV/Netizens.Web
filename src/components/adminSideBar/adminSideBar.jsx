@@ -13,7 +13,8 @@ import {
   UserPlus,
   LogOut,
   FileEdit,
-  Notebook
+  Notebook,
+  GraduationCap
 } from 'lucide-react';
 import { motion } from 'framer-motion';
 import './adminSideBar.css';
@@ -25,7 +26,7 @@ function AdminSideBar({ closeSidebar }) {
   const adminNavItems = [
     { name: 'Dashboard', icon: BarChart, path: '/admin/dashboard' },
     { name: 'Manage Users', icon: Users, path: '/admin/users' },
-    { name: 'Academic', icon: Landmark, path: '/admin/users' },
+    { name: 'Academic', icon: GraduationCap, path: '/admin/users' },
   ];
 
   let navItems = adminNavItems;
@@ -41,13 +42,6 @@ function AdminSideBar({ closeSidebar }) {
   return (
     <div className="sidebar-container">
       <div className="sidebar-main">
-        {/* <div className="sidebar-header">
-          <Link to="/" className="sidebar-logo">
-            <BookOpen className="icon-primary" />
-            <span className="logo-text">TUTReportHub</span>
-          </Link>
-        </div> */}
-
         <nav className="sidebar-nav">
           {navItems.map((item) => {
             const isActive = location.pathname === item.path;
@@ -78,8 +72,6 @@ function AdminSideBar({ closeSidebar }) {
       </div>
 
       <div className="sidebar-footer">
-        
-
         <div className="sidebar-actions">
           <Link to="#" className="action-link">
             <Settings className="action-icon" />

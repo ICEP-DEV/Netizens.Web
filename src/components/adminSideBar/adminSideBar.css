@@ -1,11 +1,9 @@
 .sidebar-container {
     display: flex;
     flex-direction: column;
-    height: 100%;
     border-right: 1px solid #e5e7eb;
     background-color: white;
-    justify-content: space-between;
-    
+    justify-content: space-between; 
   }
   
   .sidebar-main {
@@ -67,12 +65,12 @@
   
   .sidebar-link.active {
     background-color: #eff6ff;
-    color: #1d4ed8;
+    color: #b9bbc1;
   }
   
   .sidebar-icon {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
     margin-right: 12px;
     color: #9ca3af;
   }
@@ -99,7 +97,6 @@
   .sidebar-footer {
     border-top: 1px solid #e5e7eb;
     padding: 16px;
-    padding-top: 450px;
   }
   
   .sidebar-actions {
