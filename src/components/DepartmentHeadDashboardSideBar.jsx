@@ -3,6 +3,9 @@ import "./DepartmentHeadDashboardSidebar.css";
 
 import Icon from "../assets/TUTicon1.jpeg";
 import { useNavigate } from "react-router-dom";
+import { FaChartBar, FaFileAlt, FaChartLine, FaSignOutAlt } from 'react-icons/fa';
+
+
 
 const DepartmentHeadDashboardSidebar = () => {
   const navigate = useNavigate();
@@ -14,15 +17,24 @@ const DepartmentHeadDashboardSidebar = () => {
       navigate("/");
     }
   };
+
   return (
-    <div className="sidebar-content">
+    <div className="DepartmentHeadDashboardSideBar-content">
+      <img className="logo1" alt="TUT icon" src={Icon} />
       <ul>
-        <img className="logo" alt="TUT icon" src={Icon} />
-        <li>Dashboard</li>
-        <li>Report</li>
-        <li>Report Statistics</li>
+        <li>
+          <span role="img" aria-label="dashboard">📊</span> Dashboard
+        </li>
+        <li>
+          <span role="img" aria-label="report">📝</span> Report
+        </li>
+        <li>
+          <span role="img" aria-label="stats">📈</span> Report Statistics
+        </li>
       </ul>
-      <button onClick={handleLogout}>LOGOUT</button>
+      <button onClick={handleLogout}>
+        <span role="img" aria-label="logout">🚪</span> LOGOUT
+      </button>
     </div>
   );
 };

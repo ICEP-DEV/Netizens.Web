@@ -8,16 +8,18 @@ import VerifyLoginOTPPage from "./pages/auth/verifyLoginOtp/verifyLoginOtp";
 import VerifyPasswordResetOTPPage from "./pages/auth/verifyPasswordResetOtpPage/verifyPasswordResetOtp";
 import SetPasswordPage from "./pages/auth/setPasswodPages/setPassword";
 import ForgotPasswordPage from "./pages/auth/forgotPasswordPage/forgotPasswordPage";
+import ReportsPage from "./pages/auth/reports/ReportsPage";
 
 // Dashboard Pages
 import LecturerDashboardPage from "./pages/lecturer/lecturerDashboard/dashboard";
-import HodDashboardPage from "./pages/departmentHead/hodDashboard/hodDashboard";
-import DepartmentHeadDashboard from "./pages/admin/Logout/DepartmentHeadDashboard";
+// import HodDashboardPage from "./pages/departmentHead/hodDashboard/hodDashboard";
+import HodDashboard from "./pages/departmentHead/hodDashboard/HodDashboard"
 
 // Admin Pages
 import AdminDashboard from "./pages/admin/adminDashboard/adminDashboard";
 import EditProfilePage from "./pages/admin/profile/editProfilePage";
 import AddRolesPage from "./pages/admin/addRoles/addRoles";
+
 
 // Updated Add & Manage User Pages
 import AddUserPage from "./pages/admin/addUser/addUserPage";
@@ -45,14 +47,16 @@ const App = () => {
       {/* Dashboard Routes */}
       <Route path="/dashboard/lecturer" element={<LecturerDashboardPage />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
-      <Route path="/dashboard/hod" element={<HodDashboardPage />} />
-      <Route path="/dashboard/department-head" element={<DepartmentHeadDashboard />} />
+      {/* <Route path="/dashboard/hod" element={<HodDashboardPage />} /> */}
+      <Route path="/dashboard/hod-department" element={<HodDashboard />} />
 
       {/* Admin Extra Pages */}
       <Route path="/add-user" element={<AddUserPage />} />
       <Route path="/manage-users" element={<ManageUserPage />} />
       <Route path="/edit-profile" element={<EditProfilePage />} />
       <Route path="/add-role" element={<AddRolesPage />} />
+      <Route path="/reports-page" element={<ReportsPage />} />
+      
 
       {/* Lecturer My Report */}
       <Route path="/report-history" element={<ReportHistory />} />
