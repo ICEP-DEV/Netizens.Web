@@ -1,7 +1,7 @@
 import React from 'react'
 import './ribbon.css'
-import TutLogo from "../../assets/TUT_Logo.png"
-import Superman from "../../assets/Superman.jpeg"
+import TutLogo from "../../../assets/TUT_Logo.png"
+import Superman from "../../../assets/Superman.jpeg"
 import { Bell } from 'lucide-react'
 
 export default function Ribbon() {

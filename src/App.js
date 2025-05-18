@@ -22,6 +22,8 @@ import AddRolesPage from "./pages/admin/addRoles/addRoles";
 import AssignGroup from "./pages/admin/assignGroupPages/assignGroup";
 import AssignDepartment from "./pages/assignDepartment/assignDepartment";
 import AdminDetails from "./pages/admin/adminDetails/adminDetails";
+import AcademicPage from "./pages/admin/academic/academicPage";
+import AdminSettingsPage from "./pages/admin/settings/adminSettings";
 
 
 // Updated Add & Manage User Pages
@@ -45,6 +47,7 @@ import AddModule from "./pages/admin/addModules/addModules";
 import Reports from "./pages/admin/report/report";
 import EditLecturerProfile from "./pages/lecturer/lecturerProfile/lecturerEditProfile";
 
+
 const App = () => {
   return (
     <Routes>
@@ -65,6 +68,7 @@ const App = () => {
       {/* Admin Functionality */}
       <Route path="/add-user" element={<AddUserPage />} />
       <Route path="/manage-users" element={<ManageUserPage />} />
+      <Route path="/academic" element={<AcademicPage />} />
       <Route path="/edit-profile" element={<EditProfilePage />} />
       <Route path="/add-role" element={<AddRolesPage />} />
 
@@ -74,6 +78,7 @@ const App = () => {
       <Route path="/assign-group" element={<AssignGroup />} />
       <Route path="/admin-details" element={<AdminDetails />} />
       <Route path="/assign-department" element={<AssignDepartment />} />
+      <Route path="/admin/settings" element={<AdminSettingsPage />} />
 
 
       {/* Department & Module Management */}

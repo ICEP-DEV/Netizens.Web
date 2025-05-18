@@ -1,0 +1,167 @@
+import React, { useState, useEffect } from "react";
+import "./academicPage.css";
+import AdminSideBar from "../../../components/admin/adminSideBar/adminSideBar";
+import Ribbon from "../../../components/admin/ribbon/ribbon";
+import { format } from "date-fns";
+import {
+  UserPlus,
+  Users,
+  ShieldUser,
+  LayoutDashboard,
+  ActivitySquare,
+  ChartColumn,
+  Search,
+  Landmark,
+  BookOpenText,
+} from "lucide-react";
+import { toast, Toaster } from "react-hot-toast";
+import { motion, AnimatePresence } from "framer-motion";
+
+const AcademicPage = () => {
+  const [activeSection, setActiveSection] = useState("Department");
+  const sections = ["Department", "Modules", "Groups", "Roles"];
+
+  return (
+    <div className="academic-page-container">
+      <Toaster />
+      <Ribbon />
+      <div className="academic-container">
+        <AdminSideBar />
+        <div className="academic-page">
+          <div className="academic-header-container">
+            <div className="academic-header">
+              <h2 className="admin-header-text">Academic</h2>
+              <p className="admin-date">
+                {" "}
+                {format(new Date(), "EEEE, MMMM do, yyyy")} | System Overview
+              </p>
+            </div>
+          </div>
+          <div className="academic-stats-container">
+            <div className="admin-stats-card">
+              <div className="card-content-1">
+                <div className="card-icon-container-departments">
+                  <Landmark className="land-mark-icon" />
+                </div>
+                <div className="card-users-info-container">
+                  <p className="stat-name">Total Departments</p>
+                  <p className="stat-value">7</p>
+                </div>
+              </div>
+              <div className="card-content-2">
+                <div className="span-container">
+                  <span></span>
+                  <span></span>
+                </div>
+                <div className="span-container">
+                  <span></span>
+                  <span></span>
+                </div>
+              </div>
+            </div>
+            <div className="admin-stats-card">
+              <div className="card-content-1">
+                <div className="card-icon-container-modules">
+                  <BookOpenText className="book-open-text-icon" />
+                </div>
+                <div className="card-users-info-container">
+                  <p className="stat-name">Total Modules</p>
+                  <p className="stat-value">3</p>
+                </div>
+              </div>
+              <div className="card-content-2">
+                <div className="span-container">
+                  <span>Lecturers </span>
+                  <span>2</span>
+                </div>
+                <div className="span-container">
+                  <span>Assigned </span>
+                  <span>1</span>
+                </div>
+              </div>
+            </div>
+            <div className="admin-stats-card">
+              <div className="card-content-1">
+                <div className="card-icon-container-groups">
+                  <Users className="users-icon" />
+                </div>
+                <div className="card-users-info-container">
+                  <p className="stat-name">Total Groups </p>
+                  <p className="stat-value">3</p>
+                </div>
+              </div>
+              <div className="card-content-2">
+                <div className="span-container">
+                  <span>Lecturers </span>
+                  <span>2</span>
+                </div>
+                <div className="span-container">
+                  <span>Assigned </span>
+                  <span>1</span>
+                </div>
+              </div>
+            </div>
+            <div className="admin-stats-card">
+              <div className="card-content-1">
+                <div className="card-icon-container-roles">
+                  <ShieldUser className="shield-user-icon" />
+                </div>
+                <div className="card-users-info-container">
+                  <p className="stat-name">Total Roles </p>
+                  <p className="stat-value">3</p>
+                </div>
+              </div>
+              <div className="card-content-2">
+                <div className="span-container">
+                  <span>Lecturers</span>
+                  <span>1</span>
+                </div>
+                <div className="span-container">
+                  <span>Reviewers</span>
+                  <span>2</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="academic-content-container">
+            <div className="header-tabs">
+              {sections.map((section) => (
+                <button
+                  key={section}
+                  className={`tab-button ${
+                    activeSection === section ? "active" : ""
+                  }`}
+                  onClick={() => setActiveSection(section)}
+                >
+                  {section}
+                </button>
+              ))}
+            </div>
+
+            <div className="form-area">
+              <AnimatePresence mode="wait">
+                <motion.div
+                  key={activeSection}
+                  initial={{ opacity: 0, x: -50 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  exit={{ opacity: 0, x: 50 }}
+                  transition={{ duration: 0.4 }}
+                  className="form-content"
+                >
+                  <h3>Add {activeSection}</h3>
+                  <form>
+                    <p>Form fields for {activeSection} go here...</p>
+                    <button type="submit" className="submit-button">
+                      Save {activeSection}
+                    </button>
+                  </form>
+                </motion.div>
+              </AnimatePresence>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+export default AcademicPage;

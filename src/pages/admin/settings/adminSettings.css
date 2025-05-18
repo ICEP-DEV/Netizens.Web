@@ -1,0 +1,35 @@
+.admin-settings-page-container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f7f9;
+  overflow: hidden;
+}
+.admin-settings-container{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100%;
+  overflow: hidden;
+}
+
+.admin-settings-page{
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  overflow: auto;
+}
+
+.admin-settings-header-container{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 30px;
+  background-color: #f5f7f9;
+
+}
+.admin-settings-header{
+  align-items: center;
+  justify-items: start;
+
+}

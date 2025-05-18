@@ -24,9 +24,9 @@ function AdminSideBar({ closeSidebar }) {
   const location = useLocation();
 
   const adminNavItems = [
-    { name: 'Dashboard', icon: BarChart, path: '/admin/dashboard' },
-    { name: 'Manage Users', icon: Users, path: '/admin/users' },
-    { name: 'Academic', icon: GraduationCap, path: '/admin/users' },
+    { name: 'Dashboard', icon: BarChart, path: '/dashboard/admin' },
+    { name: 'Manage Users', icon: Users, path: '/manage-users' },
+    { name: 'Academic', icon: GraduationCap, path: '/academic' },
   ];
 
   let navItems = adminNavItems;
@@ -73,7 +73,7 @@ function AdminSideBar({ closeSidebar }) {
 
       <div className="sidebar-footer">
         <div className="sidebar-actions">
-          <Link to="#" className="action-link">
+          <Link to="/admin/settings" className="action-link">
             <Settings className="action-icon" />
             Settings
           </Link>
