@@ -17,7 +17,7 @@ const AssignDepartment = () => {
 
   
   useEffect(() => {
-    fetch('http://localhost:3000/api/lecturers') 
+    fetch('http://localhost:5000/api/lecturers')  
       .then(res => res.json())
       .then(data => setLecturers(data))
       .catch(err => console.error("Failed to fetch lecturers:", err));
@@ -52,8 +52,8 @@ const AssignDepartment = () => {
       )
     );
 
-   
-    fetch(`http://localhost:3000/api/lecturers/${selectedLecturer.id}`, {
+    
+    fetch(`http://localhost:5000/api/lecturers/${selectedLecturer.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -131,6 +131,7 @@ const AssignDepartment = () => {
           </div>
         </div>
       )}
+       <button className="back-btn">← Back to Dashboard</button>
     </div>
   );
 };
