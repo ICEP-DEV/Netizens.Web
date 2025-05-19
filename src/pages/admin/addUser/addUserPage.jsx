@@ -5,7 +5,6 @@ import "./addUserPage.css";
 import { toast, Toaster } from "react-hot-toast";
 import AdminSideBar from "../../../components/admin/adminSideBar/adminSideBar";
 import Ribbon from "../../../components/admin/ribbon/ribbon";
-import { format } from "date-fns";
 import {
   UserPlus,
   Users,
