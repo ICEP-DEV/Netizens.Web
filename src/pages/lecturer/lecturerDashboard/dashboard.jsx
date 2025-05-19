@@ -37,7 +37,7 @@ const LecturerDashboardPage = () => {
       
 
       axios.get(
-        "http://localhost:5041/api/Reports/ViewReport",{
+        "http://localhost:5041/api/Reports/GetLatestReport",{
           withCredentials:true,
         }
       ).then((response) =>{
@@ -57,9 +57,10 @@ const LecturerDashboardPage = () => {
 
   }, []);
   const getStatusStyle = (status) => {
-    const s = status.toLocaleLowerCase();
+    const s = status;
     if(s === "pending") return {color:"orange" , fontWeight:"bold"};
     if (s === "approved" || s === "reviewed") return { color: "blue", fontWeight: "bold" };
+
 return {};
   }
   return (
