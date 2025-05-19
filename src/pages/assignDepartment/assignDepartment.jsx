@@ -53,7 +53,7 @@ const AssignDepartment = () => {
     );
 
    
-    fetch(`http://localhost:5000/api/lecturers/${selectedLecturer.id}`, {
+    fetch(`http://localhost:3000/api/lecturers/${selectedLecturer.id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
