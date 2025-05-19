@@ -1,74 +1,138 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './assignDepartment.css';
 
-function AssignDepartment() {
-  const [role, setRole] = useState('');
-  const [department, setDepartment] = useState('');
-  const [modules, setModules] = useState(['']);
+const departmentOptions = [
+  'Computer Science',
+  'Information Technology',
+  'Software Engineering',
+  'Multimedia',
+  'Informatics',
+];
 
-  const handleAddModule = () => {
-    setModules([...modules, '']);
+const AssignDepartment = () => {
+  const [lecturers, setLecturers] = useState([]);
+  const [showModal, setShowModal] = useState(false);
+  const [selectedLecturer, setSelectedLecturer] = useState(null);
+  const [selectedDepts, setSelectedDepts] = useState([]);
+
+  
+  useEffect(() => {
+    fetch('http://localhost:3000/api/lecturers') 
+      .then(res => res.json())
+      .then(data => setLecturers(data))
+      .catch(err => console.error("Failed to fetch lecturers:", err));
+  }, []);
+
+  const openModal = (lecturer) => {
+    setSelectedLecturer(lecturer);
+    setSelectedDepts(lecturer.departments || []);
+    setShowModal(true);
   };
 
-  const handleModuleChange = (index, value) => {
-    const updatedModules = [...modules];
-    updatedModules[index] = value;
-    setModules(updatedModules);
+  const handleDeptToggle = (dept) => {
+    setSelectedDepts(prev =>
+      prev.includes(dept)
+        ? prev.filter(d => d !== dept)
+        : [...prev, dept]
+    );
   };
 
-  const handleSave = () => {
-    console.log('Role:', role);
-    console.log('Department:', department);
-    console.log('Modules:', modules);
-    alert('Data saved (see console)');
+  const assignDepartments = () => {
+    if (!selectedLecturer) return;
+
+    const updatedLecturer = {
+      ...selectedLecturer,
+      departments: selectedDepts
+    };
+
+    
+    setLecturers(prev =>
+      prev.map(lect =>
+        lect.id === selectedLecturer.id ? updatedLecturer : lect
+      )
+    );
+
+   
+    fetch(`http://localhost:5000/api/lecturers/${selectedLecturer.id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(updatedLecturer),
+    })
+      .then(res => res.json())
+      .then(() => {
+        closeModal();
+      })
+      .catch(err => {
+        console.error('Failed to update lecturer:', err);
+        alert('Error assigning department.');
+      });
+  };
+
+  const closeModal = () => {
+    setShowModal(false);
+    setSelectedLecturer(null);
+    setSelectedDepts([]);
   };
 
   return (
-    <div className="container">
-      <div className="form-box">
-        <h2>Manage Academic Structure</h2>
-
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="Enter role"
-            value={role}
-            onChange={(e) => setRole(e.target.value)}
-          />
-          <button className="btn blue">Add Role</button>
-        </div>
-
-        <div className="input-group">
-          <input
-            type="text"
-            placeholder="Enter department"
-            value={department}
-            onChange={(e) => setDepartment(e.target.value)}
-          />
-          <button className="btn green">Add Department</button>
-        </div>
-
-        <div className="module-section">
-          <h3>Add Modules</h3>
-          <p>Department: <span className="not-set">{department || 'Not set'}</span></p>
-          {modules.map((module, index) => (
-            <input
-              key={index}
-              type="text"
-              placeholder={`Module ${index + 1}`}
-              value={module}
-              onChange={(e) => handleModuleChange(index, e.target.value)}
-            />
+    <div className="lecturer-list-container">
+      <h2 className="main-heading">Reviewers Accounts with <span style={{ color: 'gold' }}>Pending</span> Departments</h2>
+      <table className="lecturer-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Staff#</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Department</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {lecturers.map((lecturer, index) => (
+            <tr key={lecturer.id}>
+              <td>{index + 1}.</td>
+              <td>{lecturer.staffNo}</td>
+              <td>{lecturer.name}</td>
+              <td>{lecturer.email}</td>
+              <td style={{ color: lecturer.departments.length === 0 ? 'red' : 'green' }}>
+                {lecturer.departments.length > 0 ? lecturer.departments.join(', ') : 'Not Selected'}
+              </td>
+              <td>
+                <button onClick={() => openModal(lecturer)}>Department</button>
+              </td>
+            </tr>
           ))}
-          <button className="btn blue small" onClick={handleAddModule}>+ Add Module</button>
-        </div>
+        </tbody>
+      </table>
 
-        <div className="save-button">
-          <button className="btn green" onClick={handleSave}>Save All</button>
+      {showModal && (
+        <div className="modal-backdrop">
+          <div className="modal">
+            <h3 className="modal-heading">Assign Departments</h3>
+            <div className="checkbox-group">
+              {departmentOptions.map((dept) => (
+                <label key={dept}>
+                  <input
+                    type="checkbox"
+                    checked={selectedDepts.includes(dept)}
+                    onChange={() => handleDeptToggle(dept)}
+                  />
+                  {dept}
+                </label>
+              ))}
+            </div>
+            <div className="modal-actions">
+              <button onClick={assignDepartments}>Assign</button>
+              <button onClick={closeModal}>Cancel</button>
+            </div>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
-}
+};
 
 export default AssignDepartment;

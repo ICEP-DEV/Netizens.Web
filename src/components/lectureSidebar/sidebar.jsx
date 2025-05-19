@@ -1,6 +1,6 @@
 import React from "react";
 import "./sidebar.css";
-import Icon from "../assets/TUTicon1.jpeg";
+import Icon from "../../assets/TUTicon1.jpeg";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -43,7 +43,7 @@ const Sidebar = () => {
           <Link to="/report-history" className="Lectur-sidebar-link">
             My Report
           </Link>
-          <Link to="/profile" className="Lectur-sidebar-link">
+          <Link to="/view-lecturer-profile" className="Lectur-sidebar-link">
             My Profile
           </Link>
         </ul>
