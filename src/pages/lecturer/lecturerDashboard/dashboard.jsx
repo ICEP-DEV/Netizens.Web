@@ -8,17 +8,18 @@ import {
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
-import Sidebar from "../../../components/sidebar";
+import Sidebar from "../../../components/lectureSidebar/sidebar";
 import "./dashboard.css";
 
 const LecturerDashboardPage = () => {
   const [name, setName] = useState("");
+  const [reports,setreports] = useState([]);
 
   useEffect(() => {
+    
     axios
-      .post(
-        "http://localhost:5041/api/Auth/GetUserDetails",
-        {},
+      .get(
+        "http://localhost:5041/api/Getters/GetUserDetails",
         {
           withCredentials: true,
           headers: {
@@ -33,22 +34,38 @@ const LecturerDashboardPage = () => {
         console.error("Error fetching user details:", error);
       });
 
-    const cells = document.querySelectorAll("td");
+      
 
-    cells.forEach((cell) => {
-      const text = cell.textContent.trim().toLowerCase();
-
-      if (text === "pending") {
-        cell.style.color = "orange";
-        cell.style.fontWeight = "bold";
-      } else if (text === "approved") {
-        cell.style.color = "blue";
-        cell.style.fontWeight = "bold";
+      axios.get(
+        "http://localhost:5041/api/Reports/ViewReport",{
+          withCredentials:true,
+        }
+      ).then((response) =>{
+               if(Array.isArray(response.data)){
+                setreports(response.data);
+               }
+               else{
+                setreports([response.data]);
+               }
       }
+    ).catch((error) => {
+      console.error("Error fetching reports:" + error);
+      toast.error("Failed to fetch reports" + error);
     });
+
+   
+
   }, []);
+  const getStatusStyle = (status) => {
+    const s = status.toLocaleLowerCase();
+    if(s === "pending") return {color:"orange" , fontWeight:"bold"};
+    if (s === "approved" || s === "reviewed") return { color: "blue", fontWeight: "bold" };
+return {};
+  }
   return (
+    
     <div className="lecture-dashboard">
+      
       <Sidebar />
 
       <div className="lecture-dashboard-main-contents">
@@ -101,54 +118,14 @@ const LecturerDashboardPage = () => {
                 </tr>
               </thead>
               <tbody className="lecture-dashboard-tbody">
-                <tr>
-                  <td>1</td>
-                  <td>COEF05D</td>
-                  <td>2025-04-20</td>
-                  <td>Approved</td>
+                {reports.map((report,index) =>(
+                <tr key={report.reportId || index}>
+                  <td>{index + 1}</td>
+                  <td>{report.module}</td>
+                  <td>{report.submissionDate}</td>
+                  <td style={getStatusStyle(report.reportStatus)}>{report.reportStatus}</td>
                 </tr>
-                <tr>
-                  <td>2</td>
-                  <td>PPAFO5D</td>
-                  <td>2025-04-27</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>PPAFO5D</td>
-                  <td>2025-04-27</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>PPAFO5D</td>
-                  <td>2025-04-27</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>PPAFO5D</td>
-                  <td>2025-04-27</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>PPAFO5D</td>
-                  <td>2025-04-27</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>PPAFO5D</td>
-                  <td>2025-04-27</td>
-                  <td>Pending</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>PPAFO5D</td>
-                  <td>2025-04-27</td>
-                  <td>Pending</td>
-                </tr>
+                ))}
               </tbody>
             </table>
           </div>
