@@ -4,61 +4,80 @@
     background-color: #8B9B97;
   } */
   
-  .report-container {
+.report-history-main-container{
+  display: flex;
+  background-color: rgb(167, 186, 187);
+  min-height: 100vh;
+  flex-wrap: wrap;
+  width: 100%;
+  
+  
+  
+}
+  .report-history-container {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
     background-color: #fff;
-    margin: 40px auto;
-    padding: 20px;
-    max-width: 960px;
+    padding: 5px;
+    max-width: 70%;
     border-radius: 8px;
+    height: 87vh;
+    overflow: hidden;
+    margin-top: 5vh;
+    margin-left: 20vh;
   }
-  
-  h1 {
-    margin-bottom: 10px;
-  }
-  
-  .view-section {
+  .report-history-view-section {
     display: flex;
     align-items: center;
     margin-bottom: 20px;
   }
   
-  .view-section label {
-    margin-right: 10px;
+  .report-history-container h1 {
+    font-weight: bolder;
+    color: black;
+
+  }
+  .report-history-container label {
+
+    font-weight: bold;
+    color: black;
   }
   
   .view-section select {
     padding: 5px;
   }
   
-  .report-table {
+  .report-history-table {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 20px;
+    
+  }
+  .report-history-table-section{
+
+    
   }
   
-  .report-table th,
-  .report-table td {
-    border: 1px solid #ccc;
-    padding: 10px;
-    text-align: left;
-  }
   
-  .report-table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
+ .report-history-body tr:nth-child(odd) {
+    background-color: #f5eded;
+ }
   
-  .view-btn {
+  .report-history-view-btn {
     background-color: #007bff;
     border: none;
-    color: white;
+    color: black;
     padding: 6px 16px;
     border-radius: 9999px;
     cursor: pointer;
     font-weight: bold;
+    text-decoration: none;
+    text-align: center;
   }
   
-  .view-btn:hover {
-    background-color: #0056b3;
+  .report-history-view-btn:hover {
+   transform: scale(1.05);
+   text-decoration: underline;
   }
   
   .back-btn {

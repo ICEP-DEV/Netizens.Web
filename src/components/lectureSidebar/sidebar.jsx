@@ -34,7 +34,7 @@ const Sidebar = () => {
       <div>
         <img className="Lectur-sidebar-logo" alt="TUT icon" src={Icon} />
         <ul className="Lectur-sidebar-links">
-          <Link to="/dashboard" className="Lectur-sidebar-link">
+          <Link to="/dashboard/lecturer" className="Lectur-sidebar-link">
             Dashboard
           </Link>
           <Link to="/weekly-report" className="Lectur-sidebar-link">
