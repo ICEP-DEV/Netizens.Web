@@ -6,26 +6,23 @@
   
 .report-history-main-container{
   display: flex;
-  background-color: rgb(167, 186, 187);
+  background-color: white;
   min-height: 100vh;
   flex-wrap: wrap;
   width: 100%;
+  box-sizing: border-box;
   
   
   
 }
   .report-history-container {
-    flex: 1;
-    display: flex;
-    flex-direction: column;
-    background-color: #fff;
-    padding: 5px;
-    max-width: 70%;
-    border-radius: 8px;
-    height: 87vh;
-    overflow: hidden;
-    margin-top: 5vh;
-    margin-left: 20vh;
+  flex: 1;
+  
+  display: flex;
+  flex-direction: column;
+  padding: 10px;
+  width: 60%;
+  box-sizing: border-box;
   }
   .report-history-view-section {
     display: flex;
@@ -49,7 +46,7 @@
   }
   
   .report-history-table {
-    width: 100%;
+    width: 90%;
     border-collapse: collapse;
     
   }
@@ -60,14 +57,14 @@
   
   
  .report-history-body tr:nth-child(odd) {
-    background-color: #f5eded;
+    background-color:  #e7e4e4;
  }
   
   .report-history-view-btn {
     background-color: #007bff;
     border: none;
     color: black;
-    padding: 6px 16px;
+    padding: 2px ;
     border-radius: 9999px;
     cursor: pointer;
     font-weight: bold;

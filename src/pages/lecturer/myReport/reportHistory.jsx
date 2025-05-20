@@ -7,7 +7,7 @@ import Sidebar from "../../../components/lectureSidebar/sidebar";
 
 const ReportHistory = () => {
 
-  const [report,setReports] = useState([]);
+  const [reports,setReports] = useState([]);
 
   const months = [
     "January",
@@ -29,7 +29,7 @@ const ReportHistory = () => {
       "http://localhost:5041/api/Reports/GetReportDetailsForCurrentUser",
       {
         withCredentials:true,
-        headers:{"content-type": "applicatin/json", },
+        headers:{"Content-Type": "applicatin/json" },
         
       }
     ).then((response) =>{
@@ -76,8 +76,8 @@ const ReportHistory = () => {
             </tr>
           </thead>
           <tbody className="report-history-body">
-            {report.map((reports,index) =>(
-              <tr key={report.reportID || index}>
+            {reports.map((report,index) =>(
+              <tr key={reports.reportID || index}>
               <td>{index+1}</td>
               <td>{report.moduleName}</td>
               <td>{report.moduleCode}</td>

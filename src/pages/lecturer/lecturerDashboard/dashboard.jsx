@@ -60,8 +60,8 @@ const LecturerDashboardPage = () => {
   }, []);
   const getStatusStyle = (status) => {
     const s = status;
-    if(s === "pending") return {color:"orange" , fontWeight:"bold"};
-    if (s === "approved" || s === "reviewed") return { color: "blue", fontWeight: "bold" };
+    if(s === "Pending") return {color:"orange" , fontWeight:"bold"};
+    if (s === "Reviewed" || s === "reviewed") return { color: "blue", fontWeight: "bold" };
 
 return {};
   }
@@ -124,7 +124,7 @@ return {};
                 {reports.map((report,index) =>(
                 <tr key={report.reportId || index}>
                   <td>{index + 1}</td>
-                  <td>{report.module}</td>
+                  <td>{report.moduleCode}</td>
                   <td>{report.submissionDate}</td>
                   <td style={getStatusStyle(report.reportStatus)}>{report.reportStatus}</td>
                 </tr>
