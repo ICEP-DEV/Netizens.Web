@@ -13,6 +13,7 @@ import "./dashboard.css";
 
 const LecturerDashboardPage = () => {
   const [name, setName] = useState("");
+  const [surname,setSurname] = useState("");
   const [reports,setreports] = useState([]);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const LecturerDashboardPage = () => {
       )
       .then((response) => {
         setName(response.data.name);
+        setSurname(response.data.surname);
       })
       .catch((error) => {
         console.error("Error fetching user details:", error);
@@ -58,8 +60,8 @@ const LecturerDashboardPage = () => {
   }, []);
   const getStatusStyle = (status) => {
     const s = status;
-    if(s === "pending") return {color:"orange" , fontWeight:"bold"};
-    if (s === "approved" || s === "reviewed") return { color: "blue", fontWeight: "bold" };
+    if(s === "Pending") return {color:"orange" , fontWeight:"bold"};
+    if (s === "Reviewed" || s === "reviewed") return { color: "blue", fontWeight: "bold" };
 
 return {};
   }
@@ -73,9 +75,9 @@ return {};
         <div className="lecture-dashboard-main-header">
           <div className="lecture-dashboard-details">
             <FontAwesomeIcon icon={faCircleUser} className="lecture-dashboard-userIcon" />
-            <p> {name}</p>
+            <p> {name +"  "+ surname}</p>
           </div>
-          <p className="lecture-dashboard-welcome">Welcome, Lecturer</p>
+          <p className="lecture-dashboard-welcome">Welcome, {name}</p>
         </div>
 
         <div className="lecture-dashboard-main-body">
@@ -122,7 +124,7 @@ return {};
                 {reports.map((report,index) =>(
                 <tr key={report.reportId || index}>
                   <td>{index + 1}</td>
-                  <td>{report.module}</td>
+                  <td>{report.moduleCode}</td>
                   <td>{report.submissionDate}</td>
                   <td style={getStatusStyle(report.reportStatus)}>{report.reportStatus}</td>
                 </tr>

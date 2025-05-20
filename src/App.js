@@ -26,9 +26,11 @@ import AcademicPage from "./pages/admin/academic/academicPage";
 import AdminSettingsPage from "./pages/admin/settings/adminSettings";
 
 
+
 // Updated Add & Manage User Pages
 
 // User Management Pages
+
 import AddUserPage from "./pages/admin/addUser/addUserPage";
 import ManageUserPage from "./pages/admin/manageUser/manageUserPage";
 
@@ -46,6 +48,7 @@ import AddModule from "./pages/admin/addModules/addModules";
 // Report Management Page 
 import Reports from "./pages/admin/report/report";
 import EditLecturerProfile from "./pages/lecturer/lecturerProfile/lecturerEditProfile";
+import ViewReport from "./pages/admin/report/viewReport";
 
 
 const App = () => {
@@ -95,6 +98,7 @@ const App = () => {
 
       {/* Department Head Report Management */}
       <Route path="/dashboard/department-head/reports" element={<Reports />} />
+      <Route path="/view-reports" element={<ViewReport />} />
     </Routes>
   );
 };

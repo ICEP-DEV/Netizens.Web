@@ -24,19 +24,25 @@ const Reports = ({ interface: interfaceData = null }) => {
   const fetchReports = async (status) => {
     try {
       let response;
+
       if (status === 'pending') {
-        response = await axios.get('http://localhost:5041/api/PendingReport/GetDetail', {
-          params: { reportId: 0 }
+        response = await axios.post('http://localhost:5041/api/PendingReport/GetDetail', {
+          reportId: 0
         });
+        if (response.data && response.data.status) {
+          setReports([response.data]);
+        } else {
+          toast.error(response.data?.message || 'No pending reports found.');
+          setReports([]);
+        }
       } else if (status === 'done') {
         response = await axios.get('http://localhost:5041/api/Reports/GetAll');
-      }
-
-      if (response?.data) {
-        setReports(response.data);
-      } else {
-        toast.error('No reports found.');
-        setReports([]);
+        if (response.data && Array.isArray(response.data)) {
+          setReports(response.data);
+        } else {
+          toast.error('No reviewed reports found.');
+          setReports([]);
+        }
       }
     } catch (error) {
       toast.error('Error fetching reports.');
@@ -68,7 +74,11 @@ const Reports = ({ interface: interfaceData = null }) => {
 
       <div className="view-section">
         <label htmlFor="report-type">View:</label>
-        <select id="report-type" value={filter} onChange={(e) => setFilter(e.target.value)}>
+        <select
+          id="report-type"
+          value={filter}
+          onChange={(e) => setFilter(e.target.value)}
+        >
           <option value="done">Done Reports</option>
           <option value="pending">Pending Reports</option>
         </select>
@@ -87,17 +97,30 @@ const Reports = ({ interface: interfaceData = null }) => {
         <tbody>
           {reports.length > 0 ? (
             reports.map((report, index) => (
-              <tr key={report.id || report.reportId}>
+              <tr key={report.reportId || report.id}>
                 <td>{index + 1}</td>
-                <td>{report.userModule?.user?.userSurname || report.name}</td>
-                <td>{report.userModule?.module?.moduleCode || report.subject}</td>
+                <td>
+                  {report.userModule?.user?.userSurname ||
+                   report.reviewerSurname ||
+                   report.name ||
+                   'N/A'}
+                </td>
+                <td>
+                  {report.userModule?.module?.moduleCode ||
+                   report.module ||
+                   report.subject ||
+                   'N/A'}
+                </td>
                 <td>
                   {report.submissionDate
                     ? new Date(report.submissionDate).toLocaleDateString()
                     : report.date || 'N/A'}
                 </td>
                 <td>
-                  <button className="view-btn" onClick={() => handleViewReport(report.id || report.reportId)}>
+                  <button
+                    className="view-btn"
+                    onClick={() => handleViewReport(report.reportId || report.id)}
+                  >
                     View
                   </button>
                 </td>
@@ -118,10 +141,11 @@ const Reports = ({ interface: interfaceData = null }) => {
             <p><strong>Challenges:</strong> {viewedReport.challenges || 'N/A'}</p>
             <p><strong>Suggestions:</strong> {viewedReport.suggestions || 'N/A'}</p>
             <p><strong>Weekly Activity:</strong> {viewedReport.weeklyActivity || 'N/A'}</p>
-            <p><strong>Start Date:</strong> {viewedReport.start_Date || 'N/A'}</p>
-            <p><strong>End Date:</strong> {viewedReport.end_Date || 'N/A'}</p>
+            <p><strong>Start Date:</strong> {viewedReport.start_Date || viewedReport.startDate || 'N/A'}</p>
+            <p><strong>End Date:</strong> {viewedReport.end_Date || viewedReport.endDate || 'N/A'}</p>
             <p><strong>Reviewed By:</strong> {viewedReport.reviewedBy || 'N/A'}</p>
             <p><strong>Status:</strong> {viewedReport.reportStatus ? 'Reviewed' : 'Not Reviewed'}</p>
+            <p><strong>Feedback:</strong> {viewedReport.feedback || 'N/A'}</p>
             <button onClick={() => setViewedReport(null)}>Close</button>
           </div>
         </div>

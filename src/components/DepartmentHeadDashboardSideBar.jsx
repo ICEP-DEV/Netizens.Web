@@ -2,12 +2,12 @@ import React from "react";
 import "./DepartmentHeadDashboardSidebar.css";
 import Icon from "../assets/TUTicon1.jpeg";
 import { useNavigate } from "react-router-dom";
-import {
-  FaTachometerAlt,
-  FaFileAlt,
-  FaChartBar,
-  FaSignOutAlt,
-} from "react-icons/fa";
+
+import { FaChartBar, FaFileAlt, FaChartLine, FaSignOutAlt } from 'react-icons/fa';
+
+
+
+
 
 
 const DepartmentHeadDashboardSidebar = () => {
@@ -38,7 +38,9 @@ const DepartmentHeadDashboardSidebar = () => {
       <button onClick={handleLogout}>
         <span role="img" aria-label="logout">🚪</span> LOGOUT
       </button>
-    <div className="navpanel-content">
+
+      {/*  */}
+    {/* <div className="navpanel-content">
       <img className="logo" alt="TUT icon" src={Icon} />
       <div className="university-name">Tshwane University of Technology</div>
 
@@ -67,7 +69,7 @@ const DepartmentHeadDashboardSidebar = () => {
         <FaSignOutAlt className="navpanel-icon-left" /> Logout
 
       </button>
-    </div>
+    </div> */}
     </div>
   );
 };
