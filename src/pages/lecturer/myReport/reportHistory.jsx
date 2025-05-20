@@ -1,62 +1,96 @@
-import React from 'react';
-import './reportHistory.css'; // 
+import React, { useEffect,useState } from "react";
+import "./reportHistory.css";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
+import { Link } from "react-router-dom";
+import Sidebar from "../../../components/lectureSidebar/sidebar";
+
 const ReportHistory = () => {
-  const reports = [
-    { id: 1, subject: 'PPAF05D', date: '28-Mar-2025' },
-    { id: 2, subject: 'CSM115D', date: '28-Mar-2025' },
-    { id: 3, subject: 'PPAF05D', date: '20-Mar-2025' },
-    { id: 4, subject: 'CSM115D', date: '20-Mar-2025' },
-    { id: 5, subject: 'CSM115D', date: '14-Mar-2025' },
-    { id: 6, subject: 'PPAF05D', date: '14-Mar-2025' },
-    { id: 7, subject: 'CSM115D', date: '06-Mar-2025' },
-    { id: 8, subject: 'PPAF05D', date: '06-Mar-2025' }
-  ];
+
+  const [report,setReports] = useState([]);
 
   const months = [
-    'January', 'February', 'March', 'April', 'May', 'June',
-    'July', 'August', 'September', 'October', 'November', 'December'
+    "January",
+    "February",
+    "March",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December",
   ];
 
+  useEffect(() => {
+    axios.get(
+      "http://localhost:5041/api/Reports/GetReportDetailsForCurrentUser",
+      {
+        withCredentials:true,
+        headers:{"content-type": "applicatin/json", },
+        
+      }
+    ).then((response) =>{
+          if(Array.isArray(response.data)){
+            setReports(response.data);
+          }
+          else{
+            setReports([response.data]);
+          }
+    }).catch((error)=>{
+      console.log("Error fetching reports" + error);
+      toast.error("Error fetching reports" + error);
+    });
+  }, []);
   return (
-    <div className="report-container">
-      <h1>Report History</h1>
+    <div className="report-history-main-container">
+      <Sidebar />
+      <div className="report-history-container">
+        <h1>Report History</h1>
 
-      <div className="view-section">
-        <label htmlFor="view-by">View By:</label>
-        <select id="view-by">
-          {months.map((month) => (
-            <option key={month} value={month}>{month}</option>
-          ))}
-        </select>
-      </div>
+        <div className="report-history-view-section">
+          <label >View By:</label>
+          <select >
+            {months.map((month) => (
+              <option key={month} value={month}>
+                {month}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <h2>March 2025</h2>
+        <h2>March 2025</h2>
 
-      <table className="report-table">
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Surname & Initials</th>
-            <th>Subject Code</th>
-            <th>Submitted Date</th>
-            <th>Option</th>
-          </tr>
-        </thead>
-        <tbody>
-          {reports.map((report, index) => (
-            <tr key={report.id}>
-              <td>{index + 1}</td>
-              <td>Nevhutaru B</td>
-              <td>{report.subject}</td>
-              <td>{report.date}</td>
-              <td><button className="view-btn">View</button></td>
+        <div className="report-history-table-section">
+
+        <table className="report-history-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Subject Code</th>
+              <th>Subject name</th>
+              <th>Submitted Date</th>
+              <th>Option</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="report-history-body">
+            {report.map((reports,index) =>(
+              <tr key={report.reportID || index}>
+              <td>{index+1}</td>
+              <td>{report.moduleName}</td>
+              <td>{report.moduleCode}</td>
+              <td>{report.submissionDate}</td>
+              <td>
+              <Link className="report-history-view-btn">View</Link>
+              </td>
+            </tr>
+             ))}
+          </tbody>
+        </table>
 
-      <div className="back-btn">
-        <a href="/dashboard">← Back to Dashboard</a>
+        </div>
       </div>
     </div>
   );
