@@ -13,6 +13,7 @@ import "./dashboard.css";
 
 const LecturerDashboardPage = () => {
   const [name, setName] = useState("");
+  const [surname,setSurname] = useState("");
   const [reports,setreports] = useState([]);
 
   useEffect(() => {
@@ -29,6 +30,7 @@ const LecturerDashboardPage = () => {
       )
       .then((response) => {
         setName(response.data.name);
+        setSurname(response.data.surname);
       })
       .catch((error) => {
         console.error("Error fetching user details:", error);
@@ -73,7 +75,7 @@ return {};
         <div className="lecture-dashboard-main-header">
           <div className="lecture-dashboard-details">
             <FontAwesomeIcon icon={faCircleUser} className="lecture-dashboard-userIcon" />
-            <p> {name}</p>
+            <p> {name +"  "+ surname}</p>
           </div>
           <p className="lecture-dashboard-welcome">Welcome, Lecturer</p>
         </div>
