@@ -13,11 +13,14 @@ import {
   Search,
   Landmark,
   BookOpenText,
+  Pencil,
+  Trash2
 } from "lucide-react";
 import { toast, Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
+import axios from "axios";
 
-const AcademicPage = () => {
+const AcademicPage = ({ interface: interfaceData = null }) => {
   const [activeSection, setActiveSection] = useState("Departments");
   const sections = [
     "Departments",
@@ -26,8 +29,69 @@ const AcademicPage = () => {
     "Roles",
     "Communication Channels",
   ];
-  const [selectedDepartment, setSelectedDepartment] = useState("");
-  const [departmentOptions, setDepartmentOptions] = useState([]);
+  const [departments, setDepartments] = useState([]);
+  const [groups, setGroups] = useState([]);
+  const [roles, setRoles] = useState([]);
+  const [channels, setChannels] = useState([]);
+  const [modules, setModules] = useState([]);
+
+  useEffect(() => {
+    if (interfaceData) {
+      setDepartments(interfaceData);
+      setGroups(interfaceData);
+      setRoles(interfaceData);
+      setChannels(interfaceData);
+      setModules(interfaceData);
+    } else {
+      fetchAcademics();
+      fetchModules();
+    }
+  }, [interfaceData]);
+
+  const fetchAcademics = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5041/api/Academy/GetAllAcademicProperties"
+      );
+
+      if (response?.data?.status) {
+        setDepartments(response.data.departments);
+        setGroups(response.data.groups);
+        setRoles(response.data.roles);
+        setChannels(response.data.communicationChannels);
+      } else {
+        toast.error(response?.data?.message);
+        setDepartments([]);
+        setGroups([]);
+        setRoles([]);
+        setChannels([]);
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "An error occurred");
+      setDepartments([]);
+      setGroups([]);
+      setRoles([]);
+      setChannels([]);
+    }
+  };
+
+  const fetchModules = async () => {
+    try {
+      const response = await axios.get(
+        "http://localhost:5041/api/Getters/GetAllModules"
+      );
+
+      if (response?.data?.status) {
+        setModules(response.data.modules);
+      } else {
+        toast.error(response?.data?.message);
+        setModules([]);
+      }
+    } catch (error) {
+      toast.error(error.response?.data?.message || "An error occurred");
+      setModules([]);
+    }
+  };
 
   return (
     <div className="academic-page-container">
@@ -158,17 +222,69 @@ const AcademicPage = () => {
                 >
                   <h3>{activeSection}</h3>
                   <table className="academic-table">
-                      <thead>
-                        <tr>
-                          <th>Name</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                          <tr>
-                            <td>{activeSection}</td>
+                    <thead>
+                      <tr>
+                        <th>Name</th>
+                        <th>Actions</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {activeSection === "Departments" &&
+                        departments.map((dept, index) => (
+                          <tr key={index}>
+                            <td>{dept.departmentName}</td>
+                            <td className="user-account-action-buttons">
+                              <Pencil className="user-account-edit-icon" size={18} />
+                              <Trash2 className="user-account-delete-icon" size={18} />
+                            </td>
                           </tr>
-                      </tbody>
-                    </table>
+                        ))}
+
+                      {activeSection === "Modules" &&
+                        modules.map((mod, index) => (
+                          <tr key={index}>
+                            <td>{mod.moduleName}</td>
+                            <td className="user-account-action-buttons">
+                              <Pencil className="user-account-edit-icon" size={18} />
+                              <Trash2 className="user-account-delete-icon" size={18} />
+                            </td>
+                          </tr>
+                        ))}
+
+                      {activeSection === "Groups" &&
+                        groups.map((group, index) => (
+                          <tr key={index}>
+                            <td>Group {group.groupName}</td>
+                            <td className="user-account-action-buttons">
+                              <Pencil className="user-account-edit-icon" size={18} />
+                              <Trash2 className="user-account-delete-icon" size={18} />
+                            </td>
+                          </tr>
+                        ))}
+
+                      {activeSection === "Roles" &&
+                        roles.map((role, index) => (
+                          <tr key={index}>
+                            <td>{role.roleName}</td>
+                            <td className="user-account-action-buttons">
+                              <Pencil className="user-account-edit-icon" size={18} />
+                              <Trash2 className="user-account-delete-icon" size={18} />
+                            </td>
+                          </tr>
+                        ))}
+
+                      {activeSection === "Communication Channels" &&
+                        channels.map((channel, index) => (
+                          <tr key={index}>
+                            <td>{channel.channelName}</td>
+                            <td className="user-account-action-buttons">
+                              <Pencil className="user-account-edit-icon" size={18} />
+                              <Trash2 className="user-account-delete-icon" size={18} />
+                            </td>
+                          </tr>
+                        ))}
+                    </tbody>
+                  </table>
                 </motion.div>
               </AnimatePresence>
             </div>

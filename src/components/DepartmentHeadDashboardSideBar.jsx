@@ -26,7 +26,7 @@ const DepartmentHeadDashboardSidebar = () => {
       <img className="logo1" alt="TUT icon" src={Icon} />
       <ul>
         <li>
-          <span role="img" aria-label="dashboard">📊</span> Dashboard
+          <span role="img" aria-label="dashboard">📊</span> Dashboard 
         </li>
         <li>
           <span role="img" aria-label="report">📝</span> Report
