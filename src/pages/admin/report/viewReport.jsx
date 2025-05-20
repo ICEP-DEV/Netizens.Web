@@ -4,8 +4,6 @@ import './viewReport.css';
 import { toast, Toaster } from 'react-hot-toast';
 import jsPDF from 'jspdf';
 import Papa from 'papaparse';
-import { Document, Packer, Paragraph, TextRun } from 'docx';
-import { saveAs } from 'file-saver';
 
 const ViewReport = () => {
   const [reports, setReports] = useState([]);
@@ -22,7 +20,6 @@ const ViewReport = () => {
         toast.error('Failed to fetch reports');
       }
     };
-
     fetchReports();
   }, []);
 
@@ -63,70 +60,39 @@ const ViewReport = () => {
     }
   };
 
-  const exportToCSV = () => {
-    const csv = Papa.unparse(reports);
+  const exportSingleToCSV = (report) => {
+    const csv = Papa.unparse([report]);
     const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
-    saveAs(blob, 'reports.csv');
+    const fileName = `report_${report.reportID}.csv`;
+    const link = document.createElement('a');
+    link.href = URL.createObjectURL(blob);
+    link.setAttribute('download', fileName);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
   };
 
-  const exportToPDF = () => {
+  const exportSingleToPDF = (report) => {
     const doc = new jsPDF();
     doc.setFontSize(12);
-    doc.text('Report Summary', 10, 10);
-
-    reports.forEach((report, index) => {
-      const top = 20 + index * 50;
-      doc.text(`Name: ${report.userModuleName}`, 10, top);
-      doc.text(`Group(s): ${report.groupNames}`, 10, top + 10);
-      doc.text(`Submitted: ${new Date(report.submissionDate).toLocaleDateString()}`, 10, top + 20);
-      doc.text(`Reviewed: ${report.reportStatus ? 'Yes' : 'No'}`, 10, top + 30);
-    });
-
-    doc.save('reports.pdf');
-  };
-
-  const exportToWord = async () => {
-    const paragraphs = reports.map(report =>
-      new Paragraph({
-        children: [
-          new TextRun({ text: `Name: ${report.userModuleName}`, bold: true }),
-          new TextRun(`\nGroup(s): ${report.groupNames}`),
-          new TextRun(`\nSubmitted: ${new Date(report.submissionDate).toLocaleDateString()}`),
-          new TextRun(`\nReviewed: ${report.reportStatus ? 'Yes' : 'No'}`),
-          new TextRun('\n\n')
-        ]
-      })
-    );
-
-    const doc = new Document({
-      sections: [{ children: [new Paragraph("Report Summary"), ...paragraphs] }],
-    });
-
-    const blob = await Packer.toBlob(doc);
-    saveAs(blob, "reports.docx");
+    doc.text('Report Details', 10, 10);
+    doc.text(`Name: ${report.userModuleName}`, 10, 30);
+    doc.text(`Group(s): ${report.groupNames}`, 10, 40);
+    doc.text(`Submitted: ${new Date(report.submissionDate).toLocaleDateString()}`, 10, 50);
+    doc.text(`Reviewed: ${report.reportStatus ? 'Yes' : 'No'}`, 10, 60);
+    doc.save(`report_${report.reportID}.pdf`);
   };
 
   return (
     <div className="viewreport-container">
       <Toaster />
 
-     
       <div className="viewreport-nav-buttons">
-        <a className="viewreport-nav-back" href="/dashboard/hod-department">
-          Back
-        </a>
-        <a className="viewreport-nav-forward" href="/reports/next">
-          Forward
-        </a>
+        <a className="viewreport-nav-back" href="/dashboard/hod-department">Back</a>
+        <a className="viewreport-nav-forward" href="/reports/next">Forward</a>
       </div>
 
       <h1>View Reports</h1>
-
-      <div className="export-buttons">
-        <button onClick={exportToCSV}>Export CSV</button>
-        <button onClick={exportToPDF}>Export PDF</button>
-        <button onClick={exportToWord}>Export Word</button>
-      </div>
 
       <table className="viewreport-table">
         <thead>
@@ -164,6 +130,18 @@ const ViewReport = () => {
                   >
                     Give Feedback
                   </button>
+                  <button
+                    className="viewreport-btn export-csv-btn"
+                    onClick={() => exportSingleToCSV(report)}
+                  >
+                    CSV
+                  </button>
+                  <button
+                    className="viewreport-btn export-pdf-btn"
+                    onClick={() => exportSingleToPDF(report)}
+                  >
+                    PDF
+                  </button>
 
                   {feedbackVisible[report.reportID] && (
                     <div className="feedback-input-section">
@@ -200,23 +178,11 @@ const ViewReport = () => {
         <div className="viewreport-details-popup">
           <div className="viewreport-details">
             <h2>Report Details</h2>
-            <p>
-              <strong>Name: </strong> {viewedReport.userModuleName}
-            </p>
-            <p>
-              <strong>Groups: </strong> {viewedReport.groupNames}
-            </p>
-            <p>
-              <strong>Submitted Date: </strong>{' '}
-              {new Date(viewedReport.submissionDate).toLocaleDateString()}
-            </p>
-            <p>
-              <strong>Status: </strong> {viewedReport.reportStatus ? 'Reviewed' : 'Pending'}
-            </p>
-            <p>
-              <strong>Feedback: </strong> {viewedReport.feedback || 'N/A'}
-            </p>
-
+            <p><strong>Name: </strong> {viewedReport.userModuleName}</p>
+            <p><strong>Groups: </strong> {viewedReport.groupNames}</p>
+            <p><strong>Submitted Date: </strong> {new Date(viewedReport.submissionDate).toLocaleDateString()}</p>
+            <p><strong>Status: </strong> {viewedReport.reportStatus ? 'Reviewed' : 'Pending'}</p>
+            <p><strong>Feedback: </strong> {viewedReport.feedback || 'N/A'}</p>
             <button onClick={() => setViewedReport(null)}>Close</button>
           </div>
         </div>
