@@ -18,8 +18,16 @@ import { toast, Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 
 const AcademicPage = () => {
-  const [activeSection, setActiveSection] = useState("Department");
-  const sections = ["Department", "Modules", "Groups", "Roles"];
+  const [activeSection, setActiveSection] = useState("Departments");
+  const sections = [
+    "Departments",
+    "Modules",
+    "Groups",
+    "Roles",
+    "Communication Channels",
+  ];
+  const [selectedDepartment, setSelectedDepartment] = useState("");
+  const [departmentOptions, setDepartmentOptions] = useState([]);
 
   return (
     <div className="academic-page-container">
@@ -138,7 +146,7 @@ const AcademicPage = () => {
               ))}
             </div>
 
-            <div className="form-area">
+            <div className="table-area">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeSection}
@@ -146,15 +154,21 @@ const AcademicPage = () => {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: 50 }}
                   transition={{ duration: 0.4 }}
-                  className="form-content"
+                  className="table-content"
                 >
-                  <h3>Add {activeSection}</h3>
-                  <form>
-                    <p>Form fields for {activeSection} go here...</p>
-                    <button type="submit" className="submit-button">
-                      Save {activeSection}
-                    </button>
-                  </form>
+                  <h3>{activeSection}</h3>
+                  <table className="academic-table">
+                      <thead>
+                        <tr>
+                          <th>Name</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                          <tr>
+                            <td>{activeSection}</td>
+                          </tr>
+                      </tbody>
+                    </table>
                 </motion.div>
               </AnimatePresence>
             </div>
