@@ -1,165 +1,206 @@
 import React, { useState, useEffect } from 'react';
-import { useLocation } from 'react-router-dom';
 import './manageUserPage.css';
+import AdminSideBar from '../../../components/admin/adminSideBar/adminSideBar';
+import Ribbon from '../../../components/admin/ribbon/ribbon';
+import { format } from 'date-fns';
+import { UserPlus, Users, ChevronRight, FileText, BarChart2, Search ,Pencil, Trash2 } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { toast, Toaster } from "react-hot-toast";
+
 
 const ManageUserPage = () => {
-  const location = useLocation();
-  const [users, setUsers] = useState([]);
-  const [error, setError] = useState('');
-  const [selectedUserForGroup, setSelectedUserForGroup] = useState(null);
-  const [showGroupModal, setShowGroupModal] = useState(false);
+  const users = [
+  {
+    initials: 'JD',
+    name: 'John Doe',
+    email: 'lecturer@example.com',
+    role: 'Lecturer',
+    position: 'Associate Professor',
+    department: 'Computer Science',
+    status: 'active',
+    created: '1/15/2025',
+    avatarColor: 'red',
+  },
+  {
+    initials: 'JS',
+    name: 'Jane Smith',
+    email: 'reviewer@example.com',
+    role: 'Reviewer',
+    position: 'Senior Academic Coordinator',
+    department: 'Academic Affairs',
+    status: 'active',
+    created: '1/10/2025',
+    avatarColor: 'blue',
+  },
+  {
+    initials: 'AJ',
+    name: 'Alex Johnson',
+    email: 'admin@example.com',
+    role: 'Admin',
+    position: 'System Administrator',
+    department: '-',
+    status: 'active',
+    created: '1/5/2025',
+    avatarColor: 'yellow',
+  },
+  {
+    initials: 'SW',
+    name: 'Sarah Williams',
+    email: 'sarah.williams@example.com',
+    role: 'Lecturer',
+    position: 'Assistant Professor',
+    department: 'Mathematics',
+    status: 'inactive',
+    created: '2/20/2025',
+    avatarColor: 'purple',
+  },
+ 
+];
 
-  const groupOptions = Array.from({ length: 26 }, (_, i) =>
-    String.fromCharCode(65 + i)
-  );
-
-  useEffect(() => {
-    const storedUsers = JSON.parse(localStorage.getItem('users')) || [];
-    setUsers(storedUsers);
-
-    if (location.state?.openGroupModal) {
-      const lecturer = storedUsers.find(
-        (u) => u.role === 'Lecturer' && u.isActive
-      );
-      if (lecturer) {
-        setSelectedUserForGroup(lecturer.email);
-        setShowGroupModal(true);
-      } else {
-        setError('❌ No Active Lecturer Found to Assign Group');
-      }
-    }
-
-    if (location.state?.error) {
-      setError(location.state.error);
-    }
-  }, [location.state]);
-
-  const saveUsers = (updatedUsers) => {
-    localStorage.setItem('users', JSON.stringify(updatedUsers));
-    setUsers(updatedUsers);
-  };
-
-  const toggleUserStatus = (email) => {
-    const updated = users.map((user) =>
-      user.email === email ? { ...user, isActive: !user.isActive } : user
-    );
-    saveUsers(updated);
-  };
-
-  const deleteUser = (email) => {
-    const updated = users.filter((user) => user.email !== email);
-    saveUsers(updated);
-  };
-
-  const assignGroup = (user) => {
-    if (user.role !== 'Lecturer') {
-      setError('User is not a Lecturer');
-      return;
-    }
-    if (!user.isActive) {
-      setError('User must be active to assign group');
-      return;
-    }
-    setSelectedUserForGroup(user.email);
-    setShowGroupModal(true);
-    setError('');
-  };
-
-  const handleGroupSelect = (group) => {
-    const updated = users.map((user) =>
-      user.email === selectedUserForGroup ? { ...user, group } : user
-    );
-    saveUsers(updated);
-    setShowGroupModal(false);
-    setSelectedUserForGroup(null);
-  };
+ const navigate = useNavigate();
+   const handleAddUser = () => {
+     navigate("/add-user");
+   } 
 
   return (
-    <div className="manageUserPage-container">
-      <h2 className="manageUserPage-heading">Manage Users</h2>
-      {error && <p className="manageUserPage-errorText">{error}</p>}
-
-      <table className="manageUserPage-table">
-        <thead>
-          <tr>
-            <th className="manageUserPage-th">Staff Number</th>
-            <th className="manageUserPage-th">First Name</th>
-            <th className="manageUserPage-th">Surname</th>
-            <th className="manageUserPage-th">Contact</th>
-            <th className="manageUserPage-th">Email</th>
-            <th className="manageUserPage-th">Role</th>
-            <th className="manageUserPage-th">Departments</th>
-            <th className="manageUserPage-th">Group</th>
-            <th className="manageUserPage-th">Status</th>
-            <th className="manageUserPage-th">Actions</th>
-          </tr>
-        </thead>
-        <tbody>
-          {users.length === 0 ? (
-            <tr>
-              <td colSpan="10" className="manageUserPage-td">No users available.</td>
-            </tr>
-          ) : (
-            users.map((user, index) => (
-              <tr
-                key={user.email}
-                className={index % 2 === 0 ? 'manageUserPage-row-even' : 'manageUserPage-row-odd'}
-              >
-                <td className="manageUserPage-td">{user.staffNumber || 'N/A'}</td>
-                <td className="manageUserPage-td">{user.firstName || 'N/A'}</td>
-                <td className="manageUserPage-td">{user.surname || 'N/A'}</td>
-                <td className="manageUserPage-td">{user.contactDetails || 'N/A'}</td>
-                <td className="manageUserPage-td">{user.email}</td>
-                <td className="manageUserPage-td">{user.role || 'N/A'}</td>
-                <td className="manageUserPage-td">
-                  {Array.isArray(user.departments) ? user.departments.join(', ') : 'N/A'}
-                </td>
-                <td className="manageUserPage-td">{user.group || 'N/A'}</td>
-                <td className="manageUserPage-td">
-                  <span
-                    className={`manageUserPage-statusBadge ${
-                      user.isActive ? 'manageUserPage-statusActive' : 'manageUserPage-statusInactive'
-                    }`}
-                  >
-                    {user.isActive ? 'Active' : 'Inactive'}
-                  </span>
-                </td>
-                <td className="manageUserPage-td manageUserPage-userActions">
-                  <button onClick={() => toggleUserStatus(user.email)}>
-                    {user.isActive ? 'Deactivate' : 'Activate'}
+    <div className="manage-users-page-container">
+      <Toaster />
+      <Ribbon />
+      <div className='manage-users-container'>
+        <AdminSideBar />
+        <div className='manage-users-page'>
+            <div className='manage-users-header-container'>
+                <div className='manage-users-header'>
+                  <h2 className='admin-header-text'>Manage Users</h2>
+                  <p className='admin-date'> {format(new Date(), "EEEE, MMMM do, yyyy")} | System Overview</p>
+                </div>
+                <div className='header-button'>
+                  <button className='dashboard-add-user-button' onClick={handleAddUser}>
+                    <UserPlus className='dashboard-button-icon' />
+                    <span>Add New User</span>
                   </button>
-                  <button onClick={() => deleteUser(user.email)}>Delete</button>
-                  <button onClick={() => assignGroup(user)}>Assign Group</button>
-                </td>
-              </tr>
-            ))
-          )}
-        </tbody>
-      </table>
-
-      {showGroupModal && (
-        <div className="manageUserPage-groupModal">
-          <div className="manageUserPage-modalContent">
-            <h3>Select Group (A–Z)</h3>
-            <div className="manageUserPage-groupGrid">
-              {groupOptions.map((group) => (
-                <button key={group} onClick={() => handleGroupSelect(group)}>
-                  {group}
-                </button>
-              ))}
+                </div>
             </div>
-            <button
-              className="manageUserPage-closeBtn"
-              onClick={() => {
-                setShowGroupModal(false);
-                setSelectedUserForGroup(null);
-              }}
-            >
-              Close
-            </button>
-          </div>
+            <div className='manage-users-content'>
+              <div className='manage-users-list-container'>
+                <div className='users-list-search-container'>
+                  <div className="admin-search-box">
+                    <div className="admin-search-icon">
+                      <Search className="icon" />
+                    </div>
+                      <input type="search" placeholder="Search users..." />
+                    </div>
+
+                    <select className="admin-dropdown">
+                      <option>All Roles</option>
+                      <option value="">Admins</option>
+                      <option value="">Lecturers</option>
+                      <option value="">Reviewers</option>
+                    </select>
+
+                    <select className="admin-dropdown">
+                      <option>All Status</option>
+                      <option value="">Active</option>
+                      <option value="">In Active</option>
+                    </select>
+
+                    <button className="admin-filter-button">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="icon"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        strokeWidth="2"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M3 4h18M6 8h12M10 12h4M12 16h0" />
+                      </svg>
+                      Filter
+                    </button>
+                </div>
+                <div className='users-list-container'>
+                  <div className="users-list-table-container">
+                    <table className="user-account-table">
+                      <thead>
+                        <tr>
+                          <th>NAME</th>
+                          <th>ROLE</th>
+                          <th>DEPARTMENT</th>
+                          <th>STATUS</th>
+                          <th>CREATED</th>
+                          <th>ACTIONS</th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {users.map((user, i) => (
+                          <tr key={i}>
+                            <td>
+                              <div className="user-account-name-info">
+                                {/* <div className={`user-account-avatar ${user.avatarColor}`}>{user.initials}</div> */}
+                                <div>
+                                  <div className="user-account-name">{user.name}</div>
+                                  <div className="user-account-email">{user.email}</div>
+                                </div>
+                              </div>
+                            </td>
+                            <td>
+                              <div className="user-account-role">{user.role}</div>
+                            </td>
+                            <td>{user.department}</td>
+                            <td>
+                              <span className={`user-account-status-badge ${user.status === 'active' ? 'active' : 'inactive'}`}>
+                                {user.status}
+                              </span>
+                            </td>
+                            <td>{user.created}</td>
+                            <td className="user-account-action-buttons">
+                              <Pencil className="user-account-edit-icon" size={18} />
+                              <Trash2 className="user-account-delete-icon" size={18} />
+                            </td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              </div>
+              <div className='manage-users-extra-container'>
+                <div className="manage-users-quick-actions-container">
+                    <div className="quick-actions-header">Quick Actions</div>
+
+                    <div className="quick-action-item">
+                      <div className="quick-action-left">
+                        <Users className="quick-action-icon" />
+                        <span>View Lecturer</span>
+                      </div>
+                      <ChevronRight className="quick-action-chevron" />
+                    </div>
+
+                    <div className="quick-action-item">
+                      <div className="quick-action-left">
+                        <Users className="quick-action-icon" />
+                        <span>View Reviewers</span>
+                      </div>
+                      <ChevronRight className="quick-action-chevron" />
+                    </div>
+
+                    <div className="quick-action-item">
+                      <div className="quick-action-left">
+                        <BarChart2 className="quick-action-icon" />
+                        <span>Users Activities</span>
+                      </div>
+                      <ChevronRight className="quick-action-chevron" />
+                    </div>
+                </div>
+                <div className='manage-users-stats-container'>Stats</div>
+                
+              </div>
+            </div>
         </div>
-      )}
+
+      </div>
     </div>
   );
 };

@@ -1,6 +1,6 @@
 // src/components/DepartmentHeadDashboard.js
 import React from "react";
-import "./HodDashboard.css";
+import "./hodDashboard.css";
 import DepartmentHeadDashboardSidebar from "../../../components/DepartmentHeadDashboardSideBar";
 import NotificationBell from "../../../components/NotificationBell";
 
@@ -11,7 +11,7 @@ const noSubmissions = [
   { name: "Nevhutaru B", group: "M", module: "PPAF05D", lastSubmitted: "29-03-2025" }
 ];
 
-const HodDashboard = () => {
+const HodDashboardPage = () => {
   return (
 
     
@@ -76,4 +76,4 @@ const HodDashboard = () => {
   );
 };
 
-export default HodDashboard;
+export default HodDashboardPage;
