@@ -24,9 +24,11 @@ import AssignDepartment from "./pages/assignDepartment/assignDepartment";
 import AdminDetails from "./pages/admin/adminDetails/adminDetails";
 
 
+
 // Updated Add & Manage User Pages
 
 // User Management Pages
+
 import AddUserPage from "./pages/admin/addUser/addUserPage";
 import ManageUserPage from "./pages/admin/manageUser/manageUserPage";
 
