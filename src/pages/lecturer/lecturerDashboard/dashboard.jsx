@@ -77,7 +77,7 @@ return {};
             <FontAwesomeIcon icon={faCircleUser} className="lecture-dashboard-userIcon" />
             <p> {name +"  "+ surname}</p>
           </div>
-          <p className="lecture-dashboard-welcome">Welcome, Lecturer</p>
+          <p className="lecture-dashboard-welcome">Welcome, {name}</p>
         </div>
 
         <div className="lecture-dashboard-main-body">

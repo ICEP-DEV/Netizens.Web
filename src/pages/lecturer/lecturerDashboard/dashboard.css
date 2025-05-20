@@ -1,6 +1,6 @@
 .lecture-dashboard {
   display: flex;
-  background-color: white;
+  background-color:rgb(190, 190, 190);
   min-height: 100vh;
   flex-wrap: wrap;
   width: 100%;
@@ -85,12 +85,12 @@
   min-width: 50px;
   box-sizing: border-box;
   height: 34vh;
-  border: 1px solid black;
+  border: 1px solid white;
   box-sizing: border-box;
   margin-left: 2vh;
   text-align: start;
   overflow: hidden;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 10);
+  box-shadow: 3px 2px 2px gray;
   
 }
 
@@ -101,6 +101,7 @@
   margin: 0;
   text-align: start;
   overflow: hidden;
+  background-color: #e7e4e4 ;
 }
 .lecture-dashboard-item p {
   font-size: 3vh;
@@ -160,7 +161,7 @@
   border-collapse: collapse;
 }
 .lecture-dashboard-tbody tr:nth-child(odd) {
-  background-color: #a6d6e0;
+  background-color: #e7e4e4;
 }
 
 .lecture-dashboard-tbody tr:nth-child(even) {
