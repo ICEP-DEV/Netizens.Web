@@ -5,6 +5,53 @@
   max-width: 1000px;
   border-radius: 12px;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+
+.viewreport-nav-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+
+.viewreport-nav-back,
+.viewreport-nav-forward {
+  font-weight: 600;
+  color: #007bff;
+  text-decoration: none;
+  font-size: 14px;
+  transition: color 0.3s ease;
+  padding: 8px 14px;
+  border-radius: 6px;
+  border: 1.5px solid #007bff;
+  cursor: pointer;
+  user-select: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f9faff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.viewreport-nav-back:hover,
+.viewreport-nav-forward:hover {
+  color: #0056b3;
+  border-color: #0056b3;
+  background-color: #e6f0ff;
+}
+
+.viewreport-nav-back::before {
+  content: "←";
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.viewreport-nav-forward::after {
+  content: "→";
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .viewreport-container h1 {
@@ -12,16 +59,18 @@
   font-size: 28px;
   font-weight: 600;
   color: #333333;
+  text-align: center;
 }
 
-/* Export Button Container */
+
+
 .export-buttons {
   display: flex;
   gap: 12px;
   margin-bottom: 24px;
+  justify-content: center;
 }
 
-/* Individual Export Buttons */
 .export-buttons button {
   background-color: #28a745;
   color: #ffffff;
@@ -81,20 +130,46 @@
   background-color: #0056b3;
 }
 
-.viewreport-back-btn {
-  margin-top: 20px;
-  text-align: left;
+.feedback-btn {
+  background-color: #17a2b8;
+  margin-left: 8px;
 }
 
-.viewreport-back-btn a {
-  text-decoration: none;
-  color: #007bff;
+.feedback-btn:hover {
+  background-color: #117a8b;
+}
+
+.feedback-input-section {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.feedback-input-section textarea {
+  width: 100%;
+  min-height: 60px;
+  padding: 8px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  resize: vertical;
+}
+
+.submit-feedback-btn {
+  align-self: flex-start;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 4px;
   font-weight: 600;
-  transition: color 0.3s ease;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
-.viewreport-back-btn a:hover {
-  color: #0056b3;
+.submit-feedback-btn:hover {
+  background-color: #218838;
 }
 
 .viewreport-details-popup {
@@ -157,45 +232,4 @@
     opacity: 1;
     transform: translateY(0);
   }
-}
-.feedback-input-section {
-  margin-top: 10px;
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-}
-
-.feedback-input-section textarea {
-  width: 100%;
-  min-height: 60px;
-  padding: 8px;
-  border-radius: 6px;
-  border: 1px solid #ccc;
-  font-size: 14px;
-  resize: vertical;
-}
-
-.submit-feedback-btn {
-  align-self: flex-start;
-  background-color: #28a745;
-  color: white;
-  border: none;
-  padding: 6px 14px;
-  border-radius: 4px;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-}
-
-.submit-feedback-btn:hover {
-  background-color: #218838;
-}
-
-.feedback-btn {
-  background-color: #17a2b8;
-  margin-left: 8px;
-}
-
-.feedback-btn:hover {
-  background-color: #117a8b;
 }

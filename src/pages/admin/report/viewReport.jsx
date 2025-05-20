@@ -109,6 +109,17 @@ const ViewReport = () => {
   return (
     <div className="viewreport-container">
       <Toaster />
+
+     
+      <div className="viewreport-nav-buttons">
+        <a className="viewreport-nav-back" href="/dashboard/hod-department">
+          Back
+        </a>
+        <a className="viewreport-nav-forward" href="/reports/next">
+          Forward
+        </a>
+      </div>
+
       <h1>View Reports</h1>
 
       <div className="export-buttons">
@@ -189,24 +200,27 @@ const ViewReport = () => {
         <div className="viewreport-details-popup">
           <div className="viewreport-details">
             <h2>Report Details</h2>
-            <p><strong>User:</strong> {viewedReport.userModuleName || 'N/A'}</p>
-            <p><strong>Groups:</strong> {viewedReport.groupNames || 'N/A'}</p>
-            <p><strong>Challenges:</strong> {viewedReport.challenges || 'N/A'}</p>
-            <p><strong>Suggestions:</strong> {viewedReport.suggestions || 'N/A'}</p>
-            <p><strong>Weekly Activity:</strong> {viewedReport.weeklyActivity || 'N/A'}</p>
-            <p><strong>Start Date:</strong> {viewedReport.startDate || viewedReport.start_Date || 'N/A'}</p>
-            <p><strong>End Date:</strong> {viewedReport.endDate || viewedReport.end_Date || 'N/A'}</p>
-            <p><strong>Reviewed By:</strong> {viewedReport.reviewedBy || 'N/A'}</p>
-            <p><strong>Status:</strong> {viewedReport.reportStatus ? 'Reviewed' : 'Not Reviewed'}</p>
-            <p><strong>Feedback:</strong> {viewedReport.feedback || 'N/A'}</p>
+            <p>
+              <strong>Name: </strong> {viewedReport.userModuleName}
+            </p>
+            <p>
+              <strong>Groups: </strong> {viewedReport.groupNames}
+            </p>
+            <p>
+              <strong>Submitted Date: </strong>{' '}
+              {new Date(viewedReport.submissionDate).toLocaleDateString()}
+            </p>
+            <p>
+              <strong>Status: </strong> {viewedReport.reportStatus ? 'Reviewed' : 'Pending'}
+            </p>
+            <p>
+              <strong>Feedback: </strong> {viewedReport.feedback || 'N/A'}
+            </p>
+
             <button onClick={() => setViewedReport(null)}>Close</button>
           </div>
         </div>
       )}
-
-      <div className="viewreport-back-btn">
-        <a href="/dashboard/hod-department">← Back to Dashboard</a>
-      </div>
     </div>
   );
 };
