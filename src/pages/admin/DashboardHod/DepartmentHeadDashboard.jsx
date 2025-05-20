@@ -1,8 +1,7 @@
-
 import React from "react";
 import "./DepartmentHeadDashboard.css";
-import { useNavigate } from "react-router-dom";
 import DepartmentHeadDashboardSideBar from "../../../components/DepartmentHeadDashboardSideBar";
+import { useNavigate } from "react-router-dom";
 
 const noSubmissions = [
   { name: "Nkosi SM", group: "A", module: "CSM115D", lastSubmitted: "04-04-2025" },
@@ -16,39 +15,97 @@ const DepartmentHeadDashboard = () => {
     navigate(`/dashboard/department-head/reports?filter=${filter}`);
   };
 
+  const goToViewReportsPage = () => {
+    navigate("/view-reports");
+  };
+
   return (
-    <div className="dashboard-wrapper">
-      <div className="dashboard-container">
+    <div className="dh-dashboard-page-container">
+      <div className="dh-dashboard-container">
         <DepartmentHeadDashboardSideBar />
 
-        <main className="main-content">
-          <header className="header">
-            <h1>Welcome To Department Head Dashboard</h1>
-            <div className="user-profile">
-              <span role="img" aria-label="bell">🔔</span>
-              <div className="avatar"></div>
-              <span>Username</span>
+        <div className="dh-dashboard">
+          {/* Header */}
+          <div className="dh-dashboard-header-container">
+            <div className="dh-dashboard-header">
+              <h1 className="dh-header-text">Welcome To Department Head Dashboard</h1>
+              <p className="dh-date">{new Date().toLocaleDateString()}</p>
             </div>
-          </header>
+          </div>
 
-          <section className="summary-section">
-            <div className="quick-actions card">
-              <h3>Quick Actions:</h3>
-              <button className="action-btn" onClick={() => goToReports("done")}>📘 View Reports</button>
-              <button className="action-btn" onClick={() => goToReports("pending")}>⏳ Pending Approval</button>
+          {/* Statistics Cards */}
+          <div className="dh-dashboard-stats-container">
+            <div className="dh-stats-card">
+              <div className="card-content-1">
+                <div className="card-icon-container-users">👨‍🏫</div>
+                <div className="card-users-info-container">
+                  <p>Total Lecturers</p>
+                  <h3>36</h3>
+                </div>
+              </div>
             </div>
 
-            <div className="overview card">
-              <h3>System Overview:</h3>
-              <p>Total Lecturers: <span className="blue">36</span></p>
-              <p>Reports Submitted: <span className="blue">25 (This week)</span></p>
-              <p>Reports Pending Approval: <span className="orange">3</span></p>
-              <p>Missed Reports: <span className="red">2</span></p>
+            <div className="dh-stats-card">
+              <div className="card-content-1">
+                <div className="card-icon-container-reports">✅</div>
+                <div className="card-users-info-container">
+                  <p>Reports Submitted</p>
+                  <h3>25 (This week)</h3>
+                </div>
+              </div>
             </div>
-          </section>
 
+            <div className="dh-stats-card">
+              <div className="card-content-1">
+                <div className="card-icon-container-pending">⏳</div>
+                <div className="card-users-info-container">
+                  <p>Pending Approvals</p>
+                  <h3>3</h3>
+                </div>
+              </div>
+            </div>
+
+            <div className="dh-stats-card">
+              <div className="card-content-1">
+                <div className="card-icon-container-missed">⚠️</div>
+                <div className="card-users-info-container">
+                  <p>Missed Reports</p>
+                  <h3>2</h3>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Quick Actions */}
+          <div className="dh-dashboard-header-container">
+            <h2>Quick Actions:</h2>
+            <div className="header-button">
+              <button
+                className="dashboard-view-reports-button"
+                onClick={() => goToReports("done")}
+              >
+                📘 View Reports
+              </button>
+              <button
+                className="dashboard-view-reports-button"
+                onClick={() => goToReports("pending")}
+              >
+                ⏳ Pending Approval
+              </button>
+              <button
+                className="dashboard-view-reports-button"
+                onClick={goToViewReportsPage}
+              >
+                📄 View Full Report
+              </button>
+            </div>
+          </div>
+
+          {/* No Submissions Table */}
           <section className="no-submissions">
-            <h2>Lecturers with <span className="red">No</span> Submissions this week:</h2>
+            <h2>
+              Lecturers with <span className="red">No</span> Submissions this week:
+            </h2>
             <table>
               <thead>
                 <tr>
@@ -70,7 +127,7 @@ const DepartmentHeadDashboard = () => {
               </tbody>
             </table>
           </section>
-        </main>
+        </div>
       </div>
     </div>
   );

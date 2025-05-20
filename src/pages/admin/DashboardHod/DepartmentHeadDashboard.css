@@ -1,88 +1,163 @@
-.dashboard-wrapper {
+/* Page Wrapper */
+.dh-dashboard-page-container {
   display: flex;
   height: 100vh;
-  background-color: #7a8b88; 
+  background-color: #f4f7f9;
 }
 
-.dashboard-container {
+/* Main Container: Sidebar + Dashboard */
+.dh-dashboard-container {
   display: flex;
   flex: 1;
 }
 
-/* Main Content */
-.main-content {
+/* Sidebar handled in DepartmentHeadDashboardSidebar.css */
+
+/* Main Dashboard Area */
+.dh-dashboard {
   flex: 1;
   padding: 20px;
   overflow-y: auto;
+  background-color: #fff;
 }
 
-.header {
+/* Header Section */
+.dh-dashboard-header-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
-.user-profile {
+.dh-dashboard-header {
   display: flex;
-  align-items: center;
+  flex-direction: column;
+}
+
+.dh-header-text {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.dh-date {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+/* Header Buttons */
+.header-button {
+  display: flex;
   gap: 10px;
+  flex-wrap: wrap;
 }
 
-.avatar {
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #0066cc, #3399ff);
-}
-
-.summary-section {
-  display: flex;
-  gap: 20px;
-  margin-top: 20px;
-}
-
-.card {
-  background-color: #e0e0e0;
-  padding: 20px;
-  border-radius: 10px;
-  flex: 1;
-}
-
-.action-btn {
-  display: block;
+.dashboard-view-reports-button {
   background-color: #0066cc;
   color: white;
   border: none;
   padding: 10px 15px;
   border-radius: 8px;
-  margin: 10px 0;
   font-size: 14px;
   cursor: pointer;
-  width: fit-content;
+  transition: background-color 0.3s ease;
 }
 
-.action-btn:hover {
+.dashboard-view-reports-button:hover {
   background-color: #004999;
 }
 
+/* Statistics Cards */
+.dh-dashboard-stats-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.dh-stats-card {
+  background-color: #e0e0e0;
+  border-radius: 12px;
+  padding: 20px;
+  flex: 1 1 220px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+}
+
+.card-content-1 {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.card-icon-container-users,
+.card-icon-container-reports,
+.card-icon-container-pending,
+.card-icon-container-missed {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  font-size: 22px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.card-icon-container-users {
+  background-color: #0066cc;
+}
+
+.card-icon-container-reports {
+  background-color: #4caf50;
+}
+
+.card-icon-container-pending {
+  background-color: #ffa500;
+}
+
+.card-icon-container-missed {
+  background-color: #f44336;
+}
+
+.card-users-info-container p {
+  margin: 0;
+  font-size: 14px;
+  color: #555;
+}
+
+.card-users-info-container h3 {
+  margin: 0;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* No Submissions Section */
 .no-submissions {
-  margin-top: 30px;
+  margin-top: 40px;
+}
+
+.no-submissions h2 {
+  margin-bottom: 15px;
+  font-size: 18px;
 }
 
 .no-submissions table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
   background-color: white;
 }
 
 .no-submissions th,
 .no-submissions td {
   border: 1px solid #ccc;
-  padding: 10px;
+  padding: 12px;
   text-align: left;
+  font-size: 14px;
 }
 
+/* Highlight Colors */
 .red {
   color: red;
 }
@@ -94,3 +169,5 @@
 .blue {
   color: blue;
 }
+
+
