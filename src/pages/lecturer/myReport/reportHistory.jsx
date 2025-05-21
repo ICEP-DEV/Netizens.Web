@@ -35,9 +35,11 @@ const ReportHistory = () => {
     ).then((response) =>{
           if(Array.isArray(response.data)){
             setReports(response.data);
+            toast.success(response.data.message);
           }
           else{
             setReports([response.data]);
+            toast.success(response.data.message);
           }
     }).catch((error)=>{
       console.log("Error fetching reports" + error);
@@ -46,6 +48,7 @@ const ReportHistory = () => {
   }, []);
   return (
     <div className="report-history-main-container">
+      <Toaster/>
       <Sidebar />
       <div className="report-history-container">
         <h1>Report History</h1>
