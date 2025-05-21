@@ -111,7 +111,7 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
               <h2 className="admin-header-text">Academic</h2>
               <p className="admin-date">
                 {" "}
-                {format(new Date(), "EEEE, MMMM do, yyyy")} | System Overview
+                {format(new Date(), "EEEE, MMMM do, yyyy")} 
               </p>
             </div>
           </div>

@@ -25,7 +25,7 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
   const tab = useLocation();
 
   const navigate = useNavigate();
-  const [activeSection, setActiveSection] = useState(tab.state.tab);
+  const [activeSection, setActiveSection] = useState(tab.state.tab || "Departments");
   const sections = [
     "Departments",
     "Modules",
@@ -33,69 +33,12 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
     "Roles",
     "Communication Channels",
   ];
-  const [departments, setDepartments] = useState([]);
-  const [groups, setGroups] = useState([]);
-  const [roles, setRoles] = useState([]);
-  const [channels, setChannels] = useState([]);
-  const [modules, setModules] = useState([]);
 
-  useEffect(() => {
-    if (interfaceData) {
-      setDepartments(interfaceData);
-      setGroups(interfaceData);
-      setRoles(interfaceData);
-      setChannels(interfaceData);
-      setModules(interfaceData);
-    } else {
-      fetchAcademics();
-      fetchModules();
-    }
-  }, [interfaceData]);
 
-  const fetchAcademics = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5041/api/Academy/GetAllAcademicProperties"
-      );
 
-      if (response?.data?.status) {
-        setDepartments(response.data.departments);
-        setGroups(response.data.groups);
-        setRoles(response.data.roles);
-        setChannels(response.data.communicationChannels);
-      } else {
-        toast.error(response?.data?.message);
-        setDepartments([]);
-        setGroups([]);
-        setRoles([]);
-        setChannels([]);
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message || "An error occurred");
-      setDepartments([]);
-      setGroups([]);
-      setRoles([]);
-      setChannels([]);
-    }
-  };
 
-  const fetchModules = async () => {
-    try {
-      const response = await axios.get(
-        "http://localhost:5041/api/Getters/GetAllModules"
-      );
 
-      if (response?.data?.status) {
-        setModules(response.data.modules);
-      } else {
-        toast.error(response?.data?.message);
-        setModules([]);
-      }
-    } catch (error) {
-      toast.error(error.response?.data?.message || "An error occurred");
-      setModules([]);
-    }
-  };
+  
 
   const renderStats = () => {
     switch (activeSection) {
@@ -109,13 +52,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Total Departments</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -126,13 +69,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -142,14 +85,14 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                   <Landmark className="land-mark-icon" />
                 </div>
                 <div className="card-users-info-container">
-                  <p className="stat-name">Total Departments</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-name">Modules</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -165,7 +108,7 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Total Modules</p>
-                  <p className="stat-value">{modules.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
             </div>
@@ -176,13 +119,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -193,13 +136,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -215,7 +158,7 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Total Groups</p>
-                  <p className="stat-value">{groups.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
             </div>
@@ -226,13 +169,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -243,13 +186,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -260,13 +203,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -282,7 +225,7 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Total Roles</p>
-                  <p className="stat-value">{roles.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
             </div>
@@ -293,13 +236,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -310,13 +253,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -327,13 +270,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -349,7 +292,7 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Total Channels</p>
-                  <p className="stat-value">{channels.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
             </div>
@@ -360,13 +303,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -377,13 +320,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -394,13 +337,13 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 </div>
                 <div className="card-users-info-container">
                   <p className="stat-name">Users</p>
-                  <p className="stat-value">{departments.length}</p>
+                  <p className="stat-value"></p>
                 </div>
               </div>
               <div className="card-content-2">
                 <div className="span-container">
                   <span>Active</span>
-                  <span>{departments.filter((d) => d.isActive).length}</span>
+                  <span></span>
                 </div>
               </div>
             </div>
@@ -419,10 +362,7 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
             <div className="academic-header-container">
           <div className="academic-header">
             <h2 className="admin-header-text">Add Academic Properties</h2>
-            <p className="admin-date">
-              {" "}
-              {format(new Date(), "EEEE, MMMM do, yyyy")} 
-            </p>
+            
           </div>
         </div>
         <div className="academic-content-container">
@@ -450,93 +390,133 @@ const AddAcademicPropertiesPage = ({ interface: interfaceData = null }) => {
                 transition={{ duration: 0.4 }}
                 className="table-content"
               >
-                <div className="academic-stats-container">{renderStats()}</div>
+                <div className="academic-stats-container"><AnimatePresence>{renderStats()}</AnimatePresence></div>
                 <div className="academic-list-header">
-                  <h3>{activeSection}</h3>
-                  <button className="add-academy-button">
-                    <UserPlus className="academy-button-icon" />
-                    <span>Add New {activeSection}</span>
-                  </button>
+                  <h3>Add {activeSection}</h3>
                 </div>
-                <table className="academic-table">
-                  <thead>
-                    <tr>
-                      <th>Name</th>
-                      <th>Actions</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {activeSection === "Departments" &&
-                      departments.map((dept, index) => (
-                        <tr key={index}>
-                          <td>{dept.departmentName}</td>
-                          <td className="academic-action-buttons">
-                            <Pencil className="academic-edit-icon" size={18} />
-                            <Trash2
-                              className="academic-delete-icon"
-                              size={18}
-                            />
-                          </td>
-                        </tr>
-                      ))}
 
-                    {activeSection === "Modules" &&
-                      modules.map((mod, index) => (
-                        <tr key={index}>
-                          <td>{mod.moduleName}</td>
-                          <td className="academic-action-buttons">
-                            <Pencil className="academic-edit-icon" size={18} />
-                            <Trash2
-                              className="academic-delete-icon"
-                              size={18}
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                {activeSection === "Departments" && (
+                  <div>
+                    <form action="">
+                      <div className="add-academic-input-container">
+                        <div className="academic-label-field-container">
+                        <label htmlFor="">Department Name:</label>
+                      <input type="text" />
+                      </div>
+                      <div className="add-academic-button-container">
+                        <button className="add-academic-button">Add Department</button>
+                      </div>
 
-                    {activeSection === "Groups" &&
-                      groups.map((group, index) => (
-                        <tr key={index}>
-                          <td>Group {group.groupName}</td>
-                          <td className="academic-action-buttons">
-                            <Pencil className="academic-edit-icon" size={18} />
-                            <Trash2
-                              className="academic-delete-icon"
-                              size={18}
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                      </div>
+                      
 
-                    {activeSection === "Roles" &&
-                      roles.map((role, index) => (
-                        <tr key={index}>
-                          <td>{role.roleName}</td>
-                          <td className="academic-action-buttons">
-                            <Pencil className="academic-edit-icon" size={18} />
-                            <Trash2
-                              className="academic-delete-icon"
-                              size={18}
-                            />
-                          </td>
-                        </tr>
-                      ))}
+                    </form>
 
-                    {activeSection === "Communication Channels" &&
-                      channels.map((channel, index) => (
-                        <tr key={index}>
-                          <td>{channel.channelName}</td>
-                          <td className="academic-action-buttons">
-                            <Pencil className="academic-edit-icon" size={18} />
-                            <Trash2
-                              className="academic-delete-icon"
-                              size={18}
-                            />
-                          </td>
-                        </tr>
-                      ))}
-                  </tbody>
-                </table>
+                  </div>
+                 )  
+                }
+
+                {activeSection === "Modules" && (
+                  <div>
+                    <form action="">
+                      <div className="add-academic-input-container">
+                        <div className="academic-label-field-container">
+                          <label htmlFor="">Department</label>
+                      <select name="" id="">
+                        <option value="">--select department--</option>
+
+                      </select>
+
+                        </div>
+                        
+
+                      </div>
+                      
+                      <div className="add-academic-input-container">
+                        <div className="academic-label-field-container">
+                          <label htmlFor="">Module Name:</label>
+                        <input type="text" />
+                        </div>
+                        
+
+                      </div>
+                      <div className="add-academic-input-container">
+                        <div className="academic-label-field-container">
+                        <label htmlFor="">Module Code:</label>
+                      <input type="text" />
+                      </div>
+                      </div>
+                      <div className="add-academic-button-container">
+                        <button className="add-academic-button">Add Module</button>
+                      </div>
+
+
+                    </form>
+
+                  </div>
+                 )  
+                }
+                {activeSection === "Groups" && (
+                  <div>
+                    <form action="">
+                      <div className="add-academic-input-container">
+                        <div className="academic-label-field-container">
+                        <label htmlFor="">Group Name:</label>
+                      <input type="text" />
+                      </div>
+                      <div className="add-academic-button-container">
+                        <button className="add-academic-button">Add Group</button>
+                      </div>
+
+                      </div>
+
+                    </form>
+
+                  </div>
+                 )  
+                }
+
+                {activeSection === "Roles" && (
+                  <div>
+                    <form action="">
+                      <div className="add-academic-input-container">
+                        <div className="academic-label-field-container">
+                        <label htmlFor="">Role Name:</label>
+                      <input type="text" />
+                      </div>
+                      <div className="add-academic-button-container">
+                        <button className="add-academic-button">Add Role</button>
+                      </div>
+
+                      </div>
+
+                    </form>
+
+                  </div>
+                 )  
+                }
+
+                {activeSection === "Communication Channels" && (
+                  <div>
+                    <form action="">
+                      <div className="add-academic-input-container">
+                        <div className="academic-label-field-container">
+                        <label htmlFor="">Channel Name:</label>
+                      <input type="text" />
+                      </div>
+                      <div className="add-academic-button-container">
+                        <button className="add-academic-button">Add Channel</button>
+                      </div>
+
+                      </div>
+                      
+
+                    </form>
+
+                  </div>
+                 )  
+                }
+                
               </motion.div>
             </AnimatePresence>
           </div>

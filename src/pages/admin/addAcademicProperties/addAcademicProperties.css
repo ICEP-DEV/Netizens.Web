@@ -13,3 +13,78 @@
   height: 100%;
   overflow: hidden;
 }
+
+
+.add-academic-input-container{
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  gap: 25rem;
+}
+
+.academic-label-field-container {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 200px;
+}
+
+.academic-label-field-container label {
+  font-weight: 600;
+  margin-bottom: 6px;
+  color: #374151;
+  font-size: 14px;
+}
+
+.add-academic-input-container input,
+.academic-label-field-container select {
+  padding: 10px 12px;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  color: #111827;
+  outline: none;
+  transition: border 0.2s ease-in-out;
+  background-color: #f9fafb;
+}
+
+.add-academic-input-container input:focus,
+.academic-label-field-container select:focus {
+  border-color: #3b82f6;
+  background-color: #ffffff;
+}
+
+.academic-label-field-container select {
+  flex: 1;
+  min-width: 200px;
+  margin-top: 26px; 
+}
+
+/* .academic-label-field-container{
+  display: flex;
+  gap: 20px;
+  align-items: center;
+} */
+
+.add-academic-button-container {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.add-academic-button-container button {
+  padding: 10px 20px;
+  background-color: #3b82f6;
+  color: white;
+  font-weight: 600;
+  font-size: 14px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+  height: 40px;
+  margin-top: 25px;
+}
+
+.add-academic-button-container button:hover {
+  background-color: #2563eb;
+}

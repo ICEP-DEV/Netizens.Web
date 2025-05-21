@@ -72,7 +72,7 @@ const ManageUserPage = () => {
             <div className='manage-users-header-container'>
                 <div className='manage-users-header'>
                   <h2 className='admin-header-text'>Manage Users</h2>
-                  <p className='admin-date'> {format(new Date(), "EEEE, MMMM do, yyyy")} | System Overview</p>
+                  <p className='admin-date'> {format(new Date(), "EEEE, MMMM do, yyyy")}</p>
                 </div>
                 <div className='header-button'>
                   <button className='dashboard-add-user-button' onClick={handleAddUser}>
