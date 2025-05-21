@@ -129,8 +129,8 @@
 .lecture-dashboard-report-main-section{
   display:flex;
   flex-direction: row;
-  margin-top: 20px;
-  padding :20px;
+  margin-top: 5px;
+  padding :0px 20px 0px 0px;
   height: 100%;
   
 }
@@ -140,7 +140,7 @@
   display: flex;
   background-color: white;
   border-radius: 10px;
-  height: 70%;
+  height: 77%;
   width:70%;
   flex-direction: column;
   padding-left: 10px;
@@ -178,7 +178,7 @@
   display: flex;
   background-color: white;
   border-radius: 10px;
-  height: 25%;
+  height: 35%;
   width:100%;
   margin-bottom: 15px;
   
@@ -188,5 +188,5 @@
   background-color: white;
   border-radius: 10px;
   height: 40%;
-  width:100%;
+  width: 100%;
 }

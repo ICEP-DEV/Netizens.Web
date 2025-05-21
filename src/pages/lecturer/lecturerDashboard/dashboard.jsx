@@ -96,7 +96,7 @@ return {};
             <div className="lecture-dashboard-item">
                <div className="lecture-dashboard-vertical-info">
                   <FontAwesomeIcon icon={faThumbsUp} className="lecture-dashboard-vertical-items-icons2"/>
-                  <h4>Approved<br/><h1>3</h1></h4>
+                  <h4>Reviewed<br/><h1>3</h1></h4>
                </div>
             </div>
             <div className="lecture-dashboard-item">
