@@ -28,7 +28,7 @@
 }
 
 .lecture-dashboard-welcome {
-  margin: 0 0 10px 2vh;
+  margin: 0 0 0.1px 1vh;
   font-size: x-large;
   font-weight: bold;
   color: black;
@@ -86,8 +86,8 @@
 .lecture-dashboard-vertical-items-icons4{
    display: flex;
   width: 10%;
-  height: 10%;
-  padding: 10px;
+  height: 9%;
+  padding: 9px;
   border-top: 10vh;
   color: gray;
   border-radius: 20px;
