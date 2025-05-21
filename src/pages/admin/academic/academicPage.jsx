@@ -19,8 +19,10 @@ import {
 import { toast, Toaster } from "react-hot-toast";
 import { motion, AnimatePresence } from "framer-motion";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const AcademicPage = ({ interface: interfaceData = null }) => {
+  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState("Departments");
   const sections = [
     "Departments",
@@ -92,6 +94,10 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
       setModules([]);
     }
   };
+
+  const handleAddAcademy = () => {
+    navigate("/admin/add-academic-properties",{state:{tab:activeSection}});
+  }
 
   return (
     <div className="academic-page-container">
@@ -207,6 +213,7 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
                 >
                   {section}
                 </button>
+                
               ))}
             </div>
 
@@ -220,7 +227,14 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
                   transition={{ duration: 0.4 }}
                   className="table-content"
                 >
-                  <h3>{activeSection}</h3>
+                  
+                  <div className="academic-list-header">
+                    <h3>{activeSection}</h3>
+                    <button className="add-academy-button" onClick={handleAddAcademy}>
+                      <UserPlus className="academy-button-icon" />
+                      <span>Add New {activeSection}</span>
+                    </button>
+                  </div>
                   <table className="academic-table">
                     <thead>
                       <tr>
@@ -233,9 +247,9 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
                         departments.map((dept, index) => (
                           <tr key={index}>
                             <td>{dept.departmentName}</td>
-                            <td className="user-account-action-buttons">
-                              <Pencil className="user-account-edit-icon" size={18} />
-                              <Trash2 className="user-account-delete-icon" size={18} />
+                            <td className="academic-action-buttons">
+                              <Pencil className="academic-edit-icon" size={18} />
+                              <Trash2 className="academic-delete-icon" size={18} />
                             </td>
                           </tr>
                         ))}
@@ -244,9 +258,9 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
                         modules.map((mod, index) => (
                           <tr key={index}>
                             <td>{mod.moduleName}</td>
-                            <td className="user-account-action-buttons">
-                              <Pencil className="user-account-edit-icon" size={18} />
-                              <Trash2 className="user-account-delete-icon" size={18} />
+                            <td className="academic-action-buttons">
+                              <Pencil className="academic-edit-icon" size={18} />
+                              <Trash2 className="academic-delete-icon" size={18} />
                             </td>
                           </tr>
                         ))}
@@ -255,9 +269,9 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
                         groups.map((group, index) => (
                           <tr key={index}>
                             <td>Group {group.groupName}</td>
-                            <td className="user-account-action-buttons">
-                              <Pencil className="user-account-edit-icon" size={18} />
-                              <Trash2 className="user-account-delete-icon" size={18} />
+                            <td className="academic-action-buttons">
+                              <Pencil className="academic-edit-icon" size={18} />
+                              <Trash2 className="academic-delete-icon" size={18} />
                             </td>
                           </tr>
                         ))}
@@ -266,9 +280,9 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
                         roles.map((role, index) => (
                           <tr key={index}>
                             <td>{role.roleName}</td>
-                            <td className="user-account-action-buttons">
-                              <Pencil className="user-account-edit-icon" size={18} />
-                              <Trash2 className="user-account-delete-icon" size={18} />
+                            <td className="academic-action-buttons">
+                              <Pencil className="academic-edit-icon" size={18} />
+                              <Trash2 className="academic-delete-icon" size={18} />
                             </td>
                           </tr>
                         ))}
@@ -277,9 +291,9 @@ const AcademicPage = ({ interface: interfaceData = null }) => {
                         channels.map((channel, index) => (
                           <tr key={index}>
                             <td>{channel.channelName}</td>
-                            <td className="user-account-action-buttons">
-                              <Pencil className="user-account-edit-icon" size={18} />
-                              <Trash2 className="user-account-delete-icon" size={18} />
+                            <td className="academic-action-buttons">
+                              <Pencil className="academic-edit-icon" size={18} />
+                              <Trash2 className="academic-delete-icon" size={18} />
                             </td>
                           </tr>
                         ))}

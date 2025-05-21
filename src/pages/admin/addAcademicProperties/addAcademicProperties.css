@@ -1,0 +1,15 @@
+
+.add-academy-page-container{
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background-color: #f5f7f9;
+  overflow: hidden;
+}
+
+.add-academy-container{
+  display: grid;
+  grid-template-columns: auto 1fr;
+  height: 100%;
+  overflow: hidden;
+}

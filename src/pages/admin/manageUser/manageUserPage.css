@@ -35,6 +35,9 @@
 
 .manage-users-content{
   padding: 10px 30px;
+  /* display: flex; */
+  /* flex-direction: row; */
+  /* flex-wrap: wrap; */
   display: grid;
   grid-template-columns: 1fr auto;
   gap: 20px;
