@@ -1,0 +1,163 @@
+/* Layout */
+.notifications-page-container {
+  display: flex;
+  height: 100vh;
+  background-color: #f4f7f9;
+}
+
+.notifications-container {
+  display: flex;
+  flex: 1;
+}
+
+.notifications-dashboard {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+  background-color: #fff;
+}
+
+/* Header */
+.notifications-header {
+  margin-bottom: 25px;
+  position: relative;
+}
+
+.notifications-title {
+  font-size: 24px;
+  font-weight: bold;
+  color: #333;
+}
+
+.notifications-subtitle {
+  font-size: 14px;
+  color: #666;
+  margin-top: 5px;
+}
+
+.notifications-datetime {
+  font-size: 13px;
+  color: #999;
+  margin-top: 8px;
+}
+
+/* Action Buttons */
+.notifications-actions {
+  margin-top: 15px;
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.notifications-actions button {
+  padding: 6px 12px;
+  background-color: #0066cc;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 13px;
+  transition: background-color 0.3s ease;
+}
+
+.notifications-actions button:hover {
+  background-color: #004a99;
+}
+
+/* Filter Field */
+.notifications-filter-wrapper {
+  position: relative;
+}
+
+.notifications-filter-field {
+  padding: 6px 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  background-color: #fff;
+  cursor: pointer;
+  font-size: 13px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 120px;
+  color: #333;
+}
+
+.dropdown-arrow {
+  font-size: 10px;
+  color: #555;
+}
+
+/* Filter Dropdown */
+.notifications-filter-popup {
+  position: absolute;
+  top: 38px;
+  left: 0;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  border-radius: 6px;
+  padding: 6px 0;
+  width: 120px;
+  z-index: 10;
+}
+
+.notifications-filter-popup div {
+  font-size: 14px;
+  padding: 8px 12px;
+  cursor: pointer;
+  color: #333;
+}
+
+.notifications-filter-popup div:hover {
+  background-color: #f0f0f0;
+}
+
+/* Notification Items */
+.notifications-list {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.notifications-item {
+  background-color: #e8f0fe;
+  padding: 16px;
+  border-radius: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+  border-left: 5px solid #0066cc;
+}
+
+.notifications-item.unread {
+  background-color: #e8f0fe;
+}
+
+.notifications-item.read {
+  background-color: #f0f0f0;
+  opacity: 0.75;
+}
+
+.notifications-item:hover {
+  background-color: #dbe9ff;
+}
+
+.notifications-message {
+  margin: 0 0 6px;
+  font-size: 15px;
+  color: #333;
+}
+
+.notifications-time {
+  font-size: 13px;
+  color: #777;
+}
+
+/* Empty State */
+.notifications-empty {
+  font-size: 15px;
+  color: #999;
+  text-align: center;
+  margin-top: 50px;
+}
