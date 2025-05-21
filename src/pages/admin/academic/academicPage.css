@@ -58,7 +58,7 @@
 .land-mark-icon {color: #24520f;}
 .book-open-text-icon {color: rgb(96, 11, 11);}
 
-.academic-content-container{
+/* .academic-content-container{
     background-color: white; 
     border: 1px solid rgb(229, 227, 227);
     border-radius: 10px;
@@ -68,6 +68,32 @@
     border-radius: 8px;
     width: 100rem;
     margin: 0 auto;
+} */
+
+.academic-content-container {
+  background-color: white; 
+  border: 1px solid rgb(229, 227, 227);
+  border-radius: 10px;
+  height: 34rem;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+  padding: 20px;
+  width: 100rem;
+  margin: 0 auto;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.table-area {
+  background-color: white;
+  padding: 20px;
+  border-radius: 6px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+
+  flex: 1;
+  overflow-y: auto;
+  min-height: 0; 
 }
 
 .header-tabs {
@@ -97,12 +123,12 @@
   color: #007bff;
 }
 
-.table-area {
+/* .table-area {
   background-color: white;
   padding: 20px;
   border-radius: 6px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
-}
+} */
 
 .table-content h3 {
   margin-bottom: 15px;
@@ -130,4 +156,51 @@
 }
 .academic-table td{
   height: 45px;
+}
+
+.academic-list-header{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.add-academy-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: #2f75ec;
+  color: white;
+  height: 40px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 8px;
+  font-weight: 500;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-academy-button:hover {
+  background-color: #1d5edb;
+}
+
+.academy-button-icon {
+  width: 18px;
+  height: 18px;
+}
+
+.academic-action-buttons {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.academic-edit-icon {
+  color: #2563eb;
+  cursor: pointer;
+}
+
+.academic-delete-icon {
+  color: #dc2626;
+  cursor: pointer;
 }

@@ -24,6 +24,7 @@ import AssignDepartment from "./pages/assignDepartment/assignDepartment";
 import AdminDetails from "./pages/admin/adminDetails/adminDetails";
 import AcademicPage from "./pages/admin/academic/academicPage";
 import AdminSettingsPage from "./pages/admin/settings/adminSettings";
+import AddAcademicPropertiesPage from "./pages/admin/addAcademicProperties/addAcademicProperties";
 
 
 
@@ -86,6 +87,7 @@ const App = () => {
       <Route path="/admin-details" element={<AdminDetails />} />
       <Route path="/assign-department" element={<AssignDepartment />} />
       <Route path="/admin/settings" element={<AdminSettingsPage />} />
+      <Route path="/admin/add-academic-properties" element={<AddAcademicPropertiesPage />} />
 
 
       {/* Department & Module Management */}
