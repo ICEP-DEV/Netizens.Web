@@ -1,5 +1,5 @@
 .Lectur-sidebar-container {
-  width: 10%;
+  width: 12%;
   min-width: 180px;
   background-color: white;
   color: black;
@@ -99,6 +99,7 @@
   padding-right: 6px;
   width: 10%;
   height: 10%;
+  color: gray;
   
 }
 .Lectur-sidebar-profile{

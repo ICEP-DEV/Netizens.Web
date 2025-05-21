@@ -2,6 +2,7 @@ import React from "react";
 import "./DepartmentHeadDashboard.css";
 import DepartmentHeadDashboardSideBar from "../../../components/DepartmentHeadDashboardSideBar";
 import { useNavigate } from "react-router-dom";
+import { FaBell } from "react-icons/fa";
 
 const noSubmissions = [
   { name: "Nkosi SM", group: "A", module: "CSM115D", lastSubmitted: "04-04-2025" },
@@ -19,6 +20,10 @@ const DepartmentHeadDashboard = () => {
     navigate("/view-reports");
   };
 
+  const goToNotifications = () => {
+    navigate("/notifications");
+  };
+
   return (
     <div className="dh-dashboard-page-container">
       <div className="dh-dashboard-container">
@@ -28,8 +33,19 @@ const DepartmentHeadDashboard = () => {
           {/* Header */}
           <div className="dh-dashboard-header-container">
             <div className="dh-dashboard-header">
-              <h1 className="dh-header-text">Welcome To Department Head Dashboard</h1>
+              <h1 className="dh-header-text">Welcome To Reviewer Dashboard</h1>
               <p className="dh-date">{new Date().toLocaleDateString()}</p>
+            </div>
+
+            {/* Notification Bell */}
+            <div className="notification-container">
+              <button
+                className="notification-bell"
+                onClick={goToNotifications}
+                title="View Notifications"
+              >
+                <FaBell />
+              </button>
             </div>
           </div>
 
@@ -76,9 +92,9 @@ const DepartmentHeadDashboard = () => {
             </div>
           </div>
 
-          {/* Quick Actions */}
+          {/* Quick Actions Section */}
           <div className="dh-dashboard-header-container">
-            <h2>Quick Actions:</h2>
+            <h2 className="dh-header-text">Quick Actions:</h2>
             <div className="header-button">
               <button
                 className="dashboard-view-reports-button"
@@ -101,7 +117,7 @@ const DepartmentHeadDashboard = () => {
             </div>
           </div>
 
-          {/* No Submissions Table */}
+          {/* Lecturers with No Submissions Table */}
           <section className="no-submissions">
             <h2>
               Lecturers with <span className="red">No</span> Submissions this week:

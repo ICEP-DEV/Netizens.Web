@@ -51,6 +51,10 @@ import Reports from "./pages/admin/report/report";
 import EditLecturerProfile from "./pages/lecturer/lecturerProfile/lecturerEditProfile";
 import ViewReport from "./pages/admin/report/viewReport";
 
+//Notifications
+import Notifications from "./pages/notifications/notifications";
+import NotificationsLecturer from "./pages/notifications/notificationsLecturer";
+
 
 const App = () => {
   return (
@@ -101,6 +105,15 @@ const App = () => {
       {/* Department Head Report Management */}
       <Route path="/dashboard/department-head/reports" element={<Reports />} />
       <Route path="/view-reports" element={<ViewReport />} />
+
+      {/* Notifications */}
+      <Route path ="/notifications" element ={<Notifications/>}/>
+      <Route path="/lecturer-notifications" element ={<NotificationsLecturer/>}/>
+
+      
+
+
+
     </Routes>
   );
 };
