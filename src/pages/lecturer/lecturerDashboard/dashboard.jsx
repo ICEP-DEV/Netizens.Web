@@ -2,18 +2,17 @@ import React from "react";
 import { useEffect, useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faCircleUser,
-  faTriangleExclamation,
-} from "@fortawesome/free-solid-svg-icons";
+  faFolder,faThumbsUp,faClock,faClipboard
+} from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 
 import Sidebar from "../../../components/lectureSidebar/sidebar";
 import "./dashboard.css";
+import Ribbon from "../../../components/admin/ribbon/ribbon";
 
 const LecturerDashboardPage = () => {
   const [name, setName] = useState("");
-  const [surname,setSurname] = useState("");
   const [reports,setreports] = useState([]);
 
   useEffect(() => {
@@ -30,7 +29,7 @@ const LecturerDashboardPage = () => {
       )
       .then((response) => {
         setName(response.data.name);
-        setSurname(response.data.surname);
+        
       })
       .catch((error) => {
         console.error("Error fetching user details:", error);
@@ -45,6 +44,7 @@ const LecturerDashboardPage = () => {
       ).then((response) =>{
                if(Array.isArray(response.data)){
                 setreports(response.data);
+                toast.success(response.data.message);
                }
                else{
                 setreports([response.data]);
@@ -67,73 +67,77 @@ return {};
   }
   return (
     
+     <div className="lecture-page-dashboard-container">
+      <Toaster />
+      <Ribbon />
     <div className="lecture-dashboard">
-      
-      <Sidebar />
+
+      <Sidebar/>
 
       <div className="lecture-dashboard-main-contents">
         <div className="lecture-dashboard-main-header">
-          <div className="lecture-dashboard-details">
-            <FontAwesomeIcon icon={faCircleUser} className="lecture-dashboard-userIcon" />
-            <p> {name +"  "+ surname}</p>
-          </div>
-          <p className="lecture-dashboard-welcome">Welcome, {name}</p>
+          
+          <p className="lecture-dashboard-welcome">Welcome back, {name}</p>
         </div>
 
         <div className="lecture-dashboard-main-body">
+
           <div className="lecture-dashboard-vertical-items">
-            <div className="lecture-dashboard-item weekly-report">
-              <h2>Weekly Report</h2>
-              <p>Submit your activity report</p>
-              <button>New Report</button>
+
+            <div className="lecture-dashboard-item">
+
+              <div className="lecture-dashboard-vertical-info">
+                  <FontAwesomeIcon icon={faFolder} className="lecture-dashboard-vertical-items-icons"/>
+                  <h3>Total Reports<br/><h1>3</h1></h3>
+               </div>
+              
             </div>
 
             <div className="lecture-dashboard-item">
-              <h2>
-                Submission <br /> Status
-              </h2>
-              <p>
-                All reports <br />
-                are up to date
-              </p>
+               <div className="lecture-dashboard-vertical-info">
+                  <FontAwesomeIcon icon={faThumbsUp} className="lecture-dashboard-vertical-items-icons2"/>
+                  <h4>Reviewed<br/><h1>3</h1></h4>
+               </div>
             </div>
             <div className="lecture-dashboard-item">
-              <h1>
-                Upcoming <br /> in:
-              </h1>
-              <FontAwesomeIcon
-                icon={faTriangleExclamation}
-                className="lecture-dashboard-triangle-excl-icon"
-              />
-              <p>4 days</p>
+              <div className="lecture-dashboard-vertical-info">
+                  <FontAwesomeIcon icon={faClock} className="lecture-dashboard-vertical-items-icons3"/>
+                  <h4>Pending Review<br/><h1>3</h1></h4>
+               </div>
+            </div>
+            <div className="lecture-dashboard-item">
+              <div className="lecture-dashboard-vertical-info">
+                  <FontAwesomeIcon icon={faClipboard} className="lecture-dashboard-vertical-items-icons4"/>
+                  <h4>Drafts<br/><h1>3</h1></h4>
+               </div>
             </div>
           </div>
 
-          <div className="lecture-dashboard-table-section">
-            <h2 className="lecture-dashboard-table-heading">Recent Submissions:</h2>
-            <table className="lecture-dashboard-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Module</th>
-                  <th>Submission Date:</th>
-                  <th>Review Status:</th>
-                </tr>
-              </thead>
-              <tbody className="lecture-dashboard-tbody">
-                {reports.map((report,index) =>(
-                <tr key={report.reportId || index}>
-                  <td>{index + 1}</td>
-                  <td>{report.moduleCode}</td>
-                  <td>{report.submissionDate}</td>
-                  <td style={getStatusStyle(report.reportStatus)}>{report.reportStatus}</td>
-                </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="lecture-dashboard-report-main-section">
+            <div className="lecture-dashboard-report-section"> 
+              <h2>Recent Reports</h2>
+              <div className="lecture-dashboard-report">
+                <h3>Introduction to ppa</h3>
+                <p> 2025-05-01 to 2025-05-07</p>
+                <p>what we did:</p>
+                <p className="lecture-dashboard-report-status">Status</p>
+              </div>
+            </div>
+            <div className="lecture-dashboard-report-Activities">
+
+              <div className="lecture-dashboard-report-Activity-Summary">
+
+              </div>
+              <div className="lecture-dashboard-report-Deadline">
+
+              </div>
+            </div>
+
+            
           </div>
         </div>
       </div>
+    </div>
     </div>
   );
 };

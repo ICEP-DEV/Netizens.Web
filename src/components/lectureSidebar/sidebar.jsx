@@ -7,7 +7,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faRightFromBracket,
-  faHouse,faSuitcase,faFile,faUser
+  faHouse,faSuitcase,faFile,faUser,faGear
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
@@ -34,34 +34,56 @@ const Sidebar = () => {
   };
 
   return (
+   
     <div className="Lectur-sidebar-container">
       <Toaster />
-      <div>
-        <img className="Lectur-sidebar-logo" alt="TUT icon" src={Icon} />
-        <ul className="Lectur-sidebar-links">
+      <div className="Lectur-sidebar-links-container">
+        
+          <div className="Lectur-sidebar-links-and-icon">
           <Link to="/dashboard/lecturer" className="Lectur-sidebar-link">
            <FontAwesomeIcon icon={faHouse} className="Lectur-sidebar-container-links" />
             Dashboard
           </Link>
-          <Link to="/weekly-report" className="Lectur-sidebar-link">
-          <FontAwesomeIcon icon={faSuitcase} className="Lectur-sidebar-container-links" />
-            New Report
-          </Link>
+          </div>
+          <div className="Lectur-sidebar-links-and-icon">
           <Link to="/report-history" className="Lectur-sidebar-link">
           <FontAwesomeIcon icon={faFile} className="Lectur-sidebar-container-links" />
-            My Report
+            My Reports
           </Link>
-          <Link to="/view-lecturer-profile" className="Lectur-sidebar-link">
-          <FontAwesomeIcon icon={faUser} className="Lectur-sidebar-container-links" />
-            My Profile
+          </div>
+          <div className="Lectur-sidebar-links-and-icon">
+          <Link to="/weekly-report" className="Lectur-sidebar-link">
+          <FontAwesomeIcon icon={faSuitcase} className="Lectur-sidebar-container-links" />
+            Create Report
           </Link>
-        </ul>
+          </div>
+          
+        
       </div>
+
+      <div className="Lectur-sidebar-lower-container" >
       
+      <div className="Lectur-sidebar-profile">
+
+        <div className="Lectur-sidebar-links-and-icon">
+       <Link to="/view-lecturer-profile" className="Lectur-sidebar-link">
+           John Doe <br/>  Lecturer
+      </Link>
+       </div>
+       </div>
+
+       <div className="Lectur-sidebar-links-and-icon">
+      <Link to="/view-lecturer-profile" className="Lectur-sidebar-link">
+          <FontAwesomeIcon icon={faGear} className="Lectur-sidebar-container-links" />
+            settings
+      </Link>
+      </div>
       <button className="Lectur-sidebar-logout-btn" onClick={handleLogout}>
       <FontAwesomeIcon icon={faRightFromBracket} className="Lectur-sidebar-container-logout"/>
-        LOGOUT
+        Sign Out
       </button>
+
+      </div>
     </div>
   );
 };
