@@ -4,7 +4,6 @@ import "./weeklyReport.css";
 const WeeklyReport = () => {
   return (
     <div className="lecturer-Weekly-Report-Container">
-      
       <h1 className="lecturer-Weekly-Report-h1">Submit weekly report</h1>
       
       <form className="lecturer-Weekly-Report-Form">
