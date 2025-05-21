@@ -88,7 +88,7 @@ return {};
 
               <div className="lecture-dashboard-vertical-info">
                   <FontAwesomeIcon icon={faFolder} className="lecture-dashboard-vertical-items-icons"/>
-                  <h3>Total Reports<br/><h1>3</h1></h3>
+                  <h4>Total Reports<br/><h3>3</h3></h4>
                </div>
               
             </div>
@@ -96,19 +96,19 @@ return {};
             <div className="lecture-dashboard-item">
                <div className="lecture-dashboard-vertical-info">
                   <FontAwesomeIcon icon={faThumbsUp} className="lecture-dashboard-vertical-items-icons2"/>
-                  <h4>Reviewed<br/><h1>3</h1></h4>
+                  <h4>Reviewed<br/><h3>3</h3></h4>
                </div>
             </div>
             <div className="lecture-dashboard-item">
               <div className="lecture-dashboard-vertical-info">
                   <FontAwesomeIcon icon={faClock} className="lecture-dashboard-vertical-items-icons3"/>
-                  <h4>Pending Review<br/><h1>3</h1></h4>
+                  <h4>Pending Review<br/><h3>3</h3></h4>
                </div>
             </div>
             <div className="lecture-dashboard-item">
               <div className="lecture-dashboard-vertical-info">
                   <FontAwesomeIcon icon={faClipboard} className="lecture-dashboard-vertical-items-icons4"/>
-                  <h4>Drafts<br/><h1>3</h1></h4>
+                  <h4>Drafts<br/><h3>3</h3></h4>
                </div>
             </div>
           </div>
