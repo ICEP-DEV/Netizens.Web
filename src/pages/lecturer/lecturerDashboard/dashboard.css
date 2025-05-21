@@ -122,57 +122,71 @@
   height: 20vh;
   border: 1px solid white;
   box-sizing: border-box;
-  margin-left: 2vh;
   overflow: hidden;
   box-shadow: 3px 2px 2px gray;
   
 }
-
-
-.lecture-dashboard-table-section {
-  
-  width: 100%;
-  background-color: white;
+.lecture-dashboard-report-main-section{
+  display:flex;
+  flex-direction: row;
   margin-top: 20px;
-  border-radius: 8px;
-  box-sizing: border-box;
-  box-shadow: 5px 5px 5px rgba(0, 0, 0, 5);
-  max-height: 400px;
-  overflow-y: auto;
-}
-
-.lecture-dashboard-table-heading {
-  font-size: xx-large;
-  font-weight: black;
-  margin-bottom: 1px;
-  color: black;
-  border-bottom: 3px solid black;
-}
-
-.lecture-dashboard-table {
-  width: 100%;
-  border-collapse: collapse;
-}
-.lecture-dashboard-tbody tr:nth-child(odd) {
-  background-color: #e7e4e4;
-}
-
-.lecture-dashboard-tbody tr:nth-child(even) {
-  background-color: white;
-}
-
-.lecture-dashboard-table th,
-.lecture-dashboard-table td {
-  text-align: center;
-  padding: 12px 8px;
-  position: sticky;
-  z-index: 1;
-}
-
-.lecture-dashboard-table th {
-  font-weight: bold;
+  padding :20px;
+  height: 100%;
   
 }
 
+.lecture-dashboard-report-section{
+  margin-top: 18px;
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  height: 70%;
+  width:70%;
+  flex-direction: column;
+  padding-left: 10px;
+}
+.lecture-dashboard-report-section h2{
+  text-align: start;
+  padding-left: 10px;
+  border-bottom: 1px solid gray;
+  
+}
+.lecture-dashboard-report{
 
+ border-bottom: 1px solid gray;
+}
+.lecture-dashboard-report-status{
+  background-color: #ebca8e;
+  width:15%;
+  border-radius: 10px;
+  text-align: center;
+}
+.lecture-dashboard-report-Activities{
+  display:flex;
+  
+  flex-direction: column;
+  padding :20px;
+  height: 100%;
+  margin-left: 5px;
+  width:30%;
+  
+ 
 
+}
+
+.lecture-dashboard-report-Activity-Summary{
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  height: 25%;
+  width:100%;
+  margin-bottom: 15px;
+  
+}
+.lecture-dashboard-report-Deadline{
+  display: flex;
+  background-color: white;
+  border-radius: 10px;
+  height: 40%;
+  width:100%;
+}

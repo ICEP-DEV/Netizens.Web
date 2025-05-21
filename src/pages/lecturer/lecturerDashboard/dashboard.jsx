@@ -113,28 +113,27 @@ return {};
             </div>
           </div>
 
-          <div className="lecture-dashboard-table-section">
-            <h2 className="lecture-dashboard-table-heading">Recent Submissions:</h2>
-            <table className="lecture-dashboard-table">
-              <thead>
-                <tr>
-                  <th>#</th>
-                  <th>Module</th>
-                  <th>Submission Date:</th>
-                  <th>Review Status:</th>
-                </tr>
-              </thead>
-              <tbody className="lecture-dashboard-tbody">
-                {reports.map((report,index) =>(
-                <tr key={report.reportId || index}>
-                  <td>{index + 1}</td>
-                  <td>{report.moduleCode}</td>
-                  <td>{report.submissionDate}</td>
-                  <td style={getStatusStyle(report.reportStatus)}>{report.reportStatus}</td>
-                </tr>
-                ))}
-              </tbody>
-            </table>
+          <div className="lecture-dashboard-report-main-section">
+            <div className="lecture-dashboard-report-section"> 
+              <h2>Recent Reports</h2>
+              <div className="lecture-dashboard-report">
+                <h3>Introduction to ppa</h3>
+                <p> 2025-05-01 to 2025-05-07</p>
+                <p>what we did:</p>
+                <p className="lecture-dashboard-report-status">Status</p>
+              </div>
+            </div>
+            <div className="lecture-dashboard-report-Activities">
+
+              <div className="lecture-dashboard-report-Activity-Summary">
+
+              </div>
+              <div className="lecture-dashboard-report-Deadline">
+
+              </div>
+            </div>
+
+            
           </div>
         </div>
       </div>
