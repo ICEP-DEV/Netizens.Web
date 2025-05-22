@@ -4,7 +4,7 @@ import {
   faFolder,
   faThumbsUp,
   faClock,
-  faClipboard,
+  faClipboard,faPenToSquare
 } from "@fortawesome/free-regular-svg-icons";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -136,15 +136,30 @@ const LecturerDashboardPage = () => {
                   {reports.map((report,index) => (
                 <div key={index} className="lecture-dashboard-report">
 
+                  <div className="lecture-dashboard-report-and-status">
+                   <div className="lecture-dashboard-report-and-date">
                   <h3>{report.moduleCode}</h3>
                   <p> {report.submissionDate}</p>
-                  <p>what we did:</p>
-                  <p 
+                  </div>
+                  <div  className="lecture-dashboard-report-status">
+                    <p 
                   style={getStatusStyle(report.reportStatus)}
-                  className="lecture-dashboard-report-status"
+                 
                   >
                       {report.reportStatus}
                    </p>
+                   <FontAwesomeIcon
+                    icon={faPenToSquare}
+                    className="lecture-dashboard-report-status-icon"
+                  />
+                  </div>
+
+                  </div>
+                  <div className="lecture-dashboard-report-work">
+                    <p>what we did:</p>
+                  </div>
+                  
+                  
                 </div>
                 ))}
               </div>

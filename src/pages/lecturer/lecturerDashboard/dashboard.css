@@ -142,6 +142,7 @@
   padding :0px 5px 0px 0px;
   height: 100%;
   width: 100%;
+  gap: 2px;
   
 }
 
@@ -154,6 +155,7 @@
   width:70%;
   flex-direction: column;
   
+  
 }
 .lecture-dashboard-report-section-headings {
   display: flex;
@@ -165,16 +167,45 @@
 
  border-bottom: 1px solid gray;
  padding-left: 8px;
+ display: flex;
+ flex-direction: column;
+ height: 24%;
+ 
  
 }
+.lecture-dashboard-report-and-date{
+ 
+ }
+
+.lecture-dashboard-report-and-status{
+display: flex;
+flex-direction: row;gap: 65%;
+overflow: hidden;
+height: 80%;
+}
 .lecture-dashboard-report-status{
-  
-  background-color: #b1f0f8;
-  width:10%;
+  display: flex;
+  flex-direction: row;
+  gap: 9px;
+ 
+}
+.lecture-dashboard-report-status p{
+  width:100%;
   border-radius: 10px;
   text-align: center;
   overflow: hidden;
+  padding:11px;
+  padding-left: 2px;
+  height: 20%;
+ 
+  
 }
+.lecture-dashboard-report-status{
+
+  height: 60%;
+  margin-top: 12px;
+}
+
 .lecture-dashboard-report-Activities{
   display:flex;
   
