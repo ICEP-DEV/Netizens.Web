@@ -1,17 +1,17 @@
 import React from "react";
 import "./sidebar.css";
-import Icon from "../../assets/TUTicon1.jpeg";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate,} from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
   faRightFromBracket,
-  faHouse,faSuitcase,faFile,faUser,faGear
+  faHouse,faSuitcase,faFile,faGear
 } from "@fortawesome/free-solid-svg-icons";
 
 const Sidebar = () => {
   const navigate = useNavigate();
+  
 
   const handleLogout = () => {
     axios

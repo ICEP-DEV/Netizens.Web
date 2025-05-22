@@ -59,6 +59,7 @@
   width: 10%;
   height: 10%;
   padding: 10px;
+   margin-top: 25px;
   border-top: 10vh;
   color: #2080ce;
   border-radius: 20px;
@@ -71,6 +72,7 @@
   width: 10%;
   height: 10%;
   padding: 10px;
+   margin-top: 25px;
   border-top: 10vh;
   color: #238070;
   border-radius: 20px;
@@ -82,7 +84,7 @@
   width: 10%;
   height: 10%;
   padding: 10px;
-  margin-top: 20px;
+  margin-top: 25px;
   border-top: 10vh;
   color: #684e09;
   border-radius: 20px;
@@ -94,6 +96,7 @@
   width: 10%;
   height: 9%;
   padding: 9px;
+   margin-top: 25px;
   border-top: 10vh;
   color: gray;
   border-radius: 20px;
@@ -135,8 +138,8 @@
 .lecture-dashboard-report-main-section{
   display:flex;
   flex-direction: row;
-  margin-top: 5px;
-  padding :0px 20px 0px 0px;
+  margin-top: 1px;
+  padding :0px 5px 0px 0px;
   height: 100%;
   width: 100%;
   
@@ -150,23 +153,27 @@
   height: 77%;
   width:70%;
   flex-direction: column;
-  padding-left: 10px;
+  
 }
-.lecture-dashboard-report-section h2{
-  text-align: start;
-  padding-left: 10px;
+.lecture-dashboard-report-section-headings {
+  display: flex;
   border-bottom: 1px solid gray;
+  padding-left: 8px;
   
 }
 .lecture-dashboard-report{
 
  border-bottom: 1px solid gray;
+ padding-left: 8px;
+ 
 }
 .lecture-dashboard-report-status{
-  background-color: #ebca8e;
-  width:15%;
+  
+  background-color: #b1f0f8;
+  width:10%;
   border-radius: 10px;
   text-align: center;
+  overflow: hidden;
 }
 .lecture-dashboard-report-Activities{
   display:flex;
@@ -188,6 +195,7 @@
   height: 35%;
   width:100%;
   margin-bottom: 15px;
+  flex-direction: column;
   
 }
 .lecture-dashboard-report-Deadline{
@@ -196,4 +204,6 @@
   border-radius: 10px;
   height: 40%;
   width: 100%;
+  flex-direction: column;
+  
 }

@@ -55,7 +55,7 @@
   transform: scale(1.05);
   text-decoration: underline;
   background-color: rgb(187, 235, 247);
-  color: rgb(83, 124, 212);
+  color: rgb(17, 86, 235);
 }
 
 .Lectur-sidebar-logout-btn {
@@ -99,7 +99,15 @@
   padding-right: 6px;
   width: 10%;
   height: 10%;
-  color: gray;
+  color: rgb(114, 197, 245);
+  transition: transform 0.3s ease;
+  
+}
+.Lectur-sidebar-container-links:hover{
+  transform: scale(1.05);
+  text-decoration: underline;
+  background-color: rgb(187, 235, 247);
+  color: rgb(83, 124, 212);
   
 }
 .Lectur-sidebar-profile{
