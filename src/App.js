@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 
 // Auth Pages
 import LoginPage from "./pages/auth/login/loginPage";
@@ -13,6 +13,7 @@ import ReportsPage from "./pages/auth/reports/ReportsPage";
 // Dashboard Pages
 import LecturerDashboardPage from "./pages/lecturer/lecturerDashboard/dashboard";
 import HodDashboardPage from "./pages/departmentHead/hodDashboard/hodDashboard";
+import HodDashPage from "./pages/hodDashboard/hodDashPage"; 
 
 
 // Admin Pages
@@ -72,6 +73,7 @@ const App = () => {
       <Route path="/dashboard/lecturer" element={<LecturerDashboardPage />} />
       <Route path="/dashboard/admin" element={<AdminDashboard />} />
       <Route path="/dashboard/hod-department" element={<HodDashboardPage />} />
+      <Route path="/dashboard/hod-dash" element={<HodDashPage />} />
 
       {/* Admin Functionality */}
       <Route path="/add-user" element={<AddUserPage />} />
@@ -103,7 +105,7 @@ const App = () => {
       <Route path="/view-lecturer-profile" element={<ViewLecturerProfile />} />
 
       {/* Department Head Report Management */}
-      <Route path="/dashboard/department-head/reports" element={<Reports />} />
+      <Route path="/reports" element={<Reports />} />
       <Route path="/view-reports" element={<ViewReport />} />
 
       {/* Notifications */}

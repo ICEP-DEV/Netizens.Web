@@ -152,7 +152,7 @@ const Reports = ({ interface: interfaceData = null }) => {
       )}
 
       <div className="back-btn">
-        <a href="/dashboard/department-head">← Back to Dashboard</a>
+        <a href="/dashboard/hod-dash">← Back to Dashboard</a>
       </div>
     </div>
   );

@@ -88,8 +88,7 @@ const ViewReport = () => {
       <Toaster />
 
       <div className="viewreport-nav-buttons">
-        <a className="viewreport-nav-back" href="/dashboard/hod-department">Back</a>
-        <a className="viewreport-nav-forward" href="/reports/next">Forward</a>
+        <a className="viewreport-nav-back" href="/dashboard/hod-dash">Back</a>
       </div>
 
       <h1>View Reports</h1>
